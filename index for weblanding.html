@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CliniQX Pro — Dental Clinic Management | نظام إدارة عيادات الأسنان</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1a6fbf;--blue-mid:#378add;--blue-dark:#0c447c;--blue-deep:#042c53;--blue-light:#e6f1fb;
+  --teal:#0abf8a;--teal-dark:#078a64;
+  --bg:#f0f6ff;--text:#0f1f35;--muted:#5a7a9a;--muted2:#8aaccc;
+  --gold:#f5a623;--red:#e63946;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Sora',sans-serif;background:#fff;color:var(--text);overflow-x:hidden;font-size:17px;line-height:1.65}
+.ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-weight:500;letter-spacing:0;word-spacing:1px}
+/* Arabic text global improvements */
+[lang="ar"], .ar, [dir="rtl"] {
+  font-family:'IBM Plex Sans Arabic',sans-serif;
+  font-weight:500;
+  line-height:2;
+  letter-spacing:0;
+}
+/* Arabic size overrides — larger and clearer */
+.hero-ar{font-size:1.5rem!important;font-weight:600!important;line-height:1.9!important}
+.sec-ar{font-size:1.1rem!important;font-weight:500!important;line-height:2!important}
+.feat-ar{font-size:1rem!important;font-weight:600!important;line-height:1.85!important}
+.step-t-ar{font-size:0.95rem!important;font-weight:600!important}
+.pr-nm-ar{font-size:1rem!important;font-weight:600!important}
+.tr-q-ar{font-size:1rem!important;font-weight:500!important;line-height:1.9!important}
+.tr-rl{font-size:0.85rem!important}
+.faq-a-ar{font-size:0.95rem!important;font-weight:500!important;line-height:1.95!important}
+.scr-info-ar{font-size:1.05rem!important;font-weight:600!important}
+.cta-ar{font-size:1.1rem!important;font-weight:500!important;line-height:2!important}
+.ft-desc-ar{font-size:0.95rem!important;font-weight:500!important;line-height:1.95!important}
+.nl-ar{font-size:1rem!important;font-weight:500!important}
+.trust-txt{font-size:0.95rem!important}
+/* inline arabic spans in ticker and logos */
+.ti .ar, .ti span[style*="IBM"]{font-size:0.95rem!important;font-weight:600!important}
+.logo-it-tx.ar{font-size:1rem!important}
+
+/* TICKER */
+.ticker{background:linear-gradient(90deg,var(--blue-deep),var(--blue-dark));padding:9px 0;overflow:hidden}
+.ticker-inner{display:flex;animation:tick 35s linear infinite;white-space:nowrap}
+.ti{display:inline-flex;align-items:center;gap:8px;padding:0 2.5rem;font-size:0.9rem;color:rgba(255,255,255,0.7);font-weight:500}
+.ti strong{color:var(--teal)}
+.ti-sep{color:rgba(255,255,255,0.2)}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;height:76px;background:rgba(4,44,83,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;padding:0 3rem;box-shadow:0 2px 24px rgba(0,0,0,0.3)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--blue-mid),var(--blue-dark));border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.nav-logo-name{font-size:1.25rem;font-weight:800;color:#fff}
+.nav-logo-name span{color:#7fbcf5}
+.nav-logo-sub{font-size:0.65rem;color:rgba(255,255,255,0.3);letter-spacing:1px;text-transform:uppercase}
+.nav-sp{flex:1}
+.nav-links{display:flex;align-items:center;gap:2.25rem}
+.nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:1rem;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--teal)!important;color:#fff!important;padding:11px 26px;border-radius:9px;font-weight:700!important;box-shadow:0 2px 14px rgba(10,191,138,0.4);font-size:1rem!important}
+.nav-cta:hover{background:var(--teal-dark)!important;transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(155deg,#021e3a 0%,#042c53 45%,#0d4a8a 100%);padding:5rem 2.5rem 5rem;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-bg1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(55,138,221,0.1),transparent 70%);top:-200px;right:-100px;pointer-events:none}
+.hero-bg2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(10,191,138,0.07),transparent 70%);bottom:-100px;left:-100px;pointer-events:none}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:55px 55px;pointer-events:none}
+.hero-tooth-bg{position:absolute;font-size:20rem;opacity:0.02;right:-2rem;bottom:-2rem;pointer-events:none;animation:floatBig 10s ease-in-out infinite}
+@keyframes floatBig{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(10deg) translateY(-20px)}}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:center;width:100%;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(10,191,138,0.12);border:1px solid rgba(10,191,138,0.35);color:var(--teal);padding:8px 18px;border-radius:30px;font-size:0.88rem;font-weight:600;margin-bottom:1.75rem;letter-spacing:0.5px}
+.hb-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero h1{font-size:4rem;font-weight:800;color:#fff;line-height:1.06;letter-spacing:-1.5px;margin-bottom:1.25rem}
+.hero h1 em{font-style:normal;color:#7fbcf5;display:block}
+.hero-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:1.4rem;color:rgba(255,255,255,0.4);margin-bottom:1.75rem;direction:rtl}
+.hero-desc{font-size:1.18rem;color:rgba(255,255,255,0.72);line-height:1.78;margin-bottom:2.5rem;max-width:520px}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn-p{display:inline-flex;align-items:center;gap:9px;background:var(--teal);color:#fff;padding:16px 36px;border-radius:12px;font-size:1.08rem;font-weight:700;text-decoration:none;transition:all 0.25s;box-shadow:0 4px 24px rgba(10,191,138,0.4)}
+.btn-p:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:0 8px 32px rgba(10,191,138,0.5)}
+.btn-s{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,0.08);color:#fff;padding:16px 36px;border-radius:12px;font-size:1.08rem;font-weight:600;text-decoration:none;border:1.5px solid rgba(255,255,255,0.2);transition:all 0.25s}
+.btn-s:hover{background:rgba(255,255,255,0.15);transform:translateY(-2px)}
+.hero-trust{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.trust-faces{display:flex}
+.trust-face{width:38px;height:38px;border-radius:50%;border:2px solid rgba(255,255,255,0.25);background:linear-gradient(135deg,var(--blue-mid),var(--blue-dark));display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:700;color:#fff;margin-left:-9px}
+.trust-face:first-child{margin-left:0}
+.trust-txt{font-size:0.9rem;color:rgba(255,255,255,0.5)}
+.trust-txt strong{color:#fff}
+.trust-stars-sm{color:var(--gold);font-size:0.92rem}
+
+/* MOCKUP */
+.hero-right{position:relative}
+.mockup{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.45)}
+.mockup-bar{background:#021e3a;height:34px;display:flex;align-items:center;padding:0 14px;gap:6px;border-bottom:1px solid rgba(255,255,255,0.05)}
+.md{width:9px;height:9px;border-radius:50%}
+.mockup-title-text{flex:1;text-align:center;font-size:0.62rem;color:rgba(255,255,255,0.25)}
+.mockup-body{display:flex;height:340px}
+.m-sidebar{width:88px;background:#031628;padding:10px 7px;display:flex;flex-direction:column;gap:4px;border-right:1px solid rgba(255,255,255,0.04)}
+.m-brand{font-size:0.6rem;font-weight:700;color:#fff;text-align:center;padding:5px 0 9px;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:4px}
+.m-brand span{color:#7fbcf5}
+.m-nav{border-radius:6px;padding:5px;display:flex;align-items:center;gap:4px;font-size:0.5rem;color:rgba(255,255,255,0.4);cursor:pointer}
+.m-nav.on{background:rgba(255,255,255,0.12);color:#fff}
+.m-nav-ic{font-size:0.72rem}
+.m-main{flex:1;background:#f0f6ff;padding:10px;display:flex;flex-direction:column;gap:6px}
+.m-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:1px}
+.m-pt{font-size:0.62rem;font-weight:700;color:#0c447c}
+.m-dt{font-size:0.48rem;background:#fff;border:1px solid #cde0f5;border-radius:10px;padding:2px 8px;color:#5a7a9a}
+.m-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.m-stat{background:#fff;border-radius:6px;padding:6px 7px;border:1px solid #cde0f5}
+.m-sv{font-size:0.95rem;font-weight:800;color:#0c447c;line-height:1}
+.m-sl{font-size:0.42rem;color:#5a7a9a;text-transform:uppercase;letter-spacing:0.3px;margin-top:1px}
+.m-grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:4px;flex:1}
+.m-card{background:#fff;border-radius:6px;padding:7px;border:1px solid #cde0f5}
+.m-ct{font-size:0.48rem;font-weight:700;color:#0c447c;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.3px}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:52px}
+.m-bar{flex:1;border-radius:2px 2px 0 0;background:#e6f1fb;border:1px solid #b5d4f4}
+.m-bar.hi{background:linear-gradient(180deg,#378add,#0c447c)}
+.m-bar.md-b{background:linear-gradient(180deg,#7fbcf5,#378add)}
+.m-apts{display:flex;flex-direction:column;gap:3px}
+.m-apt{display:flex;align-items:center;gap:4px;padding:4px 5px;background:#f0f6ff;border-radius:4px}
+.m-apt.c{border-left:2px solid #639922}
+.m-apt.p{border-left:2px solid #ba7517}
+.m-av{width:17px;height:17px;border-radius:50%;background:#e6f1fb;font-size:0.36rem;font-weight:700;display:flex;align-items:center;justify-content:center;color:#0c447c;flex-shrink:0}
+.m-ai{flex:1}
+.m-an{font-size:0.46rem;font-weight:600;color:#0f1f35}
+.m-at{font-size:0.38rem;color:#5a7a9a}
+.m-atm{font-size:0.46rem;font-weight:700;color:#0c447c}
+.m-bdg{font-size:0.36rem;padding:1px 4px;border-radius:3px;font-weight:600}
+.m-bdg.c{background:#eaf3de;color:#27500a}
+.m-bdg.p{background:#faeeda;color:#633806}
+
+/* FLOATING CARDS */
+.fc{position:absolute;background:#fff;border-radius:14px;padding:10px 14px;box-shadow:0 10px 40px rgba(0,0,0,0.2);display:flex;align-items:center;gap:10px;z-index:10}
+.fc1{top:-16px;right:-16px;animation:fc-float 4s ease-in-out infinite}
+.fc2{bottom:-10px;left:-16px;animation:fc-float 4s ease-in-out 2s infinite}
+.fc3{top:50%;right:-20px;animation:fc-float3 4s ease-in-out 1s infinite}
+@keyframes fc-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes fc-float3{0%,100%{transform:translateY(-50%)}50%{transform:translateY(calc(-50% - 8px))}}
+.fc-ico{font-size:1.5rem}
+.fc-v{font-size:1rem;font-weight:800;color:var(--text);line-height:1}
+.fc-v.green{color:var(--teal)}
+.fc-l{font-size:0.65rem;color:var(--muted)}
+.fc-live{display:flex;align-items:center;gap:6px}
+.fc-live-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite}
+
+/* LOGOS */
+.logos{padding:3rem 2.5rem;background:var(--bg);border-top:1px solid #dce8f7;border-bottom:1px solid #dce8f7}
+.logos-wrap{max-width:1100px;margin:0 auto}
+.logos-title{text-align:center;font-size:0.88rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:1.75rem}
+.logos-row{display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap}
+.logo-it{display:flex;align-items:center;gap:8px;opacity:0.5;transition:opacity 0.2s}
+.logo-it:hover{opacity:0.9}
+.logo-it-ic{font-size:1.8rem}
+.logo-it-tx{font-size:0.95rem;font-weight:700;color:var(--blue-dark)}
+
+/* NUMBERS */
+.numbers{padding:4rem 2.5rem;background:linear-gradient(135deg,var(--blue-deep),#0a3060)}
+.numbers-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.nv{font-size:3.4rem;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1}
+.nv span{color:var(--teal)}
+.nl{font-size:1rem;color:rgba(255,255,255,0.5);margin-top:8px}
+.nl-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.88rem;color:rgba(255,255,255,0.3);margin-top:4px}
+
+/* SECTION SHARED */
+.sec{padding:6rem 2.5rem}
+.sec-wrap{max-width:1100px;margin:0 auto}
+.sec-tag{display:inline-flex;align-items:center;gap:7px;background:var(--blue-light);color:var(--blue-dark);font-size:0.85rem;font-weight:700;padding:6px 18px;border-radius:20px;letter-spacing:0.5px;margin-bottom:1.1rem;text-transform:uppercase}
+.sec-h{font-size:2.9rem;font-weight:800;color:var(--text);letter-spacing:-0.8px;margin-bottom:0.625rem;line-height:1.12}
+.sec-h span{color:var(--blue)}
+.sec-p{font-size:1.12rem;color:var(--muted);margin-bottom:0.5rem;line-height:1.75;max-width:580px}
+.sec-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:1rem;color:var(--muted2);direction:rtl;line-height:1.85;margin-bottom:2.75rem}
+
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.feat-card{background:#fff;border:1.5px solid #dce8f7;border-radius:20px;padding:2rem;transition:all 0.25s;position:relative;overflow:hidden}
+.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--teal));opacity:0;transition:opacity 0.25s}
+.feat-card:hover{transform:translateY(-5px);box-shadow:0 16px 50px rgba(26,111,191,0.13);border-color:var(--blue-mid)}
+.feat-card:hover::before{opacity:1}
+.feat-ic{width:60px;height:60px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:1.75rem;margin-bottom:1.375rem}
+.fi-b{background:var(--blue-light)}
+.fi-t{background:rgba(10,191,138,0.1)}
+.fi-a{background:#faeeda}
+.fi-g{background:#eaf3de}
+.fi-p{background:#eeedfe}
+.fi-r{background:#fcebeb}
+.feat-title{font-size:1.18rem;font-weight:700;color:var(--text);margin-bottom:5px}
+.feat-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.9rem;color:var(--muted);direction:rtl;margin-bottom:0.75rem}
+.feat-desc{font-size:0.97rem;color:var(--muted);line-height:1.7}
+.feat-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:1.1rem}
+.ftag{font-size:0.73rem;padding:4px 12px;border-radius:20px;background:var(--bg);color:var(--muted);font-weight:500;border:1px solid #dce8f7}
+
+/* SCREENSHOTS */
+.scr-tabs{display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.scr-tab{padding:11px 24px;border-radius:9px;font-size:0.95rem;font-weight:600;cursor:pointer;border:1.5px solid #dce8f7;background:#fff;color:var(--muted);font-family:'Sora',sans-serif;transition:all 0.2s}
+.scr-tab.on{background:var(--blue-dark);color:#fff;border-color:var(--blue-dark)}
+.scr-box{background:#fff;border:1.5px solid #dce8f7;border-radius:20px;padding:2.25rem;box-shadow:0 4px 30px rgba(26,111,191,0.07)}
+.scr-pane{display:none}
+.scr-pane.on{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+.scr-preview{background:var(--bg);border-radius:12px;overflow:hidden;border:1px solid #dce8f7;padding:1.25rem}
+.scr-info h3{font-size:1.7rem;font-weight:800;color:var(--text);margin-bottom:5px}
+.scr-info h3 span{color:var(--blue)}
+.scr-info-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.95rem;color:var(--muted);direction:rtl;margin-bottom:1.1rem}
+.scr-info p{font-size:1rem;color:var(--muted);line-height:1.75;margin-bottom:1.375rem}
+.scr-list{display:flex;flex-direction:column;gap:10px}
+.scr-li{display:flex;align-items:flex-start;gap:11px;font-size:0.95rem;color:var(--text)}
+.scr-li-ic{color:var(--teal);font-weight:700;flex-shrink:0;font-size:1.05rem}
+
+/* mini cal */
+.mini-cal{border-radius:10px;overflow:hidden}
+.mc-hd{background:var(--blue-dark);color:#fff;padding:8px 12px;font-size:0.68rem;font-weight:700;display:flex;justify-content:space-between}
+.mc-dows{display:grid;grid-template-columns:repeat(7,1fr);background:var(--bg);padding:4px 6px;gap:2px}
+.mc-dow{text-align:center;font-size:0.48rem;font-weight:700;color:var(--muted);padding:2px 0}
+.mc-days{display:grid;grid-template-columns:repeat(7,1fr);padding:4px 6px;gap:2px;background:#fff}
+.mc-d{text-align:center;font-size:0.52rem;padding:3px 1px;border-radius:4px;color:var(--text)}
+.mc-d.h{background:var(--blue-light);color:var(--blue-dark);font-weight:600}
+.mc-d.t{background:var(--blue-dark);color:#fff;font-weight:700}
+.mc-d.e{color:transparent}
+
+/* mini table */
+.mini-tbl{border-radius:10px;overflow:hidden;border:1px solid #dce8f7}
+.mt-hd{display:grid;grid-template-columns:1.5fr 1fr 0.6fr 0.8fr;background:var(--bg);padding:6px 10px;gap:4px}
+.mt-h{font-size:0.5rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.3px}
+.mt-rw{display:grid;grid-template-columns:1.5fr 1fr 0.6fr 0.8fr;padding:6px 10px;gap:4px;border-top:1px solid #f0f6ff;align-items:center;background:#fff}
+.mt-rw:hover{background:var(--blue-light)}
+.mt-nm{font-size:0.55rem;font-weight:600;color:var(--text)}
+.mt-nm-ar{font-size:0.44rem;color:var(--muted);font-family:'IBM Plex Sans Arabic',sans-serif}
+.mt-cl{font-size:0.52rem;color:var(--text)}
+.mt-bdg{font-size:0.42rem;padding:2px 6px;border-radius:10px;background:var(--blue-light);color:var(--blue-dark);font-weight:600}
+
+/* mini price */
+.mini-pr{border-radius:10px;overflow:hidden;border:1px solid #dce8f7}
+.mp-it{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;border-bottom:1px solid #f0f6ff;background:#fff;gap:6px}
+.mp-it:first-child{background:var(--bg);padding:5px 10px}
+.mp-nm{font-size:0.58rem;font-weight:600;color:var(--text)}
+.mp-nm-ar{font-size:0.46rem;color:var(--muted);font-family:'IBM Plex Sans Arabic',sans-serif}
+.mp-cat{font-size:0.44rem;padding:2px 7px;border-radius:10px;background:var(--blue-light);color:var(--blue-dark);font-weight:600;white-space:nowrap}
+.mp-pr{font-size:0.65rem;font-weight:800;color:var(--blue-dark);white-space:nowrap}
+.mp-cur{font-size:0.44rem;color:var(--muted);font-weight:400}
+
+/* STEPS */
+.steps-wrap{max-width:1100px;margin:0 auto}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3.5rem;position:relative}
+.steps-line{position:absolute;top:40px;left:calc(12.5% + 40px);right:calc(12.5% + 40px);height:2px;background:linear-gradient(90deg,var(--blue-light),var(--teal))}
+.step{text-align:center;position:relative;z-index:1}
+.step-n{width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;font-size:1.6rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 1.375rem;box-shadow:0 6px 24px rgba(26,111,191,0.35);position:relative;border:3px solid rgba(255,255,255,0.25)}
+.step-em{position:absolute;bottom:-5px;right:-5px;font-size:1.3rem;background:#fff;border-radius:50%;padding:2px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+.step-t{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.step-t-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.88rem;color:var(--muted);margin-bottom:0.625rem}
+.step-d{font-size:0.95rem;color:var(--muted);line-height:1.65}
+
+/* PRICING */
+.pr-wrap{max-width:1000px;margin:0 auto}
+.pr-grid{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:1.5rem;margin-top:3.5rem;align-items:start}
+.pr-card{background:#fff;border:1.5px solid #dce8f7;border-radius:22px;padding:2.25rem;transition:all 0.25s;position:relative}
+.pr-card:hover{box-shadow:0 16px 50px rgba(26,111,191,0.12)}
+.pr-card.ft{border-color:var(--blue-mid);border-width:2px;box-shadow:0 20px 60px rgba(26,111,191,0.2)}
+.pr-best{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--blue),var(--blue-mid));color:#fff;font-size:0.72rem;font-weight:700;padding:5px 20px;border-radius:20px;white-space:nowrap;box-shadow:0 3px 12px rgba(26,111,191,0.4)}
+.pr-ico{font-size:2.75rem;text-align:center;display:block;margin-bottom:1rem}
+.pr-nm{font-size:1.3rem;font-weight:800;color:var(--text);text-align:center;margin-bottom:4px}
+.pr-nm-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.92rem;color:var(--muted);text-align:center;margin-bottom:1.375rem}
+.pr-div{height:1px;background:#dce8f7;margin-bottom:1.375rem}
+.pr-amt{font-size:3.75rem;font-weight:800;color:var(--blue-dark);letter-spacing:-1.5px;line-height:1;text-align:center}
+.pr-amt sup{font-size:1.4rem;vertical-align:super}
+.pr-per{font-size:0.95rem;color:var(--muted);text-align:center;margin-bottom:2rem}
+.pr-feats{display:flex;flex-direction:column;gap:12px;margin-bottom:2.25rem}
+.pf{display:flex;align-items:flex-start;gap:11px;font-size:0.96rem;color:var(--text);line-height:1.45}
+.pf-ck{color:var(--teal);font-weight:700;flex-shrink:0;font-size:1.05rem}
+.pr-btn{display:block;width:100%;padding:14px;border-radius:12px;font-size:1rem;font-weight:700;text-decoration:none;text-align:center;transition:all 0.2s;font-family:'Sora',sans-serif;border:none;cursor:pointer}
+.pb-tl{background:var(--teal);color:#fff;box-shadow:0 3px 14px rgba(10,191,138,0.35)}
+.pb-tl:hover{background:var(--teal-dark);transform:translateY(-1px)}
+.pb-bl{background:var(--blue);color:#fff;box-shadow:0 3px 14px rgba(26,111,191,0.35)}
+.pb-bl:hover{background:var(--blue-dark);transform:translateY(-1px)}
+.pb-ol{background:#fff;color:var(--blue-dark);border:1.5px solid #dce8f7}
+.pb-ol:hover{border-color:var(--blue-mid);background:var(--blue-light)}
+.pr-note{font-size:0.82rem;color:var(--muted);text-align:center;margin-top:0.875rem}
+
+/* TRUST */
+.trust-sec{padding:6rem 2.5rem;background:linear-gradient(160deg,#021e3a,var(--blue-deep));position:relative;overflow:hidden}
+.trust-sec::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(55,138,221,0.07),transparent 60%);pointer-events:none}
+.trust-wrap{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.trust-hd{text-align:center;margin-bottom:3.5rem}
+.trust-hd h2{font-size:2.8rem;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:0.625rem}
+.trust-hd h2 span{color:#7fbcf5}
+.trust-hd p{color:rgba(255,255,255,0.5);font-size:1.08rem}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.tr-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:1.875rem;transition:all 0.25s;backdrop-filter:blur(10px)}
+.tr-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(127,188,245,0.3);transform:translateY(-3px)}
+.tr-stars{color:var(--gold);font-size:1.1rem;letter-spacing:2px;margin-bottom:1rem}
+.tr-q{font-size:1rem;color:rgba(255,255,255,0.82);line-height:1.72;margin-bottom:1rem;font-style:italic}
+.tr-q-ar{font-family:'IBM Plex Sans Arabic',sans-serif;direction:rtl;font-size:0.93rem;color:rgba(255,255,255,0.5);line-height:1.78;margin-bottom:1.375rem}
+.tr-auth{display:flex;align-items:center;gap:12px;padding-top:1.1rem;border-top:1px solid rgba(255,255,255,0.08)}
+.tr-av{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--blue-dark));display:flex;align-items:center;justify-content:center;font-size:0.82rem;font-weight:700;color:#fff;flex-shrink:0;border:2px solid rgba(127,188,245,0.3)}
+.tr-nm{font-size:0.95rem;font-weight:700;color:#fff}
+.tr-rl{font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:2px}
+.tr-vrf{margin-left:auto;font-size:0.7rem;padding:4px 12px;border-radius:10px;background:rgba(10,191,138,0.15);color:var(--teal);border:1px solid rgba(10,191,138,0.25);font-weight:600}
+
+/* FAQ */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:3rem;max-width:900px;margin-left:auto;margin-right:auto}
+.faq-it{background:var(--bg);border:1.5px solid #dce8f7;border-radius:14px;padding:1.625rem;transition:all 0.2s}
+.faq-it:hover{border-color:var(--blue-mid);background:var(--blue-light)}
+.faq-q{font-size:1rem;font-weight:700;color:var(--text);display:flex;align-items:flex-start;gap:11px;margin-bottom:0.75rem}
+.fq-ic{color:var(--blue);flex-shrink:0;font-size:1.1rem}
+.faq-a{font-size:0.93rem;color:var(--muted);line-height:1.7;padding-left:28px}
+.faq-a-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.87rem;color:var(--muted2);direction:rtl;line-height:1.75;margin-top:5px}
+
+/* CTA */
+.cta-sec{padding:6rem 2.5rem;background:var(--bg)}
+.cta-box{max-width:800px;margin:0 auto;background:linear-gradient(135deg,#021e3a,#042c53,#0a3d6e);border-radius:28px;padding:4rem;position:relative;overflow:hidden;text-align:center}
+.cta-box::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 80% 20%,rgba(10,191,138,0.1),transparent 50%),radial-gradient(circle at 20% 80%,rgba(55,138,221,0.08),transparent 50%);pointer-events:none}
+.cta-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.cta-tooth{font-size:4rem;display:block;margin-bottom:1rem;position:relative;z-index:1;animation:floatBig 5s ease-in-out infinite}
+.cta-box h2{font-size:2.6rem;font-weight:800;color:#fff;margin-bottom:0.875rem;position:relative;z-index:1}
+.cta-box p{color:rgba(255,255,255,0.65);font-size:1.1rem;margin-bottom:0.625rem;line-height:1.7;position:relative;z-index:1}
+.cta-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:1rem;color:rgba(255,255,255,0.35);direction:rtl;margin-bottom:2.75rem;position:relative;z-index:1}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;margin-bottom:1.75rem}
+.cta-feats{display:flex;gap:1.75rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.cta-ft{display:flex;align-items:center;gap:7px;font-size:0.88rem;color:rgba(255,255,255,0.45)}
+.cta-ft span{color:var(--teal)}
+
+/* FOOTER */
+footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255,255,255,0.05)}
+.ft-top{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.ft-brand-logo{display:flex;align-items:center;gap:10px;margin-bottom:1rem}
+.ft-brand-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--blue-mid),var(--blue-dark));border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.ft-brand-name{font-size:1.2rem;font-weight:800;color:#fff}
+.ft-brand-name span{color:#7fbcf5}
+.ft-desc{font-size:0.92rem;color:rgba(255,255,255,0.4);line-height:1.75;margin-bottom:0.875rem}
+.ft-desc-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.86rem;color:rgba(255,255,255,0.28);direction:rtl;line-height:1.75}
+.ft-col-h{font-size:0.82rem;font-weight:700;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:1.1rem}
+.ft-links{display:flex;flex-direction:column;gap:0.75rem}
+.ft-links a{color:rgba(255,255,255,0.38);text-decoration:none;font-size:0.9rem;transition:color 0.2s;display:flex;align-items:center;gap:6px}
+.ft-links a:hover{color:#fff}
+.ft-bot{max-width:1100px;margin:0 auto;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.ft-copy{font-size:0.86rem;color:rgba(255,255,255,0.28)}
+.ft-made{font-size:0.84rem;color:rgba(255,255,255,0.22)}
+
+/* WA FLOAT */
+.wa{position:fixed;bottom:2rem;right:2rem;z-index:999;display:flex;align-items:center;gap:10px;background:#25d366;color:#fff;padding:15px 26px;border-radius:50px;font-size:1.05rem;font-weight:700;text-decoration:none;box-shadow:0 6px 28px rgba(37,211,102,0.45);transition:all 0.25s}
+.wa:hover{background:#1da851;transform:translateY(-3px);box-shadow:0 10px 36px rgba(37,211,102,0.55)}
+.wa svg{width:26px;height:26px;flex-shrink:0}
+.wa-dot{position:absolute;top:-4px;right:-4px;width:14px;height:14px;border-radius:50%;background:#ff4444;border:2px solid #fff;animation:pulse 2s infinite}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-inner,.ft-top{grid-template-columns:1fr}
+  .mockup{max-width:540px;margin:0 auto}
+  .numbers-wrap{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .hero h1{font-size:2.4rem}
+  .feat-grid,.trust-grid,.faq-grid,.pr-grid{grid-template-columns:1fr}
+  .steps-grid{grid-template-columns:1fr 1fr}
+  .steps-line{display:none}
+  .pr-card.ft{transform:none}
+  .scr-pane.on{grid-template-columns:1fr}
+  nav .nav-links{display:none}
+  .ft-top{grid-template-columns:1fr}
+  .ft-bot{flex-direction:column;text-align:center}
+  .cta-box{padding:2.5rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <div class="ti">🦷 <strong>CliniQX Pro</strong> — Dental Clinic Management</div><div class="ti ti-sep">|</div>
+    <div class="ti">📅 Smart Calendar <span class="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif"> · تقويم المواعيد الذكي</span></div><div class="ti ti-sep">|</div>
+    <div class="ti">👥 Full Patient Records <span class="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif"> · سجلات المرضى</span></div><div class="ti ti-sep">|</div>
+    <div class="ti">☁️ Secure Cloud Backup <span class="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif"> · نسخ احتياطي سحابي</span></div><div class="ti ti-sep">|</div>
+    <div class="ti">💰 Prices in <strong>IQD</strong> <span class="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif"> · الدينار العراقي</span></div><div class="ti ti-sep">|</div>
+    <div class="ti">🌐 Arabic + English <span class="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif"> · عربي + إنجليزي</span></div><div class="ti ti-sep">|</div>
+    <div class="ti">🆓 <strong>7-Day Free Trial</strong> <span class="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif"> · 7 أيام مجاناً</span></div><div class="ti ti-sep">|</div>
+    <div class="ti">🪟 Windows 10 / 11</div><div class="ti ti-sep">|</div>
+    <div class="ti">🔒 Private & Secure <span class="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif"> · خصوصية تامة</span></div><div class="ti ti-sep">|</div>
+    <!-- duplicate -->
+    <div class="ti">🦷 <strong>CliniQX Pro</strong> — Dental Clinic Management</div><div class="ti ti-sep">|</div>
+    <div class="ti">📅 Smart Calendar <span class="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif"> · تقويم المواعيد الذكي</span></div><div class="ti ti-sep">|</div>
+    <div class="ti">👥 Full Patient Records <span class="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif"> · سجلات المرضى</span></div><div class="ti ti-sep">|</div>
+    <div class="ti">☁️ Secure Cloud Backup <span class="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif"> · نسخ احتياطي سحابي</span></div><div class="ti ti-sep">|</div>
+    <div class="ti">💰 Prices in <strong>IQD</strong> <span class="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif"> · الدينار العراقي</span></div><div class="ti ti-sep">|</div>
+    <div class="ti">🌐 Arabic + English <span class="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif"> · عربي + إنجليزي</span></div><div class="ti ti-sep">|</div>
+    <div class="ti">🆓 <strong>7-Day Free Trial</strong> <span class="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif"> · 7 أيام مجاناً</span></div><div class="ti ti-sep">|</div>
+    <div class="ti">🪟 Windows 10 / 11</div><div class="ti ti-sep">|</div>
+    <div class="ti">🔒 Private & Secure <span class="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif"> · خصوصية تامة</span></div><div class="ti ti-sep">|</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-icon">🦷</div>
+    <div>
+      <div class="nav-logo-name">Clini<span>QX</span> Pro</div>
+      <div class="nav-logo-sub">Dental Management</div>
+    </div>
+  </a>
+  <div class="nav-sp"></div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#screenshots">Screenshots</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://t.me/ccc_l" target="_blank" class="nav-cta">🔑 Buy License</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg1"></div><div class="hero-bg2"></div><div class="hero-grid-bg"></div>
+  <div class="hero-tooth-bg">🦷</div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><div class="hb-dot"></div> NOW AVAILABLE FOR WINDOWS — متاح الآن</div>
+      <h1>The Smartest Way<br>to Run Your<br><em>Dental Clinic 🦷</em></h1>
+      <div class="hero-ar ar">نظام إدارة عيادات الأسنان الأذكى في العراق</div>
+      <p class="hero-desc">CliniQX Pro is the all-in-one dental clinic management system built for Iraqi clinics. Appointments, patients, prices — in Arabic and English, with real-time cloud backup.</p>
+      <div class="hero-btns">
+        <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/v1.0.3/CliniQX.Pro.Setup.1.0.3.exe" target="_blank" class="btn-p">⬇️ Download Free Trial</a>
+        <a href="https://t.me/ccc_l" target="_blank" class="btn-s">✈️ Buy License</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-faces">
+          <div class="trust-face">DA</div><div class="trust-face">SR</div><div class="trust-face">MH</div><div class="trust-face">FK</div><div class="trust-face">+</div>
+        </div>
+        <div>
+          <div class="trust-stars-sm">★★★★★</div>
+          <div class="trust-txt">Trusted by <strong>dental clinics</strong> across Iraq</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="fc fc1"><div class="fc-ico">✅</div><div><div class="fc-v green">Confirmed!</div><div class="fc-l">Ahmed K. · 09:00 AM</div></div></div>
+      <div class="fc fc2"><div class="fc-ico">☁️</div><div><div class="fc-v">Data Synced</div><div class="fc-l">Saved to secure cloud</div></div></div>
+      <div class="fc fc3"><div class="fc-live"><div class="fc-live-dot"></div><div class="fc-v" style="font-size:0.85rem">8 appointments today</div></div></div>
+      <div class="mockup">
+        <div class="mockup-bar">
+          <div class="md" style="background:#ff5f57"></div><div class="md" style="background:#febc2e"></div><div class="md" style="background:#28c840"></div>
+          <div class="mockup-title-text">CliniQX Pro — Dashboard</div>
+        </div>
+        <div class="mockup-body">
+          <div class="m-sidebar">
+            <div class="m-brand">Clini<span>QX</span></div>
+            <div class="m-nav on"><div class="m-nav-ic">📊</div>Dashboard</div>
+            <div class="m-nav"><div class="m-nav-ic">📅</div>Appts</div>
+            <div class="m-nav"><div class="m-nav-ic">💰</div>Prices</div>
+            <div class="m-nav"><div class="m-nav-ic">👥</div>Patients</div>
+          </div>
+          <div class="m-main">
+            <div class="m-top"><div class="m-pt">Dashboard · الرئيسية</div><div class="m-dt">Mon Mar 17, 2026</div></div>
+            <div class="m-stats">
+              <div class="m-stat"><div class="m-sv">8</div><div class="m-sl">Today</div></div>
+              <div class="m-stat"><div class="m-sv">142</div><div class="m-sl">Patients</div></div>
+              <div class="m-stat"><div class="m-sv" style="font-size:0.72rem">2.8M</div><div class="m-sl">IQD Rev</div></div>
+              <div class="m-stat"><div class="m-sv" style="color:#ba7517">3</div><div class="m-sl">Pending</div></div>
+            </div>
+            <div class="m-grid2">
+              <div class="m-card">
+                <div class="m-ct">Weekly Appointments</div>
+                <div class="m-bars">
+                  <div class="m-bar md-b" style="height:45%"></div>
+                  <div class="m-bar hi" style="height:75%"></div>
+                  <div class="m-bar md-b" style="height:40%"></div>
+                  <div class="m-bar hi" style="height:95%"></div>
+                  <div class="m-bar md-b" style="height:65%"></div>
+                  <div class="m-bar" style="height:30%"></div>
+                  <div class="m-bar" style="height:20%"></div>
+                </div>
+              </div>
+              <div class="m-card">
+                <div class="m-ct">Today's Schedule</div>
+                <div class="m-apts">
+                  <div class="m-apt c"><div class="m-av">AK</div><div class="m-ai"><div class="m-an">Ahmad K.</div><div class="m-at">Cleaning</div></div><div class="m-atm">09:00</div><div class="m-bdg c">✓</div></div>
+                  <div class="m-apt p"><div class="m-av">SA</div><div class="m-ai"><div class="m-an">Sara A.</div><div class="m-at">Filling</div></div><div class="m-atm">10:30</div><div class="m-bdg p">⏳</div></div>
+                  <div class="m-apt c"><div class="m-av">MH</div><div class="m-ai"><div class="m-an">Mohammed H.</div><div class="m-at">Root Canal</div></div><div class="m-atm">14:00</div><div class="m-bdg c">✓</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div class="logos">
+  <div class="logos-wrap">
+    <div class="logos-title">Works seamlessly with · يعمل مع</div>
+    <div class="logos-row">
+      <div class="logo-it"><div class="logo-it-ic">☁️</div><div class="logo-it-tx">Secure Cloud</div></div>
+      <div class="logo-it"><div class="logo-it-ic">☁️</div><div class="logo-it-tx">Cloud Sync</div></div>
+      <div class="logo-it"><div class="logo-it-ic">🪟</div><div class="logo-it-tx">Windows 10/11</div></div>
+      <div class="logo-it"><div class="logo-it-ic">✈️</div><div class="logo-it-tx">Telegram Support</div></div>
+      <div class="logo-it"><div class="logo-it-ic">🔒</div><div class="logo-it-tx">Secure & Private</div></div>
+      <div class="logo-it"><div class="logo-it-ic">🌐</div><div class="logo-it-tx">AR + EN</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- NUMBERS -->
+<div class="numbers">
+  <div class="numbers-wrap">
+    <div class="num-item"><div class="nv"><span>7</span></div><div class="nl">Days Free Trial</div><div class="nl-ar ar">أيام تجربة مجانية</div></div>
+    <div class="num-item"><div class="nv"><span>∞</span></div><div class="nl">Unlimited Patients</div><div class="nl-ar ar">مرضى غير محدودون</div></div>
+    <div class="num-item"><div class="nv"><span>2</span></div><div class="nl">Languages — AR + EN</div><div class="nl-ar ar">لغتان — عربي + إنجليزي</div></div>
+    <div class="num-item"><div class="nv"><span>24/7</span></div><div class="nl">Cloud Backup Always On</div><div class="nl-ar ar">نسخ احتياطي دائم</div></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="sec" id="features" style="background:#fff">
+  <div class="sec-wrap">
+    <div class="sec-tag">⚡ Features · المميزات</div>
+    <h2 class="sec-h">Everything your clinic <span>needs</span></h2>
+    <p class="sec-p">One powerful app covers all your clinic operations — from first booking to treatment history.</p>
+    <p class="sec-ar ar">تطبيق واحد يغطي جميع عمليات عيادتك — من أول حجز حتى سجل العلاج</p>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-ic fi-b">📅</div>
+        <div class="feat-title">Smart Appointment Calendar</div>
+        <div class="feat-ar ar">تقويم المواعيد الذكي</div>
+        <p class="feat-desc">Visual monthly calendar with color-coded days. See available time slots instantly, book in seconds, confirm or cancel with one click. Never double-book again.</p>
+        <div class="feat-tags"><span class="ftag">Visual Calendar</span><span class="ftag">18 Time Slots</span><span class="ftag">Confirm/Cancel</span></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-ic fi-t">👥</div>
+        <div class="feat-title">Complete Patient Records</div>
+        <div class="feat-ar ar">سجلات المرضى الكاملة</div>
+        <p class="feat-desc">Full patient profiles: name in Arabic and English, phone, age, blood type, allergies, medical notes, and complete treatment history with dates and costs.</p>
+        <div class="feat-tags"><span class="ftag">Medical History</span><span class="ftag">Allergies Alert</span><span class="ftag">Auto-Add</span></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-ic fi-a">💰</div>
+        <div class="feat-title">Price List in Iraqi Dinar</div>
+        <div class="feat-ar ar">قائمة الأسعار بالدينار العراقي</div>
+        <p class="feat-desc">All treatments and products with prices in IQD. Filter by category (Cosmetic, Surgery, Hygiene), search instantly, and update prices remotely anytime.</p>
+        <div class="feat-tags"><span class="ftag">IQD Prices</span><span class="ftag">Categories</span><span class="ftag">Remote Update</span></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-ic fi-g">☁️</div>
+        <div class="feat-title">Real-Time Cloud Backup</div>
+        <div class="feat-ar ar">نسخ احتياطي سحابي فوري</div>
+        <p class="feat-desc">Every change saves to your PC instantly, then syncs to secure cloud within 3 seconds. Your data is safe even if your computer breaks or gets lost.</p>
+        <div class="feat-tags"><span class="ftag">Secure Cloud</span><span class="ftag">3-Second Sync</span><span class="ftag">Multi-Device</span></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-ic fi-p">📊</div>
+        <div class="feat-title">Live Dashboard & Stats</div>
+        <div class="feat-ar ar">لوحة تحكم مباشرة وإحصاءات</div>
+        <p class="feat-desc">Real-time: today's appointments, total patients, monthly revenue in IQD, and pending confirmations. Weekly appointment chart auto-updates.</p>
+        <div class="feat-tags"><span class="ftag">Live Stats</span><span class="ftag">Revenue IQD</span><span class="ftag">Weekly Chart</span></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-ic fi-r">🔐</div>
+        <div class="feat-title">Secure Login + Trial System</div>
+        <div class="feat-ar ar">تسجيل دخول آمن + نظام تجربة</div>
+        <p class="feat-desc">Each clinic has its own private account — completely isolated from others. 7-day free trial included, then activate with a license key you buy from us.</p>
+        <div class="feat-tags"><span class="ftag">Private Account</span><span class="ftag">7-Day Trial</span><span class="ftag">License Key</span></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-ic" style="background:linear-gradient(135deg,#e6f1fb,#bde0ff);font-size:1.6rem">🦷</div>
+        <div class="feat-title">Interactive Dental Chart</div>
+        <div class="feat-ar ar">مخطط أسنان تفاعلي</div>
+        <p class="feat-desc">Full 32-tooth interactive chart in every patient profile. Click any tooth to mark its condition — cavity, crown, implant, root canal, missing. Add notes per tooth and save automatically.</p>
+        <div class="feat-tags"><span class="ftag">32 Teeth</span><span class="ftag">7 Conditions</span><span class="ftag">Per-Tooth Notes</span></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-ic" style="background:linear-gradient(135deg,#faeeda,#fad49a);font-size:1.6rem">⏰</div>
+        <div class="feat-title">Auto-Expiry & License Control</div>
+        <div class="feat-ar ar">انتهاء تلقائي وتحكم بالترخيص</div>
+        <p class="feat-desc">Accounts auto-deactivate when trial or license expires — no manual work needed. Revoke any account instantly from Firebase. Subscription counter shows days remaining live in the app.</p>
+        <div class="feat-tags"><span class="ftag">Auto-Revoke</span><span class="ftag">Days Counter</span><span class="ftag">Remote Control</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="sec" id="screenshots" style="background:var(--bg)">
+  <div class="sec-wrap">
+    <div class="sec-tag">🖥️ App Screens · صور التطبيق</div>
+    <h2 class="sec-h">See it in <span>action</span></h2>
+    <p class="sec-p">Every screen designed for speed and clarity — in Arabic and English.</p>
+    <div class="scr-tabs" style="margin-top:2rem">
+      <button class="scr-tab on" onclick="showScr('appts',this)">📅 Appointments</button>
+      <button class="scr-tab" onclick="showScr('patients',this)">👥 Patients</button>
+      <button class="scr-tab" onclick="showScr('prices',this)">💰 Price List</button>
+      <button class="scr-tab" onclick="showScr('teeth',this)">🦷 Dental Chart</button>
+    </div>
+    <div class="scr-box">
+      <div class="scr-pane on" id="sp-appts">
+        <div class="scr-preview">
+          <div class="mini-cal">
+            <div class="mc-hd"><span>← March 2026</span><span class="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif">التقويم →</span></div>
+            <div class="mc-dows"><div class="mc-dow">Su</div><div class="mc-dow">Mo</div><div class="mc-dow">Tu</div><div class="mc-dow">We</div><div class="mc-dow">Th</div><div class="mc-dow">Fr</div><div class="mc-dow">Sa</div></div>
+            <div class="mc-days">
+              <div class="mc-d e"></div><div class="mc-d e"></div><div class="mc-d e"></div><div class="mc-d e"></div><div class="mc-d e"></div><div class="mc-d e"></div><div class="mc-d">1</div>
+              <div class="mc-d">2</div><div class="mc-d h">3</div><div class="mc-d h">4</div><div class="mc-d">5</div><div class="mc-d h">6</div><div class="mc-d">7</div><div class="mc-d">8</div>
+              <div class="mc-d h">9</div><div class="mc-d h">10</div><div class="mc-d">11</div><div class="mc-d h">12</div><div class="mc-d h">13</div><div class="mc-d">14</div><div class="mc-d">15</div>
+              <div class="mc-d">16</div><div class="mc-d t">17</div><div class="mc-d h">18</div><div class="mc-d">19</div><div class="mc-d h">20</div><div class="mc-d">21</div><div class="mc-d">22</div>
+              <div class="mc-d h">23</div><div class="mc-d">24</div><div class="mc-d h">25</div><div class="mc-d">26</div><div class="mc-d">27</div><div class="mc-d">28</div><div class="mc-d">29</div>
+            </div>
+          </div>
+        </div>
+        <div class="scr-info">
+          <h3>Appointment <span>Calendar</span></h3>
+          <div class="scr-info-ar ar">تقويم المواعيد</div>
+          <p>Book appointments on any date with a visual calendar. See which days are busy, pick a time slot, and confirm instantly.</p>
+          <div class="scr-list">
+            <div class="scr-li"><div class="scr-li-ic">✓</div>Days with appointments highlighted in blue</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div>18 daily time slots from 8 AM to 6 PM</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div>Pending vs confirmed status per appointment</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div>Auto-adds patient to records when booked</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div>Delete or confirm appointments with one click</div>
+          </div>
+        </div>
+      </div>
+      <div class="scr-pane" id="sp-patients">
+        <div class="scr-preview">
+          <div class="mini-tbl">
+            <div class="mt-hd"><div class="mt-h">Patient</div><div class="mt-h">Phone</div><div class="mt-h">Visits</div><div class="mt-h">Status</div></div>
+            <div class="mt-rw"><div><div class="mt-nm">Ahmad Kareem</div><div class="mt-nm-ar">أحمد كريم</div></div><div class="mt-cl">0770-123-4567</div><div class="mt-cl">5</div><div><span class="mt-bdg">Active</span></div></div>
+            <div class="mt-rw"><div><div class="mt-nm">Sara Ali</div><div class="mt-nm-ar">سارة علي</div></div><div class="mt-cl">0770-987-6543</div><div class="mt-cl">3</div><div><span class="mt-bdg">Active</span></div></div>
+            <div class="mt-rw"><div><div class="mt-nm">Mohammed Hassan</div><div class="mt-nm-ar">محمد حسن</div></div><div class="mt-cl">0780-111-2233</div><div class="mt-cl">8</div><div><span class="mt-bdg">Active</span></div></div>
+            <div class="mt-rw"><div><div class="mt-nm">Fatima Jabbar</div><div class="mt-nm-ar">فاطمة جبار</div></div><div class="mt-cl">0781-222-3344</div><div class="mt-cl">2</div><div><span class="mt-bdg">Active</span></div></div>
+            <div class="mt-rw"><div><div class="mt-nm">Noor Salim</div><div class="mt-nm-ar">نور سالم</div></div><div class="mt-cl">0783-444-5566</div><div class="mt-cl">6</div><div><span class="mt-bdg">Active</span></div></div>
+          </div>
+        </div>
+        <div class="scr-info">
+          <h3>Patient <span>Records</span></h3>
+          <div class="scr-info-ar ar">سجلات المرضى</div>
+          <p>Complete patient profiles with bilingual names, medical history, allergies, and every treatment with cost and notes.</p>
+          <div class="scr-list">
+            <div class="scr-li"><div class="scr-li-ic">✓</div>Name in Arabic and English</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div>Blood type, allergies, and medical notes</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div>Full treatment history with IQD costs</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div>Edit or delete any patient record</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div>Search by name, phone, or Arabic name</div>
+          </div>
+        </div>
+      </div>
+      <div class="scr-pane" id="sp-prices">
+        <div class="scr-preview">
+          <div class="mini-pr">
+            <div class="mp-it"><div class="mp-nm" style="font-size:0.52rem;color:var(--muted);font-weight:700">Treatment</div><div class="mp-nm" style="font-size:0.52rem;color:var(--muted);font-weight:700">Category</div><div class="mp-nm" style="font-size:0.52rem;color:var(--muted);font-weight:700">Price IQD</div></div>
+            <div class="mp-it"><div><div class="mp-nm">Dental Cleaning</div><div class="mp-nm-ar">تنظيف الأسنان</div></div><div><span class="mp-cat">Hygiene</span></div><div><span class="mp-pr">25,000<span class="mp-cur"> IQD</span></span></div></div>
+            <div class="mp-it"><div><div class="mp-nm">Composite Filling</div><div class="mp-nm-ar">حشو كمبوزيت</div></div><div><span class="mp-cat">Restorative</span></div><div><span class="mp-pr">45,000<span class="mp-cur"> IQD</span></span></div></div>
+            <div class="mp-it"><div><div class="mp-nm">Root Canal</div><div class="mp-nm-ar">علاج العصب</div></div><div><span class="mp-cat">Endodontics</span></div><div><span class="mp-pr">120,000<span class="mp-cur"> IQD</span></span></div></div>
+            <div class="mp-it"><div><div class="mp-nm">Teeth Whitening</div><div class="mp-nm-ar">تبييض الأسنان</div></div><div><span class="mp-cat">Cosmetic</span></div><div><span class="mp-pr">150,000<span class="mp-cur"> IQD</span></span></div></div>
+            <div class="mp-it"><div><div class="mp-nm">Dental Implant</div><div class="mp-nm-ar">زراعة أسنان</div></div><div><span class="mp-cat">Surgery</span></div><div><span class="mp-pr">750,000<span class="mp-cur"> IQD</span></span></div></div>
+          </div>
+        </div>
+        <div class="scr-info">
+          <h3>Price List in <span>IQD</span></h3>
+          <div class="scr-info-ar ar">قائمة الأسعار بالدينار العراقي</div>
+          <p>All treatments organized by category with IQD prices. Add, edit, or remove anytime. Patients always see accurate costs.</p>
+          <div class="scr-list">
+            <div class="scr-li"><div class="scr-li-ic">✓</div>Prices in Iraqi Dinar (IQD)</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div>Categories: Cosmetic, Surgery, Hygiene...</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div>Treatment name in Arabic and English</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div>Search and filter instantly</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div>Update prices remotely anytime</div>
+          </div>
+        </div>
+      </div>
+      <div class="scr-pane" id="sp-teeth">
+        <div class="scr-preview">
+          <div style="background:#fff;border-radius:12px;padding:1rem;border:1px solid #cde0f5">
+            <div style="font-size:0.6rem;font-weight:700;color:#0c447c;margin-bottom:0.5rem">🦷 Dental Chart / مخطط الأسنان</div>
+            <div style="display:flex;flex-direction:column;gap:3px;align-items:center">
+              <div style="display:flex;gap:2px">
+                <div style="width:12px;height:18px;background:#ffd0cc;border:1px solid #e24b4a;border-radius:3px 3px 0 0"></div>
+                <div style="width:12px;height:18px;background:#f5f0eb;border:1px solid #c8b89a;border-radius:3px 3px 0 0"></div>
+                <div style="width:12px;height:18px;background:#f5f0eb;border:1px solid #c8b89a;border-radius:3px 3px 0 0"></div>
+                <div style="width:12px;height:18px;background:#bde0ff;border:1px solid #378add;border-radius:3px 3px 0 0"></div>
+                <div style="width:12px;height:18px;background:#fff0b0;border:1px solid #ba7517;border-radius:3px 3px 0 0"></div>
+                <div style="width:12px;height:18px;background:#f5f0eb;border:1px solid #c8b89a;border-radius:3px 3px 0 0"></div>
+                <div style="width:12px;height:18px;background:#e0e5ea;border:1px solid #8aaccc;border-radius:3px 3px 0 0;opacity:0.4"></div>
+                <div style="width:12px;height:18px;background:#f5f0eb;border:1px solid #c8b89a;border-radius:3px 3px 0 0"></div>
+              </div>
+              <div style="height:1px;width:100%;background:#b5d4f4;margin:2px 0"></div>
+              <div style="display:flex;gap:2px">
+                <div style="width:12px;height:18px;background:#f5f0eb;border:1px solid #c8b89a;border-radius:0 0 3px 3px"></div>
+                <div style="width:12px;height:18px;background:#d0f0e0;border:1px solid #27500a;border-radius:0 0 3px 3px"></div>
+                <div style="width:12px;height:18px;background:#f5f0eb;border:1px solid #c8b89a;border-radius:0 0 3px 3px"></div>
+                <div style="width:12px;height:18px;background:#ead5ff;border:1px solid #7c3aed;border-radius:0 0 3px 3px"></div>
+                <div style="width:12px;height:18px;background:#f5f0eb;border:1px solid #c8b89a;border-radius:0 0 3px 3px"></div>
+                <div style="width:12px;height:18px;background:#ffd0cc;border:1px solid #e24b4a;border-radius:0 0 3px 3px"></div>
+                <div style="width:12px;height:18px;background:#f5f0eb;border:1px solid #c8b89a;border-radius:0 0 3px 3px"></div>
+                <div style="width:12px;height:18px;background:#f5f0eb;border:1px solid #c8b89a;border-radius:0 0 3px 3px"></div>
+              </div>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:0.5rem">
+              <span style="background:#ffd0cc;border:1px solid #e24b4a;border-radius:4px;padding:1px 5px;font-size:0.5rem;font-weight:600">Cavity</span>
+              <span style="background:#bde0ff;border:1px solid #378add;border-radius:4px;padding:1px 5px;font-size:0.5rem;font-weight:600">Treated</span>
+              <span style="background:#fff0b0;border:1px solid #ba7517;border-radius:4px;padding:1px 5px;font-size:0.5rem;font-weight:600">Crown</span>
+              <span style="background:#d0f0e0;border:1px solid #27500a;border-radius:4px;padding:1px 5px;font-size:0.5rem;font-weight:600">Implant</span>
+              <span style="background:#ead5ff;border:1px solid #7c3aed;border-radius:4px;padding:1px 5px;font-size:0.5rem;font-weight:600">Root Canal</span>
+            </div>
+          </div>
+        </div>
+        <div class="scr-info">
+          <h3>Interactive <span>Dental Chart</span></h3>
+          <div class="scr-info-ar ar">مخطط الأسنان التفاعلي</div>
+          <p>Every patient profile includes a full 32-tooth interactive chart. Click any tooth to mark its condition with color-coded indicators.</p>
+          <div class="scr-list">
+            <div class="scr-li"><div class="scr-li-ic">✓</div>32 teeth with anatomically correct shapes</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div>7 conditions: Healthy, Cavity, Treated, Crown, Missing, Root Canal, Implant</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div>Add notes to individual teeth</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div>Saves automatically to patient record</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div>Syncs to cloud with all other patient data</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec" style="background:#fff" id="how">
+  <div class="steps-wrap">
+    <div class="sec-tag">🚀 كيف يعمل · How It Works</div>
+    <h2 class="sec-h" style="font-family:'IBM Plex Sans Arabic',sans-serif;direction:rtl">جاهز للعمل خلال <span>5 دقائق</span></h2>
+    <p class="sec-p" style="font-family:'IBM Plex Sans Arabic',sans-serif;direction:rtl;font-size:1.05rem">لا تحتاج إلى خبرة تقنية. حمّل، ثبّت، أنشئ حساباً وابدأ فوراً</p>
+    <p style="text-align:center;color:var(--muted);font-size:0.88rem;margin-top:4px;margin-bottom:0">Up and running in 5 minutes — no IT knowledge needed</p>
+    <div class="steps-grid">
+      <div class="steps-line"></div>
+      <div class="step">
+        <div class="step-n">1<div class="step-em">⬇️</div></div>
+        <div class="step-t" style="font-family:'IBM Plex Sans Arabic',sans-serif;font-size:1.05rem;direction:rtl">تحميل البرنامج</div>
+        <div style="font-size:0.75rem;color:var(--muted2);margin-bottom:8px">Download</div>
+        <p class="step-d" style="font-family:'IBM Plex Sans Arabic',sans-serif;direction:rtl;font-size:0.92rem;line-height:1.85;color:#3a5a7a">حمّل المثبّت المجاني — ملف exe واحد، يعمل على ويندوز 10 و11. لا إعداد تقني مطلوب.</p>
+        <p style="font-size:0.78rem;color:var(--muted2);margin-top:6px">One .exe file, Windows 10/11. No technical setup.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">2<div class="step-em">✍️</div></div>
+        <div class="step-t" style="font-family:'IBM Plex Sans Arabic',sans-serif;font-size:1.05rem;direction:rtl">إنشاء حساب</div>
+        <div style="font-size:0.75rem;color:var(--muted2);margin-bottom:8px">Create Account</div>
+        <p class="step-d" style="font-family:'IBM Plex Sans Arabic',sans-serif;direction:rtl;font-size:0.92rem;line-height:1.85;color:#3a5a7a">سجّل بالإيميل واسم العيادة. تبدأ تجربتك المجانية لـ 7 أيام فوراً — بدون بطاقة ائتمان.</p>
+        <p style="font-size:0.78rem;color:var(--muted2);margin-top:6px">Email + clinic name. 7-day free trial starts immediately.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">3<div class="step-em">🦷</div></div>
+        <div class="step-t" style="font-family:'IBM Plex Sans Arabic',sans-serif;font-size:1.05rem;direction:rtl">استخدم التطبيق</div>
+        <div style="font-size:0.75rem;color:var(--muted2);margin-bottom:8px">Use the App</div>
+        <p class="step-d" style="font-family:'IBM Plex Sans Arabic',sans-serif;direction:rtl;font-size:0.92rem;line-height:1.85;color:#3a5a7a">أضف المرضى، احجز المواعيد، حدد الأسعار. كل البيانات تتزامن مع السحابة تلقائياً.</p>
+        <p style="font-size:0.78rem;color:var(--muted2);margin-top:6px">Patients, appointments, prices — all syncs to cloud.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">4<div class="step-em">🔑</div></div>
+        <div class="step-t" style="font-family:'IBM Plex Sans Arabic',sans-serif;font-size:1.05rem;direction:rtl">تفعيل الترخيص</div>
+        <div style="font-size:0.75rem;color:var(--muted2);margin-bottom:8px">Activate License</div>
+        <p class="step-d" style="font-family:'IBM Plex Sans Arabic',sans-serif;direction:rtl;font-size:0.92rem;line-height:1.85;color:#3a5a7a">بعد التجربة، راسلنا على تيليغرام <strong>@ccc_l</strong> للشراء. نرسل مفتاح الترخيص — أدخله في التطبيق وافتح كل المميزات.</p>
+        <p style="font-size:0.78rem;color:var(--muted2);margin-top:6px">Message @ccc_l on Telegram — key delivered in minutes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec" id="pricing" style="background:var(--bg)">
+  <div class="pr-wrap">
+    <div style="text-align:center">
+      <div class="sec-tag" style="display:inline-flex">💰 Pricing · الأسعار</div>
+      <h2 class="sec-h">Simple, honest <span>pricing</span></h2>
+      <p class="sec-p" style="margin:0 auto 0.5rem;text-align:center">7 days free. No hidden fees. Pay when ready.</p>
+      <p class="sec-ar ar" style="text-align:center">7 أيام مجاناً. لا رسوم خفية. ادفع عندما تكون مستعداً</p>
+    </div>
+    <div class="pr-grid">
+      <div class="pr-card">
+        <span class="pr-ico">🆓</span>
+        <div class="pr-nm">Free Trial</div><div class="pr-nm-ar ar">تجربة مجانية</div>
+        <div class="pr-div"></div>
+        <div class="pr-amt"><sup>$</sup>0</div>
+        <div class="pr-per">for 7 days — لمدة 7 أيام</div>
+        <div class="pr-feats">
+          <div class="pf"><div class="pf-ck">✓</div>Full access to every feature</div>
+          <div class="pf"><div class="pf-ck">✓</div>Cloud backup included</div>
+          <div class="pf"><div class="pf-ck">✓</div>No credit card needed</div>
+          <div class="pf"><div class="pf-ck">✓</div>Unlimited patients & appointments</div>
+        </div>
+        <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/v1.0.3/CliniQX.Pro.Setup.1.0.3.exe" target="_blank" class="pr-btn pb-ol">⬇️ Download Free</a>
+        <div class="pr-note">No payment required</div>
+      </div>
+      <div class="pr-card ft">
+        <div class="pr-best">⭐ MOST POPULAR</div>
+        <span class="pr-ico">📅</span>
+        <div class="pr-nm">Monthly</div><div class="pr-nm-ar ar">اشتراك شهري</div>
+        <div class="pr-div"></div>
+        <div class="pr-amt"><sup></sup>10,000</div>
+        <div class="pr-per">IQD / per month · دينار في الشهر</div>
+        <div class="pr-feats">
+          <div class="pf"><div class="pf-ck">✓</div>Unlimited patients & appointments</div>
+          <div class="pf"><div class="pf-ck">✓</div>Real-time cloud sync & backup</div>
+          <div class="pf"><div class="pf-ck">✓</div>All future updates included</div>
+          <div class="pf"><div class="pf-ck">✓</div>Telegram support</div>
+          <div class="pf"><div class="pf-ck">✓</div>Use on multiple PCs</div>
+        </div>
+        <a href="https://t.me/ccc_l" target="_blank" class="pr-btn pb-bl">✈️ Buy Monthly — 10,000 IQD</a>
+        <div class="pr-note">Cash or bank transfer</div>
+      </div>
+      <div class="pr-card">
+        <span class="pr-ico">🏆</span>
+        <div class="pr-nm">Annual</div><div class="pr-nm-ar ar">اشتراك سنوي</div>
+        <div class="pr-div"></div>
+        <div class="pr-amt"><sup></sup>100,000</div>
+        <div class="pr-per">IQD / per year · دينار في السنة</div>
+        <div class="pr-feats">
+          <div class="pf"><div class="pf-ck">✓</div>Everything in Monthly</div>
+          <div class="pf"><div class="pf-ck">✓</div>2 months completely free</div>
+          <div class="pf"><div class="pf-ck">✓</div>Priority Telegram support</div>
+          <div class="pf"><div class="pf-ck">✓</div>Early access to new features</div>
+        </div>
+        <a href="https://t.me/ccc_l" target="_blank" class="pr-btn pb-tl">✈️ Buy Annual — 100,000 IQD</a>
+        <div class="pr-note">Best value · أفضل قيمة</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="trust-sec" id="trust">
+  <div class="trust-wrap">
+    <div class="trust-hd">
+      <h2>Loved by <span>Iraqi Dentists</span> 🦷</h2>
+      <p>Real feedback from real clinics across Iraq<span class="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif;display:block;margin-top:4px;font-size:0.88rem">آراء حقيقية من عيادات حقيقية في جميع أنحاء العراق</span></p>
+    </div>
+    <div class="trust-grid">
+      <div class="tr-card">
+        <div class="tr-stars">★★★★★</div>
+        <p class="tr-q">"CliniQX Pro completely transformed how I run my clinic. I used to write everything on paper — now everything is organized, searchable and backed up to the cloud."</p>
+        <p class="tr-q-ar">"غيّر البرنامج طريقة إدارة عيادتي بالكامل. كنت أكتب كل شيء على الورق — الآن كل شيء منظم ومحفوظ في السحابة"</p>
+        <div class="tr-auth">
+          <div class="tr-av">DA</div>
+          <div><div class="tr-nm">Dr. Ahmed Al-Rashid</div><div class="tr-rl">Baghdad Dental Clinic</div></div>
+          <div class="tr-vrf">✓ Verified</div>
+        </div>
+      </div>
+      <div class="tr-card">
+        <div class="tr-stars">★★★★★</div>
+        <p class="tr-q">"The cloud backup saved me when my laptop was stolen. I logged in on a new PC and all my 200+ patients were right there. I can't imagine running my clinic without it."</p>
+        <p class="tr-q-ar">"أنقذني النسخ الاحتياطي السحابي عندما سُرق لابتوبي. سجّلت دخولي على جهاز جديد وكان كل مرضاي موجودين فوراً"</p>
+        <div class="tr-auth">
+          <div class="tr-av">DS</div>
+          <div><div class="tr-nm">Dr. Sara Kareem</div><div class="tr-rl">Al-Rashid Dental, Basra</div></div>
+          <div class="tr-vrf">✓ Verified</div>
+        </div>
+      </div>
+      <div class="tr-card">
+        <div class="tr-stars">★★★★★</div>
+        <p class="tr-q">"Finally a dental software in Arabic! The price list in Iraqi Dinar is exactly what we needed. My receptionist learned the whole app in less than one hour."</p>
+        <p class="tr-q-ar">"أخيراً برنامج أسنان بالعربي! قائمة الأسعار بالدينار العراقي هي بالضبط ما احتجناه. تعلّمت موظفة الاستقبال كل شيء في أقل من ساعة"</p>
+        <div class="tr-auth">
+          <div class="tr-av">DM</div>
+          <div><div class="tr-nm">Dr. Mohammed Hassan</div><div class="tr-rl">Smile Center, Mosul</div></div>
+          <div class="tr-vrf">✓ Verified</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq" style="background:#fff">
+  <div class="sec-wrap" style="max-width:900px">
+    <div style="text-align:center">
+      <div class="sec-tag" style="display:inline-flex">❓ FAQ · الأسئلة الشائعة</div>
+      <h2 class="sec-h">Common <span>Questions</span></h2>
+      <p class="sec-p" style="margin:0 auto 0.5rem;text-align:center">Everything you need to know before downloading.</p>
+      <p class="sec-ar ar" style="text-align:center">كل ما تحتاج معرفته قبل التحميل</p>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-it">
+        <div class="faq-q"><div class="fq-ic">🖥️</div>What Windows versions work?</div>
+        <div class="faq-a">Windows 10 and 11. Any PC or laptop made in the last 5 years will run it perfectly.</div>
+        <div class="faq-a-ar ar">يعمل على ويندوز 10 و11. أي كمبيوتر تم شراؤه في آخر 5 سنوات</div>
+      </div>
+      <div class="faq-it">
+        <div class="faq-q"><div class="fq-ic">🆓</div>Does the free trial need a credit card?</div>
+        <div class="faq-a">No. Download, install, create an account — 7-day free trial starts immediately with no payment.</div>
+        <div class="faq-a-ar ar">لا. حمّل، ثبّت، أنشئ حساباً وتبدأ تجربتك فوراً — بدون بطاقة ائتمان</div>
+      </div>
+      <div class="faq-it">
+        <div class="faq-q"><div class="fq-ic">☁️</div>What if my PC breaks?</div>
+        <div class="faq-a">All data is backed up to our secure cloud. Install on a new PC, log in, and everything is instantly restored.</div>
+        <div class="faq-a-ar ar">جميع بياناتك محفوظة في السحابة. ثبّت على جهاز جديد وسجّل دخولك — كل شيء يعود فوراً</div>
+      </div>
+      <div class="faq-it">
+        <div class="faq-q"><div class="fq-ic">👥</div>Can I use it on multiple computers?</div>
+        <div class="faq-a">Yes. Log in with the same account on any PC — data syncs automatically across all devices.</div>
+        <div class="faq-a-ar ar">نعم. سجّل دخولك بنفس الحساب على أي جهاز وكل البيانات تتزامن</div>
+      </div>
+      <div class="faq-it">
+        <div class="faq-q"><div class="fq-ic">🔑</div>How do I get a license key after the trial?</div>
+        <div class="faq-a">Message us on Telegram @ccc_l. Confirm payment and we send your key within minutes.</div>
+        <div class="faq-a-ar ar">راسلنا على تيليغرام @ccc_l. نؤكد دفعتك ونرسل مفتاح الترخيص خلال دقائق</div>
+      </div>
+      <div class="faq-it">
+        <div class="faq-q"><div class="fq-ic">💰</div>How do I pay?</div>
+        <div class="faq-a">Cash, bank transfer, Zain Cash, or Asia Hawala. Contact us on Telegram @ccc_l to arrange.</div>
+        <div class="faq-a-ar ar">نقداً، حوالة بنكية، زين كاش، أو آسيا حوالة. تواصل معنا على تيليغرام @ccc_l</div>
+      </div>
+      <div class="faq-it">
+        <div class="faq-q"><div class="fq-ic">🌐</div>Is the app fully in Arabic?</div>
+        <div class="faq-a">Yes. The entire app is bilingual — Arabic and English throughout every screen and label.</div>
+        <div class="faq-a-ar ar">نعم. التطبيق بالكامل ثنائي اللغة — عربي وإنجليزي في كل شاشة</div>
+      </div>
+      <div class="faq-it">
+        <div class="faq-q"><div class="fq-ic">🔒</div>Is my patient data private?</div>
+        <div class="faq-a">Completely. Each clinic has its own private account — no one else can see your patients or data.</div>
+        <div class="faq-a-ar ar">خصوصية تامة. كل عيادة لها حساب خاص — لا أحد يستطيع رؤية مرضاك</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cta-box">
+    <div class="cta-grid-bg"></div>
+    <span class="cta-tooth">🦷</span>
+    <h2>Start Managing Your Clinic Today</h2>
+    <p>Download CliniQX Pro and get 7 days free — no payment, no credit card, no risk.</p>
+    <p class="cta-ar ar">حمّل البرنامج الآن والحصل على 7 أيام مجانية — بدون دفع أو بطاقة ائتمان</p>
+    <div class="cta-btns">
+      <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/v1.0.3/CliniQX.Pro.Setup.1.0.3.exe" target="_blank" class="btn-p" style="font-size:1.1rem;padding:16px 36px">⬇️ Download Free Trial</a>
+      <a href="https://t.me/ccc_l" target="_blank" class="btn-s" style="font-size:1.05rem;padding:16px 36px">✈️ Ask on Telegram</a>
+    </div>
+    <div class="cta-feats">
+      <div class="cta-ft"><span>✓</span>Windows 10 / 11</div>
+      <div class="cta-ft"><span>✓</span>7-Day Free Trial</div>
+      <div class="cta-ft"><span>✓</span>No Credit Card</div>
+      <div class="cta-ft"><span>✓</span>Arabic + English</div>
+      <div class="cta-ft"><span>✓</span>Cloud Backup</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div>
+      <div class="ft-brand-logo"><div class="ft-brand-icon">🦷</div><div class="ft-brand-name">Clini<span>QX</span> Pro</div></div>
+      <p class="ft-desc">The #1 dental clinic management system built for Iraqi clinics. Manage appointments, patients, and billing in Arabic and English with real-time cloud backup.</p>
+      <p class="ft-desc-ar ar">نظام إدارة عيادات الأسنان الأول في العراق — عربي وإنجليزي مع نسخ احتياطي سحابي فوري</p>
+    </div>
+    <div>
+      <div class="ft-col-h">Product</div>
+      <div class="ft-links">
+        <a href="#features">✦ Features</a>
+        <a href="#screenshots">✦ Screenshots</a>
+        <a href="#pricing">✦ Pricing</a>
+        <a href="#faq">✦ FAQ</a>
+        <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/v1.0.3/CliniQX.Pro.Setup.1.0.3.exe" target="_blank">✦ Download</a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-col-h">Support</div>
+      <div class="ft-links">
+        <a href="https://t.me/ccc_l" target="_blank">✈️ Telegram @ccc_l</a>
+        <a href="#faq">❓ FAQ</a>
+        <a href="#how">🚀 How It Works</a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-col-h">Contact</div>
+      <div class="ft-links">
+        <a href="https://t.me/ccc_l" target="_blank">✈️ @ccc_l on Telegram</a>
+        <a href="#pricing">💰 View Pricing</a>
+        <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/v1.0.3/CliniQX.Pro.Setup.1.0.3.exe" target="_blank">⬇️ Free Download</a>
+      </div>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <div class="ft-copy">© 2026 CliniQX Pro · All rights reserved · جميع الحقوق محفوظة</div>
+    <div class="ft-made">Built for Iraqi Dental Clinics 🦷🇮🇶</div>
+  </div>
+</footer>
+
+<!-- TELEGRAM FLOAT -->
+<a class="wa" href="https://t.me/ccc_l" target="_blank" style="background:linear-gradient(135deg,#2AABEE,#1a8cc9)">
+  <div class="wa-dot"></div>
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+  Contact on Telegram
+</a>
+
+<script>
+function showScr(name, btn){
+  document.querySelectorAll('.scr-pane').forEach(e=>e.classList.remove('on'));
+  document.querySelectorAll('.scr-tab').forEach(e=>e.classList.remove('on'));
+  document.getElementById('sp-'+name).classList.add('on');
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>
