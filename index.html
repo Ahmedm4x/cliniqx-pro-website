@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -468,6 +468,70 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
   nav{padding:0 1rem}
 }
 
+
+/* ═══ LANGUAGE SWITCHER ═══ */
+.lang-switcher{display:flex;align-items:center;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;overflow:hidden;margin-right:1.5rem}
+.lang-btn{padding:7px 16px;font-size:0.82rem;font-weight:700;color:rgba(255,255,255,0.5);cursor:pointer;border:none;background:transparent;transition:all 0.2s;font-family:'Sora',sans-serif}
+.lang-btn.active{background:var(--teal);color:#fff}
+
+/* AR mode — flip direction and font */
+/* ── EN MODE (default) ── */
+.ar-only{display:none!important}
+.ar-only-flex{display:none!important}
+.ar-only-inline{display:none!important}
+.en-only{display:block}
+.lang-switcher .lang-btn{display:flex!important}
+
+/* ── AR MODE (when body has ar-mode class) ── */
+body.ar-mode{direction:rtl;font-family:'IBM Plex Sans Arabic',sans-serif}
+body.ar-mode .ar-only{display:block!important}
+body.ar-mode .ar-only-flex{display:flex!important}
+body.ar-mode .ar-only-inline{display:inline!important}
+body.ar-mode .en-only{display:none!important}
+body.ar-mode .lang-switcher .lang-btn{display:flex!important}
+body.ar-mode nav{flex-direction:row-reverse}
+body.ar-mode .nav-sp{order:0}
+body.ar-mode .hero-inner{direction:rtl}
+body.ar-mode .hero h1{letter-spacing:0;font-family:'IBM Plex Sans Arabic',sans-serif}
+body.ar-mode .sec-h{font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0}
+body.ar-mode .feat-title{font-family:'IBM Plex Sans Arabic',sans-serif}
+body.ar-mode .faq-q{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:1.05rem}
+body.ar-mode .faq-a{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.95rem;line-height:1.9}
+body.ar-mode .ft-top{direction:rtl}
+body.ar-mode .ft-bot{direction:rtl}
+
+/* ═══ FEATURES GAP FIX — 3-col grid, last row centered ═══ */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+
+/* ═══ NEW FEATURE CARD — X-Ray Files (fills gap) ═══ */
+.fi-xr{background:linear-gradient(135deg,#e6f1fb,#c8ddf5);font-size:1.6rem}
+
+/* ═══ FAQ REDESIGN — accordion style ═══ */
+.faq-grid{display:flex;flex-direction:column;gap:0;margin-top:2rem;border:1.5px solid #dce8f5;border-radius:18px;overflow:hidden}
+.faq-it{background:#fff;border-bottom:1px solid #dce8f5;padding:0;transition:background 0.2s;cursor:pointer}
+.faq-it:last-child{border-bottom:none}
+.faq-it:hover{background:#f8fbff}
+.faq-it.open{background:#f0f7ff}
+.faq-q{font-size:1.05rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:14px;padding:1.25rem 1.5rem;margin-bottom:0;user-select:none}
+.fq-ic{color:var(--blue);flex-shrink:0;font-size:1.2rem}
+.faq-chevron{margin-left:auto;color:var(--muted2);font-size:0.9rem;transition:transform 0.25s;flex-shrink:0}
+.faq-it.open .faq-chevron{transform:rotate(180deg);color:var(--blue)}
+.faq-body{display:none;padding:0 1.5rem 1.25rem 3.5rem}
+.faq-it.open .faq-body{display:block}
+.faq-a{font-size:0.96rem;color:var(--muted);line-height:1.75;padding-left:0;margin-bottom:8px}
+.faq-a-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.92rem;color:var(--muted2);direction:rtl;line-height:1.85;margin-top:4px;padding-right:0}
+
+/* ═══ CONTACT BANNER ═══ */
+.contact-banner{background:linear-gradient(135deg,#042c53,#071a36);padding:2.5rem;text-align:center;margin-top:0}
+.contact-banner-inner{max-width:700px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap}
+.cb-item{display:flex;align-items:center;gap:12px}
+.cb-ic{font-size:1.6rem;flex-shrink:0}
+.cb-label{font-size:0.75rem;color:rgba(255,255,255,0.4);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px}
+.cb-value{font-size:1rem;color:#fff;font-weight:700}
+.cb-value a{color:#7fbcf5;text-decoration:none}
+.cb-value a:hover{text-decoration:underline;color:#fff}
+.cb-sep{width:1px;height:48px;background:rgba(255,255,255,0.1)}
+
 /* Mobile nav menu */
 .mobile-menu{display:none;position:fixed;inset:0;background:rgba(4,44,83,0.98);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem;backdrop-filter:blur(16px)}
 .mobile-menu.open{display:flex}
@@ -479,8 +543,42 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
   #nav-links-desktop{display:none !important}
 }
 </style>
+<script>
+function setLang(lang){
+  var isAr = lang === 'ar';
+  var btnEn = document.getElementById('btn-en');
+  var btnAr = document.getElementById('btn-ar');
+  if(btnEn) btnEn.classList.toggle('active', !isAr);
+  if(btnAr) btnAr.classList.toggle('active', isAr);
+  document.body.classList.toggle('ar-mode', isAr);
+  document.documentElement.lang = isAr ? 'ar' : 'en';
+  document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+  localStorage.setItem('cliniqx-lang', lang);
+}
+function toggleFaq(item){
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-it').forEach(function(i){ i.classList.remove('open'); });
+  if(!isOpen) item.classList.add('open');
+}
+function showScr(name, btn){
+  document.querySelectorAll('.scr-pane').forEach(function(e){ e.classList.remove('on'); });
+  document.querySelectorAll('.scr-tab').forEach(function(e){ e.classList.remove('on'); });
+  document.getElementById('sp-'+name).classList.add('on');
+  btn.classList.add('on');
+}
+function toggleMobileMenu(){
+  document.getElementById('mobile-menu').classList.toggle('open');
+  document.body.style.overflow = document.getElementById('mobile-menu').classList.contains('open') ? 'hidden' : '';
+}
+window.addEventListener('DOMContentLoaded', function(){
+  var saved = localStorage.getItem('cliniqx-lang');
+  // Default to Arabic on first visit
+  if(!saved) saved = 'ar';
+  setLang(saved);
+});
+</script>
 </head>
-<body>
+<body class="ar-mode">
 
 <!-- TICKER -->
 <div class="ticker">
@@ -519,12 +617,18 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
   <div class="nav-sp"></div>
   <!-- Mobile menu button -->
   <button id="nav-menu-btn" onclick="toggleMobileMenu()" style="display:none;background:none;border:none;cursor:pointer;padding:8px;color:#fff;font-size:1.5rem">☰</button>
+  <div class="lang-switcher"><button class="lang-btn" id="btn-en" onclick="setLang('en')" style="display:flex;align-items:center;gap:5px"><svg width="22" height="14" viewBox="0 0 22 14" style="border-radius:2px;vertical-align:middle;margin-left:5px;flex-shrink:0" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="14" fill="#B22234"/><rect y="1.08" width="22" height="1.08" fill="#fff"/><rect y="3.23" width="22" height="1.08" fill="#fff"/><rect y="5.38" width="22" height="1.08" fill="#fff"/><rect y="7.54" width="22" height="1.08" fill="#fff"/><rect y="9.69" width="22" height="1.08" fill="#fff"/><rect y="11.85" width="22" height="1.08" fill="#fff"/><rect width="9" height="7.54" fill="#3C3B6E"/></svg> EN</button><button class="lang-btn active" id="btn-ar" onclick="setLang('ar')" style="display:flex;align-items:center;gap:5px"><svg width="22" height="14" viewBox="0 0 22 14" style="border-radius:2px;vertical-align:middle;margin-left:5px;flex-shrink:0" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="4.67" fill="#CE1126"/><rect y="4.67" width="22" height="4.67" fill="#fff"/><rect y="9.33" width="22" height="4.67" fill="#000"/><rect x="8" y="5.5" width="6" height="3" fill="#007A3D" rx="0.5"/></svg> عر</button></div>
   <div class="nav-links" id="nav-links-desktop">
-    <a href="#features">Features</a>
-    <a href="#screenshots">Screenshots</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#faq">FAQ</a>
-    <a href="https://t.me/ccc_l" target="_blank" class="nav-cta">🔑 Buy License</a>
+    <a href="#features" class="en-only">Features</a>
+    <a href="#screenshots" class="en-only">Screenshots</a>
+    <a href="#pricing" class="en-only">Pricing</a>
+    <a href="#faq" class="en-only">FAQ</a>
+    <a href="#features" class="ar-only-inline">المميزات</a>
+    <a href="#screenshots" class="ar-only-inline">صور التطبيق</a>
+    <a href="#pricing" class="ar-only-inline">الأسعار</a>
+    <a href="#faq" class="ar-only-inline">الأسئلة الشائعة</a>
+    <a href="https://t.me/ccc_l" target="_blank" class="nav-cta en-only">🔑 Buy License</a>
+    <a href="https://t.me/ccc_l" target="_blank" class="nav-cta ar-only-inline">🔑 شراء الترخيص</a>
   </div>
 </nav>
 
@@ -535,8 +639,9 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
   <div class="hero-inner">
     <div>
       <div class="hero-badge"><div class="hb-dot"></div> NOW AVAILABLE FOR WINDOWS — متاح الآن</div>
-      <h1>The Smartest Way<br>to Run Your<br><em>Dental Clinic 🦷</em></h1>
-      <div class="hero-ar ar">نظام إدارة عيادات الأسنان الأذكى في العراق</div>
+      <h1 class="en-only">The Smartest Way<br>to Run Your<br><em>Dental Clinic 🦷</em></h1>
+      <h1 class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;font-size:3.2rem">أذكى طريقة<br>لإدارة<br><em>عيادة الأسنان 🦷</em></h1>
+      <div class="hero-ar ar ar-only">نظام إدارة عيادات الأسنان الأذكى في العراق</div>
       <p class="hero-desc">CliniQX Pro is the all-in-one dental clinic management system built for Iraqi clinics. Appointments, patients, prices — in Arabic and English, with real-time cloud backup.</p>
       <div class="hero-btns">
         <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/1.0.5/CliniQX.Pro.Setup.1.0.5.exe" target="_blank" class="btn-p">⬇️ Download Free Trial</a>
@@ -609,7 +714,7 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
 <!-- LOGOS -->
 <div class="logos">
   <div class="logos-wrap">
-    <div class="logos-title">Works seamlessly with · يعمل مع</div>
+    <div class="logos-title"><span class="en-only">Works seamlessly with</span><span class="ar-only">يعمل مع</span></div>
     <div class="logos-row">
       <div class="logo-it"><div class="logo-it-ic">☁️</div><div class="logo-it-tx">Secure Cloud</div></div>
       <div class="logo-it"><div class="logo-it-ic">☁️</div><div class="logo-it-tx">Cloud Sync</div></div>
@@ -624,10 +729,10 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
 <!-- NUMBERS -->
 <div class="numbers">
   <div class="numbers-wrap">
-    <div class="num-item"><div class="nv"><span>7</span></div><div class="nl">Days Free Trial</div><div class="nl-ar ar">أيام تجربة مجانية</div></div>
-    <div class="num-item"><div class="nv"><span>∞</span></div><div class="nl">Unlimited Patients</div><div class="nl-ar ar">مرضى غير محدودون</div></div>
-    <div class="num-item"><div class="nv"><span>2</span></div><div class="nl">Languages — AR + EN</div><div class="nl-ar ar">لغتان — عربي + إنجليزي</div></div>
-    <div class="num-item"><div class="nv"><span>24/7</span></div><div class="nl">Cloud Backup Always On</div><div class="nl-ar ar">نسخ احتياطي دائم</div></div>
+    <div class="num-item"><div class="nv"><span>7</span></div><div class="nl"><span class="en-only">Days Free Trial</span><span class="ar-only">أيام تجربة مجانية</span></div></div>
+    <div class="num-item"><div class="nv"><span>∞</span></div><div class="nl"><span class="en-only">Unlimited Patients</span><span class="ar-only">مرضى غير محدودون</span></div></div>
+    <div class="num-item"><div class="nv"><span>2</span></div><div class="nl"><span class="en-only">Languages — AR + EN</span><span class="ar-only">لغتان — عربي + إنجليزي</span></div></div>
+    <div class="num-item"><div class="nv"><span>24/7</span></div><div class="nl"><span class="en-only">Cloud Backup Always On</span><span class="ar-only">نسخ احتياطي دائم</span></div></div>
   </div>
 </div>
 
@@ -635,64 +740,80 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
 <section class="sec" id="features" style="background:#fff">
   <div class="sec-wrap">
     <div class="sec-tag">⚡ Features · المميزات</div>
-    <h2 class="sec-h">Everything your clinic <span>needs</span></h2>
-    <p class="sec-p">One powerful app covers all your clinic operations — from first booking to treatment history.</p>
-    <p class="sec-ar ar">تطبيق واحد يغطي جميع عمليات عيادتك — من أول حجز حتى سجل العلاج</p>
+    <h2 class="sec-h en-only">Everything your clinic <span>needs</span></h2>
+    <h2 class="sec-h ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">كل ما تحتاجه <span>عيادتك</span></h2>
+    <p class="sec-p en-only">One powerful app covers all your clinic operations — from first booking to treatment history.</p>
     <div class="feat-grid">
       <div class="feat-card">
         <div class="feat-ic fi-b">📅</div>
-        <div class="feat-title">Smart Appointment Calendar</div>
-        <div class="feat-ar ar">تقويم المواعيد الذكي</div>
-        <p class="feat-desc">Visual monthly calendar with color-coded days. See available time slots instantly, book in seconds, confirm or cancel with one click. Never double-book again.</p>
+        <div class="feat-title en-only">Smart Appointment Calendar</div>
+        <div class="feat-title ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">تقويم المواعيد الذكي</div>
+        <p class="feat-desc en-only">Visual monthly calendar with color-coded days. See available time slots instantly, book in seconds, confirm or cancel with one click. Never double-book again.</p>
+        <p class="feat-desc ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">تقويم شهري بصري مع تمييز الأيام بالألوان. اعرف الأوقات المتاحة فوراً، احجز في ثوانٍ، وأكّد أو ألغِ بنقرة واحدة.</p>
         <div class="feat-tags"><span class="ftag">Visual Calendar</span><span class="ftag">18 Time Slots</span><span class="ftag">Confirm/Cancel</span></div>
       </div>
       <div class="feat-card">
         <div class="feat-ic fi-t">👥</div>
-        <div class="feat-title">Complete Patient Records</div>
-        <div class="feat-ar ar">سجلات المرضى الكاملة</div>
-        <p class="feat-desc">Full patient profiles: name in Arabic and English, phone, age, blood type, allergies, medical notes, and complete treatment history with dates and costs.</p>
+        <div class="feat-title en-only">Complete Patient Records</div>
+        <div class="feat-title ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">سجلات المرضى الكاملة</div>
+        <p class="feat-desc en-only">Full patient profiles: name in Arabic and English, phone, age, blood type, allergies, medical notes, and complete treatment history with dates and costs.</p>
+        <p class="feat-desc ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">ملف طبي كامل لكل مريض: الاسم بالعربي والإنجليزي، الهاتف، العمر، فصيلة الدم، الحساسيات، الملاحظات، وسجل العلاجات كاملاً.</p>
         <div class="feat-tags"><span class="ftag">Medical History</span><span class="ftag">Allergies Alert</span><span class="ftag">Auto-Add</span></div>
       </div>
       <div class="feat-card">
         <div class="feat-ic fi-a">💰</div>
-        <div class="feat-title">Price List in Iraqi Dinar</div>
-        <div class="feat-ar ar">قائمة الأسعار بالدينار العراقي</div>
-        <p class="feat-desc">All treatments and products with prices in IQD. Filter by category (Cosmetic, Surgery, Hygiene), search instantly, and update prices remotely anytime.</p>
+        <div class="feat-title en-only">Price List in Iraqi Dinar</div>
+        <div class="feat-title ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">قائمة الأسعار بالدينار العراقي</div>
+        <p class="feat-desc en-only">All treatments and products with prices in IQD. Filter by category (Cosmetic, Surgery, Hygiene), search instantly, and update prices remotely anytime.</p>
+        <p class="feat-desc ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">جميع العلاجات والمنتجات بأسعارها بالدينار العراقي. صنّف حسب النوع، ابحث فوراً، وحدّث الأسعار عن بُعد في أي وقت.</p>
         <div class="feat-tags"><span class="ftag">IQD Prices</span><span class="ftag">Categories</span><span class="ftag">Remote Update</span></div>
       </div>
       <div class="feat-card">
         <div class="feat-ic fi-g">☁️</div>
-        <div class="feat-title">Real-Time Cloud Backup</div>
-        <div class="feat-ar ar">نسخ احتياطي سحابي فوري</div>
-        <p class="feat-desc">Every change saves to your PC instantly, then syncs to secure cloud within 3 seconds. Your data is safe even if your computer breaks or gets lost.</p>
+        <div class="feat-title en-only">Real-Time Cloud Backup</div>
+        <div class="feat-title ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">نسخ احتياطي سحابي فوري</div>
+        <p class="feat-desc en-only">Every change saves to your PC instantly, then syncs to secure cloud within 3 seconds. Your data is safe even if your computer breaks or gets lost.</p>
+        <p class="feat-desc ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">كل تغيير يُحفظ فوراً على جهازك ثم يتزامن مع السحابة خلال 3 ثوانٍ. بياناتك آمنة حتى لو تعطّل جهازك أو ضاع.</p>
         <div class="feat-tags"><span class="ftag">Secure Cloud</span><span class="ftag">3-Second Sync</span><span class="ftag">Multi-Device</span></div>
       </div>
       <div class="feat-card">
         <div class="feat-ic fi-p">📊</div>
-        <div class="feat-title">Live Dashboard & Stats</div>
-        <div class="feat-ar ar">لوحة تحكم مباشرة وإحصاءات</div>
-        <p class="feat-desc">Real-time: today's appointments, total patients, monthly revenue in IQD, and pending confirmations. Weekly appointment chart auto-updates.</p>
+        <div class="feat-title en-only">Live Dashboard & Stats</div>
+        <div class="feat-title ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">لوحة تحكم مباشرة وإحصاءات</div>
+        <p class="feat-desc en-only">Real-time: today's appointments, total patients, monthly revenue in IQD, and pending confirmations. Weekly appointment chart auto-updates.</p>
+        <p class="feat-desc ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">مباشر: مواعيد اليوم، إجمالي المرضى، الإيرادات الشهرية بالدينار، والمواعيد المعلّقة. مخطط المواعيد الأسبوعي يتحدث تلقائياً.</p>
         <div class="feat-tags"><span class="ftag">Live Stats</span><span class="ftag">Revenue IQD</span><span class="ftag">Weekly Chart</span></div>
       </div>
       <div class="feat-card">
         <div class="feat-ic fi-r">🔐</div>
-        <div class="feat-title">Secure Login + Trial System</div>
-        <div class="feat-ar ar">تسجيل دخول آمن + نظام تجربة</div>
-        <p class="feat-desc">Each clinic has its own private account — completely isolated from others. 7-day free trial included, then activate with a license key you buy from us.</p>
+        <div class="feat-title en-only">Secure Login + Trial System</div>
+        <div class="feat-title ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">تسجيل دخول آمن + نظام التجربة</div>
+        <p class="feat-desc en-only">Each clinic has its own private account — completely isolated from others. 7-day free trial included, then activate with a license key you buy from us.</p>
+        <p class="feat-desc ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">كل عيادة لها حساب خاص ومعزول تماماً. تجربة مجانية 7 أيام مشمولة، ثم فعّل البرنامج بمفتاح الترخيص الذي تشتريه منا.</p>
         <div class="feat-tags"><span class="ftag">Private Account</span><span class="ftag">7-Day Trial</span><span class="ftag">License Key</span></div>
       </div>
       <div class="feat-card">
         <div class="feat-ic" style="background:linear-gradient(135deg,#e6f1fb,#bde0ff);font-size:1.6rem">🦷</div>
-        <div class="feat-title">Interactive Dental Chart</div>
-        <div class="feat-ar ar">مخطط أسنان تفاعلي</div>
-        <p class="feat-desc">Full 32-tooth interactive chart in every patient profile. Click any tooth to mark its condition — cavity, crown, implant, root canal, missing. Add notes per tooth and save automatically.</p>
+        <div class="feat-title en-only">Interactive Dental Chart</div>
+        <div class="feat-title ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">مخطط الأسنان التفاعلي</div>
+        <p class="feat-desc en-only">Full 32-tooth interactive chart in every patient profile. Click any tooth to mark its condition — cavity, crown, implant, root canal, missing. Add notes per tooth and save automatically.</p>
+        <p class="feat-desc ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">مخطط تفاعلي لـ 32 سن في ملف كل مريض. انقر على أي سن لتسجيل حالته — تسوس، تاج، زراعة، علاج عصب، مفقود. أضف ملاحظات وتُحفظ تلقائياً.</p>
         <div class="feat-tags"><span class="ftag">32 Teeth</span><span class="ftag">7 Conditions</span><span class="ftag">Per-Tooth Notes</span></div>
       </div>
       <div class="feat-card">
+        <div class="feat-ic fi-xr">📁</div>
+        <div class="feat-title en-only">X-Ray File Management</div>
+        <div class="feat-title ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">إدارة ملفات الأشعة</div>
+        <p class="feat-desc en-only">Upload and store X-ray files directly in each patient's profile. Supports PNG, JPG, and DICOM. All files are encrypted and saved to the cloud automatically.</p>
+        <p class="feat-desc ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">ارفع صور الأشعة مباشرة في ملف المريض — PNG وJPG وDICOM مدعومة. كل الملفات مشفّرة ومحفوظة سحابياً تلقائياً.</p>
+        <div class="feat-tags"><span class="ftag">PNG · JPG · DICOM</span><span class="ftag">Cloud Storage</span><span class="ftag">Per-Patient</span></div>
+      </div>
+      <div class="feat-card">
         <div class="feat-ic" style="background:linear-gradient(135deg,#faeeda,#fad49a);font-size:1.6rem">⏰</div>
-        <div class="feat-title">Auto-Expiry & License Control</div>
-        <div class="feat-ar ar">انتهاء تلقائي وتحكم بالترخيص</div>
-        <p class="feat-desc">Accounts auto-deactivate when trial or license expires — no manual work needed. Revoke any account instantly from Firebase. Subscription counter shows days remaining live in the app.</p>
+        <div class="feat-title en-only">Auto-Expiry & License Control</div>
+        <div class="feat-title ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">انتهاء تلقائي وتحكم بالترخيص</div>
+        <p class="feat-desc en-only">Accounts auto-deactivate when trial or license expires — no manual work needed. Revoke any account instantly from the admin panel. Subscription counter shows days remaining live in the app.</p>
+        <p class="feat-desc ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">الحسابات تنتهي تلقائياً عند انتهاء التجربة أو الترخيص — بدون أي تدخل يدوي. سحب أي حساب فورياً من لوحة الإدارة. عداد الأيام المتبقية يظهر في التطبيق مباشرة.</p>
         <div class="feat-tags"><span class="ftag">Auto-Revoke</span><span class="ftag">Days Counter</span><span class="ftag">Remote Control</span></div>
       </div>
     </div>
@@ -703,13 +824,15 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
 <section class="sec" id="screenshots" style="background:var(--bg)">
   <div class="sec-wrap">
     <div class="sec-tag">🖥️ App Screens · صور التطبيق</div>
-    <h2 class="sec-h">See it in <span>action</span></h2>
-    <p class="sec-p">Every screen designed for speed and clarity — in Arabic and English.</p>
+    <h2 class="sec-h en-only">See it in <span>action</span></h2>
+    <h2 class="sec-h ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">شاهد التطبيق <span>بنفسك</span></h2>
+    <p class="sec-p en-only">Every screen designed for speed and clarity — in Arabic and English.</p>
+    <p class="sec-p ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">كل شاشة مصممة للسرعة والوضوح — بالعربي والإنجليزي.</p>
     <div class="scr-tabs" style="margin-top:2rem">
-      <button class="scr-tab on" onclick="showScr('appts',this)">📅 Appointments</button>
-      <button class="scr-tab" onclick="showScr('patients',this)">👥 Patients</button>
-      <button class="scr-tab" onclick="showScr('prices',this)">💰 Price List</button>
-      <button class="scr-tab" onclick="showScr('teeth',this)">🦷 Dental Chart</button>
+      <button class="scr-tab on" onclick="showScr('appts',this)"><span class="en-only">📅 Appointments</span><span class="ar-only">📅 المواعيد</span></button>
+      <button class="scr-tab" onclick="showScr('patients',this)"><span class="en-only">👥 Patients</span><span class="ar-only">👥 المرضى</span></button>
+      <button class="scr-tab" onclick="showScr('prices',this)"><span class="en-only">💰 Price List</span><span class="ar-only">💰 الأسعار</span></button>
+      <button class="scr-tab" onclick="showScr('teeth',this)"><span class="en-only">🦷 Dental Chart</span><span class="ar-only">🦷 مخطط الأسنان</span></button>
     </div>
     <div class="scr-box">
       <div class="scr-pane on" id="sp-appts">
@@ -727,15 +850,16 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
           </div>
         </div>
         <div class="scr-info">
-          <h3>Appointment <span>Calendar</span></h3>
-          <div class="scr-info-ar ar">تقويم المواعيد</div>
-          <p>Book appointments on any date with a visual calendar. See which days are busy, pick a time slot, and confirm instantly.</p>
+          <h3 class="en-only">Appointment <span>Calendar</span></h3>
+          <h3 class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">تقويم <span>المواعيد</span></h3>
+          <p class="en-only">Book appointments on any date with a visual calendar. See which days are busy, pick a time slot, and confirm instantly.</p>
+          <p class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">احجز مواعيد بتقويم بصري. شاهد الأيام المحجوزة، اختر الوقت المناسب، وأكّد فوراً.</p>
           <div class="scr-list">
-            <div class="scr-li"><div class="scr-li-ic">✓</div>Days with appointments highlighted in blue</div>
-            <div class="scr-li"><div class="scr-li-ic">✓</div>18 daily time slots from 8 AM to 6 PM</div>
-            <div class="scr-li"><div class="scr-li-ic">✓</div>Pending vs confirmed status per appointment</div>
-            <div class="scr-li"><div class="scr-li-ic">✓</div>Auto-adds patient to records when booked</div>
-            <div class="scr-li"><div class="scr-li-ic">✓</div>Delete or confirm appointments with one click</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">Days with appointments highlighted in blue</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">الأيام المحجوزة مميّزة باللون الأزرق</span></div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">18 daily time slots from 8 AM to 6 PM</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">18 فترة زمنية يومية من 8 صباحاً حتى 6 مساءً</span></div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">Pending vs confirmed status per appointment</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">حالة كل موعد: مؤكد أو معلّق</span></div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">Auto-adds patient to records when booked</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">يُضاف المريض تلقائياً للسجلات عند الحجز</span></div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">Delete or confirm appointments with one click</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">حذف أو تأكيد الموعد بنقرة واحدة</span></div>
           </div>
         </div>
       </div>
@@ -751,15 +875,16 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
           </div>
         </div>
         <div class="scr-info">
-          <h3>Patient <span>Records</span></h3>
-          <div class="scr-info-ar ar">سجلات المرضى</div>
-          <p>Complete patient profiles with bilingual names, medical history, allergies, and every treatment with cost and notes.</p>
+          <h3 class="en-only">Patient <span>Records</span></h3>
+          <h3 class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">سجلات <span>المرضى</span></h3>
+          <p class="en-only">Complete patient profiles with bilingual names, medical history, allergies, and every treatment with cost and notes.</p>
+          <p class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">ملفات طبية كاملة بالاسم بالعربي والإنجليزي، التاريخ الطبي، الحساسيات، وكل علاج مع تكلفته وملاحظاته.</p>
           <div class="scr-list">
-            <div class="scr-li"><div class="scr-li-ic">✓</div>Name in Arabic and English</div>
-            <div class="scr-li"><div class="scr-li-ic">✓</div>Blood type, allergies, and medical notes</div>
-            <div class="scr-li"><div class="scr-li-ic">✓</div>Full treatment history with IQD costs</div>
-            <div class="scr-li"><div class="scr-li-ic">✓</div>Edit or delete any patient record</div>
-            <div class="scr-li"><div class="scr-li-ic">✓</div>Search by name, phone, or Arabic name</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">Name in Arabic and English</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">الاسم بالعربي والإنجليزي</span></div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">Blood type, allergies, and medical notes</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">فصيلة الدم والحساسيات والملاحظات الطبية</span></div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">Full treatment history with IQD costs</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">سجل العلاجات الكامل بالتكاليف بالدينار</span></div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">Edit or delete any patient record</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">تعديل أو حذف أي سجل مريض</span></div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">Search by name, phone, or Arabic name</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">بحث بالاسم أو رقم الهاتف أو الاسم العربي</span></div>
           </div>
         </div>
       </div>
@@ -775,15 +900,16 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
           </div>
         </div>
         <div class="scr-info">
-          <h3>Price List in <span>IQD</span></h3>
-          <div class="scr-info-ar ar">قائمة الأسعار بالدينار العراقي</div>
-          <p>All treatments organized by category with IQD prices. Add, edit, or remove anytime. Patients always see accurate costs.</p>
+          <h3 class="en-only">Price List in <span>IQD</span></h3>
+          <h3 class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">قائمة الأسعار <span>بالدينار</span></h3>
+          <p class="en-only">All treatments organized by category with IQD prices. Add, edit, or remove anytime. Patients always see accurate costs.</p>
+          <p class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">جميع العلاجات مصنّفة مع أسعارها بالدينار. أضف أو عدّل أو احذف في أي وقت. المرضى يرون دائماً التكاليف الصحيحة.</p>
           <div class="scr-list">
-            <div class="scr-li"><div class="scr-li-ic">✓</div>Prices in Iraqi Dinar (IQD)</div>
-            <div class="scr-li"><div class="scr-li-ic">✓</div>Categories: Cosmetic, Surgery, Hygiene...</div>
-            <div class="scr-li"><div class="scr-li-ic">✓</div>Treatment name in Arabic and English</div>
-            <div class="scr-li"><div class="scr-li-ic">✓</div>Search and filter instantly</div>
-            <div class="scr-li"><div class="scr-li-ic">✓</div>Update prices remotely anytime</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">Prices in Iraqi Dinar (IQD)</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">الأسعار بالدينار العراقي</span></div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">Categories: Cosmetic, Surgery, Hygiene...</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">تصنيفات: تجميل، جراحة، تنظيف...</span></div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">Treatment name in Arabic and English</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">اسم العلاج بالعربي والإنجليزي</span></div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">Search and filter instantly</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">بحث وتصفية فورية</span></div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">Update prices remotely anytime</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">تحديث الأسعار عن بُعد في أي وقت</span></div>
           </div>
         </div>
       </div>
@@ -824,15 +950,16 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
           </div>
         </div>
         <div class="scr-info">
-          <h3>Interactive <span>Dental Chart</span></h3>
-          <div class="scr-info-ar ar">مخطط الأسنان التفاعلي</div>
-          <p>Every patient profile includes a full 32-tooth interactive chart. Click any tooth to mark its condition with color-coded indicators.</p>
+          <h3 class="en-only">Interactive <span>Dental Chart</span></h3>
+          <h3 class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">مخطط الأسنان <span>التفاعلي</span></h3>
+          <p class="en-only">Every patient profile includes a full 32-tooth interactive chart. Click any tooth to mark its condition with color-coded indicators.</p>
+          <p class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">كل ملف مريض يحتوي على مخطط تفاعلي لـ 32 سن. انقر على أي سن لتسجيل حالته بمؤشرات ملوّنة.</p>
           <div class="scr-list">
-            <div class="scr-li"><div class="scr-li-ic">✓</div>32 teeth with anatomically correct shapes</div>
-            <div class="scr-li"><div class="scr-li-ic">✓</div>7 conditions: Healthy, Cavity, Treated, Crown, Missing, Root Canal, Implant</div>
-            <div class="scr-li"><div class="scr-li-ic">✓</div>Add notes to individual teeth</div>
-            <div class="scr-li"><div class="scr-li-ic">✓</div>Saves automatically to patient record</div>
-            <div class="scr-li"><div class="scr-li-ic">✓</div>Syncs to cloud with all other patient data</div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">32 teeth with anatomically correct shapes</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">32 سن بأشكال تشريحية دقيقة</span></div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">7 conditions: Healthy, Cavity, Treated, Crown, Missing, Root Canal, Implant</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">7 حالات: سليم، تسوس، معالج، تاج، مفقود، علاج عصب، زراعة</span></div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">Add notes to individual teeth</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">إضافة ملاحظة لكل سن بشكل منفصل</span></div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">Saves automatically to patient record</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">يُحفظ تلقائياً في ملف المريض</span></div>
+            <div class="scr-li"><div class="scr-li-ic">✓</div><span class="en-only">Syncs to cloud with all other patient data</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">يتزامن مع السحابة مع بقية بيانات المريض</span></div>
           </div>
         </div>
       </div>
@@ -844,7 +971,8 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
 <section class="sec" style="background:#fff" id="how">
   <div class="steps-wrap">
     <div class="sec-tag">🚀 كيف يعمل · How It Works</div>
-    <h2 class="sec-h" style="font-family:'IBM Plex Sans Arabic',sans-serif;direction:rtl">جاهز للعمل خلال <span>5 دقائق</span></h2>
+    <h2 class="sec-h en-only">Ready in <span>5 minutes</span></h2>
+    <h2 class="sec-h ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;direction:rtl">جاهز للعمل خلال <span>5 دقائق</span></h2>
     <p class="sec-p" style="font-family:'IBM Plex Sans Arabic',sans-serif;direction:rtl;font-size:1.05rem">لا تحتاج إلى خبرة تقنية. حمّل، ثبّت، أنشئ حساباً وابدأ فوراً</p>
     <p style="text-align:center;color:var(--muted);font-size:0.88rem;margin-top:4px;margin-bottom:0">Up and running in 5 minutes — no IT knowledge needed</p>
     <div class="steps-grid">
@@ -886,22 +1014,24 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
   <div class="pr-wrap">
     <div style="text-align:center">
       <div class="sec-tag" style="display:inline-flex">💰 Pricing · الأسعار</div>
-      <h2 class="sec-h">Simple, honest <span>pricing</span></h2>
-      <p class="sec-p" style="margin:0 auto 0.5rem;text-align:center">7 days free. No hidden fees. Pay when ready.</p>
-      <p class="sec-ar ar" style="text-align:center">7 أيام مجاناً. لا رسوم خفية. ادفع عندما تكون مستعداً</p>
+      <h2 class="sec-h en-only">Simple, honest <span>pricing</span></h2>
+      <h2 class="sec-h ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">أسعار واضحة <span>وبسيطة</span></h2>
+      <p class="sec-p en-only" style="margin:0 auto 0.5rem;text-align:center">7 days free. No hidden fees. Pay when ready.</p>
+      <p class="sec-p ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;text-align:center;margin-bottom:0.5rem">7 أيام مجاناً. لا رسوم خفية. ادفع عندما تكون مستعداً.</p>
     </div>
     <div class="pr-grid">
       <div class="pr-card">
         <span class="pr-ico">🆓</span>
-        <div class="pr-nm">Free Trial</div><div class="pr-nm-ar ar">تجربة مجانية</div>
+        <div class="pr-nm en-only">Free Trial</div>
+        <div class="pr-nm ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">تجربة مجانية</div>
         <div class="pr-div"></div>
         <div class="pr-amt"><sup>$</sup>0</div>
         <div class="pr-per">for 7 days — لمدة 7 أيام</div>
         <div class="pr-feats">
-          <div class="pf"><div class="pf-ck">✓</div>Full access to every feature</div>
-          <div class="pf"><div class="pf-ck">✓</div>Cloud backup included</div>
-          <div class="pf"><div class="pf-ck">✓</div>No credit card needed</div>
-          <div class="pf"><div class="pf-ck">✓</div>Unlimited patients & appointments</div>
+          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Full access to every feature</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">وصول كامل لجميع المميزات</span></div>
+          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Cloud backup included</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">نسخ احتياطي سحابي مشمول</span></div>
+          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">No credit card needed</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">لا بطاقة ائتمان مطلوبة</span></div>
+          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Unlimited patients & appointments</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">مرضى ومواعيد غير محدودة</span></div>
         </div>
         <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/1.0.5/CliniQX.Pro.Setup.1.0.5.exe" target="_blank" class="pr-btn pb-ol">⬇️ Download Free</a>
         <div class="pr-note">No payment required</div>
@@ -909,31 +1039,33 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
       <div class="pr-card ft">
         <div class="pr-best">⭐ MOST POPULAR</div>
         <span class="pr-ico">📅</span>
-        <div class="pr-nm">Monthly</div><div class="pr-nm-ar ar">اشتراك شهري</div>
+        <div class="pr-nm en-only">Monthly</div>
+        <div class="pr-nm ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">اشتراك شهري</div>
         <div class="pr-div"></div>
         <div class="pr-amt"><sup></sup>10,000</div>
         <div class="pr-per">IQD / per month · دينار في الشهر</div>
         <div class="pr-feats">
-          <div class="pf"><div class="pf-ck">✓</div>Unlimited patients & appointments</div>
-          <div class="pf"><div class="pf-ck">✓</div>Real-time cloud sync & backup</div>
-          <div class="pf"><div class="pf-ck">✓</div>All future updates included</div>
-          <div class="pf"><div class="pf-ck">✓</div>Telegram support</div>
-          <div class="pf"><div class="pf-ck">✓</div>Use on multiple PCs</div>
+          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Unlimited patients & appointments</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">مرضى ومواعيد غير محدودة</span></div>
+          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Real-time cloud sync & backup</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">مزامنة ونسخ احتياطي سحابي فوري</span></div>
+          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">All future updates included</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">جميع التحديثات المستقبلية مشمولة</span></div>
+          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Telegram support</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">دعم فني عبر تيليغرام</span></div>
+          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Use on multiple PCs</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">استخدام على أكثر من جهاز</span></div>
         </div>
         <a href="https://t.me/ccc_l" target="_blank" class="pr-btn pb-bl">✈️ Buy Monthly — 10,000 IQD</a>
         <div class="pr-note">Cash or bank transfer</div>
       </div>
       <div class="pr-card">
         <span class="pr-ico">🏆</span>
-        <div class="pr-nm">Annual</div><div class="pr-nm-ar ar">اشتراك سنوي</div>
+        <div class="pr-nm en-only">Annual</div>
+        <div class="pr-nm ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">اشتراك سنوي</div>
         <div class="pr-div"></div>
         <div class="pr-amt"><sup></sup>100,000</div>
         <div class="pr-per">IQD / per year · دينار في السنة</div>
         <div class="pr-feats">
-          <div class="pf"><div class="pf-ck">✓</div>Everything in Monthly</div>
-          <div class="pf"><div class="pf-ck">✓</div>2 months completely free</div>
-          <div class="pf"><div class="pf-ck">✓</div>Priority Telegram support</div>
-          <div class="pf"><div class="pf-ck">✓</div>Early access to new features</div>
+          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Everything in Monthly</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">كل مميزات الاشتراك الشهري</span></div>
+          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">2 months completely free</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">شهران مجانيان بالكامل</span></div>
+          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Priority Telegram support</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">دعم فني ذو أولوية عبر تيليغرام</span></div>
+          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Early access to new features</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">وصول مبكر للمميزات الجديدة</span></div>
         </div>
         <a href="https://t.me/ccc_l" target="_blank" class="pr-btn pb-tl">✈️ Buy Annual — 100,000 IQD</a>
         <div class="pr-note">Best value · أفضل قيمة</div>
@@ -946,7 +1078,8 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
 <section class="trust-sec" id="trust">
   <div class="trust-wrap">
     <div class="trust-hd">
-      <h2>Loved by <span>Iraqi Dentists</span> 🦷</h2>
+      <h2 class="en-only">Loved by <span>Iraqi Dentists</span> 🦷</h2>
+      <h2 class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">يثق بنا <span>أطباء الأسنان العراقيون</span> 🦷</h2>
       <p>Real feedback from real clinics across Iraq<span class="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif;display:block;margin-top:4px;font-size:0.88rem">آراء حقيقية من عيادات حقيقية في جميع أنحاء العراق</span></p>
     </div>
     <div class="trust-grid">
@@ -989,51 +1122,85 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
   <div class="sec-wrap" style="max-width:900px">
     <div style="text-align:center">
       <div class="sec-tag" style="display:inline-flex">❓ FAQ · الأسئلة الشائعة</div>
-      <h2 class="sec-h">Common <span>Questions</span></h2>
-      <p class="sec-p" style="margin:0 auto 0.5rem;text-align:center">Everything you need to know before downloading.</p>
-      <p class="sec-ar ar" style="text-align:center">كل ما تحتاج معرفته قبل التحميل</p>
+      <h2 class="sec-h en-only">Common <span>Questions</span></h2>
+      <h2 class="sec-h ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">الأسئلة <span>الشائعة</span></h2>
+      <p class="sec-p en-only" style="margin:0 auto 1rem;text-align:center">Click any question to see the answer. Can't find what you're looking for? Contact us at <strong>support&#64;cliniqx.pro</strong></p>
+      <p class="sec-ar ar ar-only" style="text-align:center;margin-bottom:1rem">اضغط على أي سؤال لرؤية الإجابة. لم تجد ما تبحث عنه؟ راسلنا على <strong>support&#64;cliniqx.pro</strong></p>
     </div>
     <div class="faq-grid">
-      <div class="faq-it">
-        <div class="faq-q"><div class="fq-ic">🖥️</div>What Windows versions work?</div>
-        <div class="faq-a">Windows 10 and 11. Any PC or laptop made in the last 5 years will run it perfectly.</div>
-        <div class="faq-a-ar ar">يعمل على ويندوز 10 و11. أي كمبيوتر تم شراؤه في آخر 5 سنوات</div>
+
+      <div class="faq-it open" onclick="toggleFaq(this)">
+        <div class="faq-q"><div class="fq-ic">🖥️</div><span class="en-only">What Windows versions work?</span><span class="ar-only">ما إصدارات ويندوز المدعومة؟</span><span class="faq-chevron">▼</span></div>
+        <div class="faq-body">
+          <div class="faq-a en-only">Windows 10 and 11. Any PC or laptop made in the last 5 years will run it perfectly.</div>
+          <div class="faq-a ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">يعمل على ويندوز 10 و11 — أي كمبيوتر أو لابتوب تم شراؤه في آخر 5 سنوات سيعمل بشكل مثالي.</div>
+        </div>
       </div>
-      <div class="faq-it">
-        <div class="faq-q"><div class="fq-ic">🆓</div>Does the free trial need a credit card?</div>
-        <div class="faq-a">No. Download, install, create an account — 7-day free trial starts immediately with no payment.</div>
-        <div class="faq-a-ar ar">لا. حمّل، ثبّت، أنشئ حساباً وتبدأ تجربتك فوراً — بدون بطاقة ائتمان</div>
+
+      <div class="faq-it" onclick="toggleFaq(this)">
+        <div class="faq-q"><div class="fq-ic">🆓</div><span class="en-only">Does the free trial need a credit card?</span><span class="ar-only">هل تحتاج التجربة المجانية بطاقة ائتمان؟</span><span class="faq-chevron">▼</span></div>
+        <div class="faq-body">
+          <div class="faq-a en-only">No. Download, install, create an account — 7-day free trial starts immediately with no payment required.</div>
+          <div class="faq-a ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">لا. حمّل البرنامج، ثبّته، أنشئ حساباً وتبدأ تجربتك المجانية لـ 7 أيام فوراً — بدون أي دفع أو بطاقة ائتمان.</div>
+        </div>
       </div>
-      <div class="faq-it">
-        <div class="faq-q"><div class="fq-ic">☁️</div>What if my PC breaks?</div>
-        <div class="faq-a">All data is backed up to our secure cloud. Install on a new PC, log in, and everything is instantly restored.</div>
-        <div class="faq-a-ar ar">جميع بياناتك محفوظة في السحابة. ثبّت على جهاز جديد وسجّل دخولك — كل شيء يعود فوراً</div>
+
+      <div class="faq-it" onclick="toggleFaq(this)">
+        <div class="faq-q"><div class="fq-ic">☁️</div><span class="en-only">What if my PC breaks or gets stolen?</span><span class="ar-only">ماذا يحدث لو تعطّل جهازي أو سُرق؟</span><span class="faq-chevron">▼</span></div>
+        <div class="faq-body">
+          <div class="faq-a en-only">All data is backed up to our secure cloud automatically. Install CliniQX Pro on a new PC, log in with the same account, and everything is instantly restored.</div>
+          <div class="faq-a ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">جميع بياناتك محفوظة تلقائياً في سحابتنا الآمنة. ثبّت البرنامج على جهاز جديد، سجّل دخولك بنفس الحساب، وسيعود كل شيء فوراً — مرضاك، مواعيدك، وكل سجلاتك.</div>
+        </div>
       </div>
-      <div class="faq-it">
-        <div class="faq-q"><div class="fq-ic">👥</div>Can I use it on multiple computers?</div>
-        <div class="faq-a">Yes. Log in with the same account on any PC — data syncs automatically across all devices.</div>
-        <div class="faq-a-ar ar">نعم. سجّل دخولك بنفس الحساب على أي جهاز وكل البيانات تتزامن</div>
+
+      <div class="faq-it" onclick="toggleFaq(this)">
+        <div class="faq-q"><div class="fq-ic">👥</div><span class="en-only">Can I use it on multiple computers?</span><span class="ar-only">هل يمكن استخدامه على أكثر من جهاز؟</span><span class="faq-chevron">▼</span></div>
+        <div class="faq-body">
+          <div class="faq-a en-only">Yes. Log in with the same account on any PC — all data syncs automatically across all your devices in real time.</div>
+          <div class="faq-a ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">نعم. سجّل دخولك بنفس الحساب على أي جهاز وكل البيانات تتزامن تلقائياً في الوقت الفعلي — مثالي إذا كان لديك أكثر من غرفة كشف.</div>
+        </div>
       </div>
-      <div class="faq-it">
-        <div class="faq-q"><div class="fq-ic">🔑</div>How do I get a license key after the trial?</div>
-        <div class="faq-a">Message us on Telegram @ccc_l. Confirm payment and we send your key within minutes.</div>
-        <div class="faq-a-ar ar">راسلنا على تيليغرام @ccc_l. نؤكد دفعتك ونرسل مفتاح الترخيص خلال دقائق</div>
+
+      <div class="faq-it" onclick="toggleFaq(this)">
+        <div class="faq-q"><div class="fq-ic">🔑</div><span class="en-only">How do I get a license key after the trial?</span><span class="ar-only">كيف أحصل على مفتاح الترخيص بعد التجربة؟</span><span class="faq-chevron">▼</span></div>
+        <div class="faq-body">
+          <div class="faq-a en-only">Message us on Telegram <strong>@ccc_l</strong>. Confirm your payment and we send your license key within minutes — enter it in the app to unlock everything.</div>
+          <div class="faq-a ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">راسلنا على تيليغرام <strong>@ccc_l</strong>، نؤكد دفعتك ونرسل لك مفتاح الترخيص خلال دقائق — أدخله في التطبيق لفتح كل المميزات.</div>
+        </div>
       </div>
-      <div class="faq-it">
-        <div class="faq-q"><div class="fq-ic">💰</div>How do I pay?</div>
-        <div class="faq-a">Cash, bank transfer, Zain Cash, or Asia Hawala. Contact us on Telegram @ccc_l to arrange.</div>
-        <div class="faq-a-ar ar">نقداً، حوالة بنكية، زين كاش، أو آسيا حوالة. تواصل معنا على تيليغرام @ccc_l</div>
+
+      <div class="faq-it" onclick="toggleFaq(this)">
+        <div class="faq-q"><div class="fq-ic">💰</div><span class="en-only">How can I pay?</span><span class="ar-only">ما طرق الدفع المتاحة؟</span><span class="faq-chevron">▼</span></div>
+        <div class="faq-body">
+          <div class="faq-a en-only">Cash, bank transfer, Zain Cash, or Asia Hawala. Contact us on Telegram <strong>@ccc_l</strong> to arrange payment.</div>
+          <div class="faq-a ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">نقداً، حوالة بنكية، زين كاش، أو آسيا حوالة. تواصل معنا على تيليغرام <strong>@ccc_l</strong> لترتيب الدفع.</div>
+        </div>
       </div>
-      <div class="faq-it">
-        <div class="faq-q"><div class="fq-ic">🌐</div>Is the app fully in Arabic?</div>
-        <div class="faq-a">Yes. The entire app is bilingual — Arabic and English throughout every screen and label.</div>
-        <div class="faq-a-ar ar">نعم. التطبيق بالكامل ثنائي اللغة — عربي وإنجليزي في كل شاشة</div>
+
+      <div class="faq-it" onclick="toggleFaq(this)">
+        <div class="faq-q"><div class="fq-ic">🌐</div><span class="en-only">Is the app fully in Arabic?</span><span class="ar-only">هل التطبيق بالعربي بالكامل؟</span><span class="faq-chevron">▼</span></div>
+        <div class="faq-body">
+          <div class="faq-a en-only">Yes. The entire app is bilingual — Arabic and English throughout every screen, button, and label. You can use whichever language you prefer.</div>
+          <div class="faq-a ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">نعم. التطبيق بالكامل ثنائي اللغة — عربي وإنجليزي في كل شاشة وزر وتسمية. اختر اللغة التي تريدها.</div>
+        </div>
       </div>
-      <div class="faq-it">
-        <div class="faq-q"><div class="fq-ic">🔒</div>Is my patient data private?</div>
-        <div class="faq-a">Completely. Each clinic has its own private account — no one else can see your patients or data.</div>
-        <div class="faq-a-ar ar">خصوصية تامة. كل عيادة لها حساب خاص — لا أحد يستطيع رؤية مرضاك</div>
+
+      <div class="faq-it" onclick="toggleFaq(this)">
+        <div class="faq-q"><div class="fq-ic">🔒</div><span class="en-only">Is my patient data private and secure?</span><span class="ar-only">هل بيانات مرضاي خاصة وآمنة؟</span><span class="faq-chevron">▼</span></div>
+        <div class="faq-body">
+          <div class="faq-a en-only">Completely. Each clinic has its own isolated private account — no other clinic or person can access your patients, records, or data.</div>
+          <div class="faq-a ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">خصوصية تامة. كل عيادة لها حساب خاص ومعزول — لا يمكن لأي عيادة أخرى أو شخص الوصول إلى مرضاك أو سجلاتك.</div>
+        </div>
       </div>
+
+      <div class="faq-it" onclick="toggleFaq(this)">
+        <div class="faq-q"><div class="fq-ic">📧</div><span class="en-only">How can I contact support?</span><span class="ar-only">كيف أتواصل مع الدعم الفني؟</span><span class="faq-chevron">▼</span></div>
+        <div class="faq-body">
+          <div class="faq-a en-only">You can reach us via Telegram <strong>@ccc_l</strong> (fastest) or by email at <strong>support&#64;cliniqx.pro</strong>. We typically respond within a few hours.</div>
+          <div class="faq-a ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">يمكنك التواصل معنا عبر تيليغرام <strong>@ccc_l</strong> (الأسرع) أو عبر البريد الإلكتروني <strong>support&#64;cliniqx.pro</strong>. نرد عادةً خلال ساعات قليلة.</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1043,12 +1210,15 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
   <div class="cta-box">
     <div class="cta-grid-bg"></div>
     <span class="cta-tooth">🦷</span>
-    <h2>Start Managing Your Clinic Today</h2>
-    <p>Download CliniQX Pro and get 7 days free — no payment, no credit card, no risk.</p>
-    <p class="cta-ar ar">حمّل البرنامج الآن والحصل على 7 أيام مجانية — بدون دفع أو بطاقة ائتمان</p>
+    <h2 class="en-only">Start Managing Your Clinic Today</h2>
+    <h2 class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">ابدأ إدارة عيادتك اليوم</h2>
+    <p class="en-only">Download CliniQX Pro and get 7 days free — no payment, no credit card, no risk.</p>
+    <p class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">حمّل CliniQX Pro واحصل على 7 أيام مجانية — بدون دفع أو بطاقة ائتمان.</p>
     <div class="cta-btns">
-      <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/1.0.5/CliniQX.Pro.Setup.1.0.5.exe" target="_blank" class="btn-p" style="font-size:1.1rem;padding:16px 36px">⬇️ Download Free Trial</a>
-      <a href="https://t.me/ccc_l" target="_blank" class="btn-s" style="font-size:1.05rem;padding:16px 36px">✈️ Ask on Telegram</a>
+      <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/1.0.5/CliniQX.Pro.Setup.1.0.5.exe" target="_blank" class="btn-p en-only" style="font-size:1.1rem;padding:16px 36px">⬇️ Download Free Trial</a>
+      <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/1.0.5/CliniQX.Pro.Setup.1.0.5.exe" target="_blank" class="btn-p ar-only" style="font-size:1.1rem;padding:16px 36px;font-family:'IBM Plex Sans Arabic',sans-serif">⬇️ حمّل النسخة التجريبية</a>
+      <a href="https://t.me/ccc_l" target="_blank" class="btn-s en-only" style="font-size:1.05rem;padding:16px 36px">✈️ Ask on Telegram</a>
+      <a href="https://t.me/ccc_l" target="_blank" class="btn-s ar-only" style="font-size:1.05rem;padding:16px 36px;font-family:'IBM Plex Sans Arabic',sans-serif">✈️ تواصل على تيليغرام</a>
     </div>
     <div class="cta-feats">
       <div class="cta-ft"><span>✓</span>Windows 10 / 11</div>
@@ -1060,6 +1230,35 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
   </div>
 </section>
 
+<!-- CONTACT BANNER -->
+<div class="contact-banner">
+  <div class="contact-banner-inner">
+    <div class="cb-item">
+      <div class="cb-ic">✈️</div>
+      <div>
+        <div class="cb-label">Telegram · تيليغرام</div>
+        <div class="cb-value"><a href="https://t.me/ccc_l" target="_blank">@ccc_l</a></div>
+      </div>
+    </div>
+    <div class="cb-sep"></div>
+    <div class="cb-item">
+      <div class="cb-ic">📧</div>
+      <div>
+        <div class="cb-label">Email · البريد الإلكتروني</div>
+        <div class="cb-value" style="direction:ltr">support&#64;cliniqx.pro</div>
+      </div>
+    </div>
+    <div class="cb-sep"></div>
+    <div class="cb-item">
+      <div class="cb-ic">🌐</div>
+      <div>
+        <div class="cb-label">Website · الموقع</div>
+        <div class="cb-value"><a href="https://cliniqx.pro" target="_blank">cliniqx.pro</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="ft-top">
@@ -1069,7 +1268,7 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
       <p class="ft-desc-ar ar">نظام إدارة عيادات الأسنان الأول في العراق — عربي وإنجليزي مع نسخ احتياطي سحابي فوري</p>
     </div>
     <div>
-      <div class="ft-col-h">Product</div>
+      <div class="ft-col-h"><span class="en-only">Product</span><span class="ar-only">البرنامج</span></div>
       <div class="ft-links">
         <a href="#features">✦ Features</a>
         <a href="#screenshots">✦ Screenshots</a>
@@ -1079,15 +1278,16 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
       </div>
     </div>
     <div>
-      <div class="ft-col-h">Support</div>
+      <div class="ft-col-h"><span class="en-only">Support</span><span class="ar-only">الدعم الفني</span></div>
       <div class="ft-links">
         <a href="https://t.me/ccc_l" target="_blank">✈️ Telegram @ccc_l</a>
+        <a href="#" onclick="return false;" style="cursor:default">📧 support&#64;cliniqx.pro</a>
         <a href="#faq">❓ FAQ</a>
         <a href="#how">🚀 How It Works</a>
       </div>
     </div>
     <div>
-      <div class="ft-col-h">Contact</div>
+      <div class="ft-col-h"><span class="en-only">Contact</span><span class="ar-only">تواصل معنا</span></div>
       <div class="ft-links">
         <a href="https://t.me/ccc_l" target="_blank">✈️ @ccc_l on Telegram</a>
         <a href="#pricing">💰 View Pricing</a>
@@ -1123,15 +1323,49 @@ function toggleMobileMenu(){
   document.getElementById('mobile-menu').classList.toggle('open');
   document.body.style.overflow=document.getElementById('mobile-menu').classList.contains('open')?'hidden':'';
 }
-</script>
 
-<script>
 function showScr(name, btn){
   document.querySelectorAll('.scr-pane').forEach(e=>e.classList.remove('on'));
   document.querySelectorAll('.scr-tab').forEach(e=>e.classList.remove('on'));
   document.getElementById('sp-'+name).classList.add('on');
   btn.classList.add('on');
 }
+
+function setLang(lang){
+  const isAr = lang === 'ar';
+  document.getElementById('btn-en').classList.toggle('active', !isAr);
+  document.getElementById('btn-ar').classList.toggle('active', isAr);
+  document.body.classList.toggle('ar-mode', isAr);
+  document.documentElement.lang = lang;
+  document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+
+  document.querySelectorAll('.en-only').forEach(el => {
+    el.style.display = isAr ? 'none' : '';
+  });
+  document.querySelectorAll('.ar-only').forEach(el => {
+    el.style.display = isAr ? 'block' : 'none';
+  });
+  document.querySelectorAll('.ar-only-flex').forEach(el => {
+    el.style.display = isAr ? 'flex' : 'none';
+  });
+  document.querySelectorAll('.ar-only-inline').forEach(el => {
+    el.style.display = isAr ? 'inline' : 'none';
+  });
+
+  localStorage.setItem('cliniqx-lang', lang);
+}
+
+function toggleFaq(item){
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-it').forEach(i => i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+
+// Restore language on load
+window.addEventListener('DOMContentLoaded', function(){
+  const saved = localStorage.getItem('cliniqx-lang');
+  if(saved === 'ar') setLang('ar');
+});
 </script>
 </body>
 </html>
