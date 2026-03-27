@@ -532,6 +532,31 @@ body.ar-mode .ft-bot{direction:rtl}
 .cb-value a:hover{text-decoration:underline;color:#fff}
 .cb-sep{width:1px;height:48px;background:rgba(255,255,255,0.1)}
 
+
+/* Instagram float button */
+.insta-float{position:fixed;bottom:2rem;left:2rem;z-index:999;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;padding:15px 26px;border-radius:50px;font-size:1.05rem;font-weight:700;text-decoration:none;box-shadow:0 6px 28px rgba(220,39,67,0.4);transition:all 0.25s}
+.insta-float:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(220,39,67,0.55)}
+.insta-float svg{width:26px;height:26px;flex-shrink:0}
+@media(max-width:768px){.insta-float{padding:12px 18px;font-size:0.9rem;bottom:1.25rem;left:1.25rem}}
+@media(max-width:480px){.insta-float span{display:none}.insta-float{padding:14px;border-radius:50%}}
+
+
+/* ── SOCIAL BAR ── */
+.social-bar{background:linear-gradient(135deg,#030d1c,#071a36);border-top:1px solid rgba(55,138,221,0.15);padding:1.5rem 3rem}
+.social-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.social-bar-left{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.82rem;color:rgba(255,255,255,0.3);font-weight:500}
+.social-links{display:flex;align-items:center;gap:12px}
+.social-link{display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:10px;font-size:0.85rem;font-weight:700;text-decoration:none;transition:all 0.2s;border:1px solid}
+.social-link:hover{transform:translateY(-2px)}
+.social-link.telegram{background:rgba(42,171,238,0.1);border-color:rgba(42,171,238,0.3);color:#2AABEE}
+.social-link.telegram:hover{background:rgba(42,171,238,0.2);box-shadow:0 4px 20px rgba(42,171,238,0.25)}
+.social-link.instagram{background:rgba(220,39,67,0.1);border-color:rgba(220,39,67,0.25);color:#f09433}
+.social-link.instagram:hover{background:rgba(220,39,67,0.18);box-shadow:0 4px 20px rgba(220,39,67,0.2)}
+.social-link.email{background:rgba(55,138,221,0.1);border-color:rgba(55,138,221,0.25);color:#7fbcf5}
+.social-link.email:hover{background:rgba(55,138,221,0.18);box-shadow:0 4px 20px rgba(55,138,221,0.2)}
+.social-link svg{width:18px;height:18px;flex-shrink:0}
+@media(max-width:768px){.social-bar{padding:1.25rem}.social-bar-inner{justify-content:center}.social-bar-left{display:none}.social-links{gap:8px}.social-link span{display:none}.social-link{padding:10px 14px;border-radius:50%}}
+
 /* Mobile nav menu */
 .mobile-menu{display:none;position:fixed;inset:0;background:rgba(4,44,83,0.98);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem;backdrop-filter:blur(16px)}
 .mobile-menu.open{display:flex}
@@ -1230,6 +1255,30 @@ window.addEventListener('DOMContentLoaded', function(){
   </div>
 </section>
 
+<!-- SOCIAL BAR -->
+<div class="social-bar">
+  <div class="social-bar-inner">
+    <div class="social-bar-left">
+      <span class="en-only">Follow us & get in touch</span>
+      <span class="ar-only">تابعنا وتواصل معنا</span>
+    </div>
+    <div class="social-links">
+      <a href="https://t.me/ccc_l" target="_blank" class="social-link telegram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        <span>@ccc_l</span>
+      </a>
+      <a href="https://www.instagram.com/Cliniqx.pro" target="_blank" class="social-link instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <span>@Cliniqx.pro</span>
+      </a>
+      <a href="mailto:support&#64;cliniqx.pro" class="social-link email">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <span>support&#64;cliniqx.pro</span>
+      </a>
+    </div>
+  </div>
+</div>
+
 <!-- CONTACT BANNER -->
 <div class="contact-banner">
   <div class="contact-banner-inner">
@@ -1246,6 +1295,14 @@ window.addEventListener('DOMContentLoaded', function(){
       <div>
         <div class="cb-label">Email · البريد الإلكتروني</div>
         <div class="cb-value" style="direction:ltr">support&#64;cliniqx.pro</div>
+      </div>
+    </div>
+    <div class="cb-sep"></div>
+    <div class="cb-item">
+      <div class="cb-ic">📸</div>
+      <div>
+        <div class="cb-label">Instagram</div>
+        <div class="cb-value"><a href="https://www.instagram.com/Cliniqx.pro" target="_blank">@Cliniqx.pro</a></div>
       </div>
     </div>
     <div class="cb-sep"></div>
@@ -1290,6 +1347,7 @@ window.addEventListener('DOMContentLoaded', function(){
       <div class="ft-col-h"><span class="en-only">Contact</span><span class="ar-only">تواصل معنا</span></div>
       <div class="ft-links">
         <a href="https://t.me/ccc_l" target="_blank">✈️ @ccc_l on Telegram</a>
+        <a href="https://www.instagram.com/Cliniqx.pro" target="_blank">📸 @Cliniqx.pro on Instagram</a>
         <a href="#pricing">💰 View Pricing</a>
         <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/1.0.5/CliniQX.Pro.Setup.1.0.5.exe" target="_blank">⬇️ Free Download</a>
       </div>
@@ -1301,12 +1359,9 @@ window.addEventListener('DOMContentLoaded', function(){
   </div>
 </footer>
 
-<!-- TELEGRAM FLOAT -->
-<a class="wa" href="https://t.me/ccc_l" target="_blank" style="background:linear-gradient(135deg,#2AABEE,#1a8cc9)">
-  <div class="wa-dot"></div>
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-  Contact on Telegram
-</a>
+
+
+<!-- TELEGRAM FLOAT removed - using social bar instead -->
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu">
