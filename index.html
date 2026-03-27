@@ -391,8 +391,13 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
   .nv{font-size:2.4rem}
 
   /* Features */
-  .feat-grid{grid-template-columns:1fr;gap:1rem;margin-top:2rem}
-  .feat-card{padding:1.5rem}
+  .feat-grid{grid-template-columns:repeat(2,1fr);gap:0.75rem;margin-top:1.5rem}
+  .feat-card{padding:1.1rem}
+  .feat-ic{width:44px;height:44px;font-size:1.3rem;border-radius:12px;margin-bottom:0.75rem}
+  .feat-title{font-size:0.95rem}
+  .feat-desc{font-size:0.82rem;line-height:1.6}
+  .feat-tags{gap:4px}
+  .ftag{font-size:0.65rem;padding:3px 8px}
 
   /* Screenshots */
   .scr-tabs{gap:0.4rem}
@@ -453,9 +458,12 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
   .trust-hd h2{font-size:1.55rem}
   .cta-box h2{font-size:1.45rem}
   .pr-amt{font-size:2.5rem}
-  .feat-card{padding:1.25rem}
+  .feat-card{padding:0.9rem}
+  .feat-grid{grid-template-columns:repeat(2,1fr);gap:0.6rem}
+  .feat-title{font-size:0.88rem}
+  .feat-desc{font-size:0.78rem}
   .tr-card{padding:1.25rem}
-  .faq-it{padding:1.1rem}
+  .faq-q{padding:1rem 1.1rem;font-size:0.9rem}
   .wa span{display:none}
   .wa{padding:14px;border-radius:50%}
 }
@@ -471,7 +479,7 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
 
 /* ═══ LANGUAGE SWITCHER ═══ */
 .lang-switcher{display:flex;align-items:center;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;overflow:hidden;margin-right:1.5rem}
-.lang-btn{padding:7px 16px;font-size:0.82rem;font-weight:700;color:rgba(255,255,255,0.5);cursor:pointer;border:none;background:transparent;transition:all 0.2s;font-family:'Sora',sans-serif}
+.lang-btn{padding:7px 12px;font-size:0.78rem;font-weight:700;color:rgba(255,255,255,0.5);cursor:pointer;border:none;background:transparent;transition:all 0.2s;font-family:'Sora',sans-serif}
 .lang-btn.active{background:var(--teal);color:#fff}
 
 /* AR mode — flip direction and font */
@@ -522,15 +530,17 @@ body.ar-mode .ft-bot{direction:rtl}
 .faq-a-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.92rem;color:var(--muted2);direction:rtl;line-height:1.85;margin-top:4px;padding-right:0}
 
 /* ═══ CONTACT BANNER ═══ */
-.contact-banner{background:linear-gradient(135deg,#042c53,#071a36);padding:2.5rem;text-align:center;margin-top:0}
-.contact-banner-inner{max-width:700px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap}
-.cb-item{display:flex;align-items:center;gap:12px}
-.cb-ic{font-size:1.6rem;flex-shrink:0}
-.cb-label{font-size:0.75rem;color:rgba(255,255,255,0.4);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px}
-.cb-value{font-size:1rem;color:#fff;font-weight:700}
+.contact-banner{background:linear-gradient(135deg,#042c53,#071a36);padding:2.5rem 2rem;text-align:center;margin-top:0}
+.contact-banner-inner{max-width:800px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;gap:1rem}
+.cb-item{display:flex;flex-direction:column;align-items:center;gap:6px;padding:1rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px}
+.cb-ic{font-size:1.4rem;flex-shrink:0}
+.cb-label{font-size:0.65rem;color:rgba(255,255,255,0.35);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;text-align:center}
+.cb-value{font-size:0.82rem;color:#fff;font-weight:700;text-align:center;word-break:break-all}
 .cb-value a{color:#7fbcf5;text-decoration:none}
 .cb-value a:hover{text-decoration:underline;color:#fff}
-.cb-sep{width:1px;height:48px;background:rgba(255,255,255,0.1)}
+.cb-sep{display:none}
+@media(max-width:768px){.contact-banner-inner{grid-template-columns:repeat(2,1fr)}.contact-banner{padding:1.5rem 1rem}.cb-item{padding:0.75rem}.cb-value{font-size:0.75rem}}
+@media(max-width:420px){.contact-banner-inner{grid-template-columns:repeat(2,1fr)}.cb-ic{font-size:1.1rem}.cb-label{font-size:0.58rem}.cb-value{font-size:0.7rem}}
 
 
 /* Instagram float button */
@@ -555,6 +565,7 @@ body.ar-mode .ft-bot{direction:rtl}
 .social-link.email{background:rgba(55,138,221,0.1);border-color:rgba(55,138,221,0.25);color:#7fbcf5}
 .social-link.email:hover{background:rgba(55,138,221,0.18);box-shadow:0 4px 20px rgba(55,138,221,0.2)}
 .social-link svg{width:18px;height:18px;flex-shrink:0}
+@media(max-width:480px){.social-links{gap:6px}.social-link{padding:9px 12px}}
 @media(max-width:768px){.social-bar{padding:1.25rem}.social-bar-inner{justify-content:center}.social-bar-left{display:none}.social-links{gap:8px}.social-link span{display:none}.social-link{padding:10px 14px;border-radius:50%}}
 
 /* Mobile nav menu */
@@ -1283,35 +1294,27 @@ window.addEventListener('DOMContentLoaded', function(){
 <div class="contact-banner">
   <div class="contact-banner-inner">
     <div class="cb-item">
-      <div class="cb-ic">✈️</div>
-      <div>
-        <div class="cb-label">Telegram · تيليغرام</div>
-        <div class="cb-value"><a href="https://t.me/ccc_l" target="_blank">@ccc_l</a></div>
-      </div>
+      <div class="cb-ic">💬</div>
+      <div class="cb-label">Telegram</div>
+      <div class="cb-value"><a href="https://t.me/ccc_l" target="_blank">@ccc_l</a></div>
     </div>
     <div class="cb-sep"></div>
     <div class="cb-item">
-      <div class="cb-ic">📧</div>
-      <div>
-        <div class="cb-label">Email · البريد الإلكتروني</div>
-        <div class="cb-value" style="direction:ltr">support&#64;cliniqx.pro</div>
-      </div>
+      <div class="cb-ic">📩</div>
+      <div class="cb-label">Email</div>
+      <div class="cb-value" style="direction:ltr;font-size:0.72rem">support&#64;cliniqx.pro</div>
     </div>
     <div class="cb-sep"></div>
     <div class="cb-item">
-      <div class="cb-ic">📸</div>
-      <div>
-        <div class="cb-label">Instagram</div>
-        <div class="cb-value"><a href="https://www.instagram.com/Cliniqx.pro" target="_blank">@Cliniqx.pro</a></div>
-      </div>
+      <div class="cb-ic">📷</div>
+      <div class="cb-label">Instagram</div>
+      <div class="cb-value"><a href="https://www.instagram.com/Cliniqx.pro" target="_blank">@Cliniqx.pro</a></div>
     </div>
     <div class="cb-sep"></div>
     <div class="cb-item">
       <div class="cb-ic">🌐</div>
-      <div>
-        <div class="cb-label">Website · الموقع</div>
-        <div class="cb-value"><a href="https://cliniqx.pro" target="_blank">cliniqx.pro</a></div>
-      </div>
+      <div class="cb-label">Website</div>
+      <div class="cb-value"><a href="https://cliniqx.pro" target="_blank">cliniqx.pro</a></div>
     </div>
   </div>
 </div>
