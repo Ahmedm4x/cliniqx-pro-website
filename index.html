@@ -543,7 +543,7 @@ body.ar-mode .ft-bot{direction:rtl}
 
 /* ═══ CONTACT BANNER ═══ */
 .contact-banner{background:linear-gradient(135deg,#042c53,#071a36);padding:2.5rem 2rem;text-align:center;margin-top:0}
-.contact-banner-inner{max-width:800px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;gap:1rem}
+.contact-banner-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);align-items:center;gap:1rem}
 .cb-item{display:flex;flex-direction:column;align-items:center;gap:6px;padding:1rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px}
 .cb-ic{font-size:1.4rem;flex-shrink:0}
 .cb-label{font-size:0.65rem;color:rgba(255,255,255,0.35);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;text-align:center}
@@ -551,7 +551,7 @@ body.ar-mode .ft-bot{direction:rtl}
 .cb-value a{color:#7fbcf5;text-decoration:none}
 .cb-value a:hover{text-decoration:underline;color:#fff}
 .cb-sep{display:none}
-@media(max-width:768px){.contact-banner-inner{grid-template-columns:repeat(2,1fr)}.contact-banner{padding:1.5rem 1rem}.cb-item{padding:0.75rem}.cb-value{font-size:0.75rem}}
+@media(max-width:768px){.contact-banner-inner{grid-template-columns:repeat(3,1fr)}.contact-banner{padding:1.5rem 1rem}.cb-item{padding:0.75rem}.cb-value{font-size:0.75rem}}
 @media(max-width:420px){.contact-banner-inner{grid-template-columns:repeat(2,1fr)}.cb-ic{font-size:1.1rem}.cb-label{font-size:0.58rem}.cb-value{font-size:0.7rem}}
 
 
@@ -590,6 +590,66 @@ body.ar-mode .ft-bot{direction:rtl}
   #nav-menu-btn{display:block !important}
   #nav-links-desktop{display:none !important}
 }
+
+/* ═══ MOBILE / WEB APP SMART BANNER ═══ */
+.mobile-banner{display:none;position:fixed;bottom:0;left:0;right:0;z-index:500;background:linear-gradient(135deg,#021e3a,#042c53);border-top:2px solid rgba(10,191,138,0.4);padding:14px 20px;box-shadow:0 -8px 32px rgba(0,0,0,0.4)}
+.mobile-banner-inner{display:flex;align-items:center;gap:14px;max-width:600px;margin:0 auto}
+.mb-icon{font-size:2rem;flex-shrink:0}
+.mb-text{flex:1}
+.mb-title{font-size:0.95rem;font-weight:700;color:#fff;line-height:1.3}
+.mb-title-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:1rem;font-weight:700;color:#fff;line-height:1.5;display:none}
+.mb-sub{font-size:0.75rem;color:rgba(255,255,255,0.5);margin-top:2px}
+.mb-sub-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.8rem;color:rgba(255,255,255,0.5);display:none}
+.mb-btn{background:var(--teal);color:#fff;padding:11px 20px;border-radius:10px;font-size:0.88rem;font-weight:700;text-decoration:none;white-space:nowrap;box-shadow:0 3px 14px rgba(10,191,138,0.4);transition:all 0.2s;flex-shrink:0}
+.mb-btn:hover{background:var(--teal-dark);transform:translateY(-1px)}
+.mb-btn-ar{font-family:'IBM Plex Sans Arabic',sans-serif}
+.mb-close{background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.3rem;cursor:pointer;padding:4px;flex-shrink:0;line-height:1}
+.mb-close:hover{color:#fff}
+body.ar-mode .mb-title{display:none}
+body.ar-mode .mb-title-ar{display:block}
+body.ar-mode .mb-sub{display:none}
+body.ar-mode .mb-sub-ar{display:block}
+body.ar-mode .mb-banner-inner{direction:rtl}
+
+/* ═══ PLATFORM SECTION ═══ */
+.platform-sec{padding:5rem 2.5rem;background:linear-gradient(160deg,#021e3a,#042c53)}
+.platform-wrap{max-width:1100px;margin:0 auto}
+.platform-hd{text-align:center;margin-bottom:3.5rem}
+.platform-hd h2{font-size:2.8rem;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:0.5rem}
+.platform-hd h2 span{color:var(--teal)}
+.platform-hd p{color:rgba(255,255,255,0.5);font-size:1.05rem}
+.platform-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.plat-card{border-radius:22px;padding:2.5rem;position:relative;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s}
+.plat-card:hover{transform:translateY(-5px);box-shadow:0 24px 60px rgba(0,0,0,0.35)}
+.plat-card.windows{background:linear-gradient(135deg,rgba(55,138,221,0.15),rgba(12,68,124,0.3));border:1.5px solid rgba(55,138,221,0.3)}
+.plat-card.webapp{background:linear-gradient(135deg,rgba(10,191,138,0.15),rgba(7,138,100,0.25));border:1.5px solid rgba(10,191,138,0.35)}
+.plat-card-badge{display:inline-flex;align-items:center;gap:7px;font-size:0.72rem;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:1.5rem;letter-spacing:0.5px}
+.plat-card.windows .plat-card-badge{background:rgba(55,138,221,0.2);color:#7fbcf5;border:1px solid rgba(55,138,221,0.3)}
+.plat-card.webapp .plat-card-badge{background:rgba(10,191,138,0.2);color:var(--teal);border:1px solid rgba(10,191,138,0.3)}
+.plat-icon{font-size:3.5rem;display:block;margin-bottom:1.25rem}
+.plat-title{font-size:1.6rem;font-weight:800;color:#fff;margin-bottom:0.375rem}
+.plat-title-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:0.375rem}
+.plat-sub{font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:1.5rem}
+.plat-sub-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.88rem;color:rgba(255,255,255,0.4);margin-bottom:1.5rem;direction:rtl}
+.plat-features{display:flex;flex-direction:column;gap:10px;margin-bottom:2rem}
+.plat-feat{display:flex;align-items:center;gap:10px;font-size:0.92rem;color:rgba(255,255,255,0.75)}
+.plat-feat-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.9rem;direction:rtl}
+.plat-feat-ic{font-size:1rem;flex-shrink:0}
+.plat-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:15px;border-radius:13px;font-size:1rem;font-weight:700;text-decoration:none;transition:all 0.25s;text-align:center}
+.plat-btn.windows-btn{background:rgba(55,138,221,0.2);color:#7fbcf5;border:1.5px solid rgba(55,138,221,0.4)}
+.plat-btn.windows-btn:hover{background:rgba(55,138,221,0.35);border-color:#7fbcf5;color:#fff}
+.plat-btn.webapp-btn{background:var(--teal);color:#fff;box-shadow:0 4px 20px rgba(10,191,138,0.35)}
+.plat-btn.webapp-btn:hover{background:var(--teal-dark);transform:translateY(-1px);box-shadow:0 8px 28px rgba(10,191,138,0.45)}
+.plat-devices{display:flex;gap:8px;flex-wrap:wrap;margin-top:1rem}
+.plat-device{display:flex;align-items:center;gap:5px;font-size:0.75rem;color:rgba(255,255,255,0.35);background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:5px 12px}
+@media(max-width:768px){
+  .platform-sec{padding:3.5rem 1.25rem}
+  .platform-grid{grid-template-columns:1fr;gap:1.5rem}
+  .platform-hd h2{font-size:1.8rem}
+  .plat-card{padding:1.75rem}
+  .mobile-banner{display:block}
+}
+@media(min-width:769px){.mobile-banner{display:none!important}}
 </style>
 <script>
 function setLang(lang){
@@ -686,14 +746,19 @@ window.addEventListener('DOMContentLoaded', function(){
   <div class="hero-tooth-bg">🦷</div>
   <div class="hero-inner">
     <div>
-      <div class="hero-badge"><div class="hb-dot"></div> NOW AVAILABLE FOR WINDOWS — متاح الآن</div>
+      <div class="hero-badge"><div class="hb-dot"></div><span class="en-only">NOW ON WINDOWS &amp; WEB</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">متاح على ويندوز والويب الآن</span></div>
       <h1 class="en-only">The Smartest Way<br>to Run Your<br><em>Dental Clinic 🦷</em></h1>
       <h1 class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;font-size:3.2rem">أذكى طريقة<br>لإدارة<br><em>عيادة الأسنان 🦷</em></h1>
       <div class="hero-ar ar ar-only">نظام إدارة عيادات الأسنان الأذكى في العراق</div>
-      <p class="hero-desc">CliniQX Pro is the all-in-one dental clinic management system built for Iraqi clinics. Appointments, patients, prices — in Arabic and English, with real-time cloud backup.</p>
+      <p class="hero-desc en-only">CliniQX Pro is the all-in-one dental clinic management system built for Iraqi clinics. Appointments, patients, prices — in Arabic and English, with real-time cloud backup.</p>
+      <p class="hero-desc ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">CliniQX Pro هو النظام المتكامل لإدارة عيادات الأسنان، مصمم خصيصاً للعيادات العراقية. المواعيد، المرضى، الأسعار — بالعربي والإنجليزي، مع نسخ احتياطي سحابي فوري.</p>
       <div class="hero-btns">
-        <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/v1.0.8/CliniQX-Pro-Setup-1.0.8.exe" target="_blank" class="btn-p">⬇️ Download Free Trial</a>
-        <a href="https://t.me/cliniqx" target="_blank" class="btn-s">✈️ Buy License</a>
+        <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/v1.0.8/CliniQX-Pro-Setup-1.0.8.exe" target="_blank" class="btn-p windows-download-btn en-only">⬇️ Download Free Trial</a>
+        <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/v1.0.8/CliniQX-Pro-Setup-1.0.8.exe" target="_blank" class="btn-p windows-download-btn ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">⬇️ حمّل النسخة التجريبية</a>
+        <a href="https://app.cliniqx.pro" target="_blank" class="btn-p webapp-open-btn en-only" style="display:none;background:linear-gradient(135deg,#0abf8a,#078a64)">🌐 Open Web App</a>
+        <a href="https://app.cliniqx.pro" target="_blank" class="btn-p webapp-open-btn ar-only" style="display:none;background:linear-gradient(135deg,#0abf8a,#078a64);font-family:'IBM Plex Sans Arabic',sans-serif">🌐 افتح التطبيق</a>
+        <a href="https://t.me/cliniqx" target="_blank" class="btn-s en-only">✈️ Buy License</a>
+        <a href="https://t.me/cliniqx" target="_blank" class="btn-s ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">✈️ شراء الترخيص</a>
       </div>
       <div class="hero-trust">
         <div class="trust-faces">
@@ -784,6 +849,92 @@ window.addEventListener('DOMContentLoaded', function(){
   </div>
 </div>
 
+
+<!-- PLATFORM / DEVICE SECTION -->
+<section class="platform-sec" id="platforms">
+  <div class="platform-wrap">
+    <div class="platform-hd">
+      <div class="sec-tag" style="display:inline-flex;background:rgba(10,191,138,0.15);color:var(--teal);border:1px solid rgba(10,191,138,0.25)">📱 Available On · متاح على</div>
+      <h2 class="en-only" style="font-size:2.8rem;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:0.5rem">Works on <span style="color:var(--teal)">every device</span></h2>
+      <h2 class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;font-size:2.5rem;font-weight:800;color:#fff;margin-bottom:0.5rem">يعمل على <span style="color:var(--teal)">كل جهاز</span></h2>
+      <p class="en-only" style="color:rgba(255,255,255,0.5);font-size:1.05rem">Windows desktop app or browser web app — your data stays in sync everywhere.</p>
+      <p class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;color:rgba(255,255,255,0.5);font-size:1rem;direction:rtl">تطبيق ويندوز أو تطبيق ويب — بياناتك متزامنة في كل مكان.</p>
+    </div>
+    <div class="platform-grid">
+
+      <!-- WINDOWS CARD -->
+      <div class="plat-card windows">
+        <div class="plat-card-badge">🪟 WINDOWS APP</div>
+        <span class="plat-icon">💻</span>
+        <div class="plat-title en-only">Desktop Application</div>
+        <div class="plat-title-ar ar-only">تطبيق سطح المكتب</div>
+        <div class="plat-sub en-only">Windows 10 &amp; 11 — Full native experience</div>
+        <div class="plat-sub-ar ar-only">ويندوز 10 و11 — تجربة كاملة على الجهاز</div>
+        <div class="plat-features">
+          <div class="plat-feat"><div class="plat-feat-ic">⚡</div><span class="en-only">Fastest performance — runs locally</span><span class="ar-only plat-feat-ar">أسرع أداء — يعمل محلياً</span></div>
+          <div class="plat-feat"><div class="plat-feat-ic">☁️</div><span class="en-only">Auto cloud sync after every change</span><span class="ar-only plat-feat-ar">مزامنة سحابية بعد كل تغيير</span></div>
+          <div class="plat-feat"><div class="plat-feat-ic">📁</div><span class="en-only">X-Ray file storage (PNG, JPG, DICOM)</span><span class="ar-only plat-feat-ar">تخزين ملفات الأشعة (PNG، JPG، DICOM)</span></div>
+          <div class="plat-feat"><div class="plat-feat-ic">🔒</div><span class="en-only">Private local + cloud data</span><span class="ar-only plat-feat-ar">بيانات خاصة محلياً وسحابياً</span></div>
+          <div class="plat-feat"><div class="plat-feat-ic">🆓</div><span class="en-only">7-day free trial, no credit card</span><span class="ar-only plat-feat-ar">7 أيام مجانية بدون بطاقة ائتمان</span></div>
+        </div>
+        <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/v1.0.8/CliniQX-Pro-Setup-1.0.8.exe" target="_blank" class="plat-btn windows-btn">
+          <span class="en-only">⬇️ Download for Windows</span>
+          <span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">⬇️ تحميل لويندوز</span>
+        </a>
+        <div class="plat-devices">
+          <div class="plat-device">🖥️ Desktop PC</div>
+          <div class="plat-device">💻 Laptop</div>
+          <div class="plat-device">🪟 Win 10/11</div>
+        </div>
+      </div>
+
+      <!-- WEB APP CARD -->
+      <div class="plat-card webapp">
+        <div class="plat-card-badge">🌐 WEB APP — متاح الآن</div>
+        <span class="plat-icon">📱</span>
+        <div class="plat-title en-only">Web Application</div>
+        <div class="plat-title-ar ar-only">تطبيق الويب</div>
+        <div class="plat-sub en-only">iPad, iPhone, Android &amp; any browser</div>
+        <div class="plat-sub-ar ar-only">آيباد، آيفون، أندرويد وأي متصفح</div>
+        <div class="plat-features">
+          <div class="plat-feat"><div class="plat-feat-ic">📱</div><span class="en-only">Works on iPad, iPhone &amp; Android tablets</span><span class="ar-only plat-feat-ar">يعمل على آيباد، آيفون وأجهزة أندرويد</span></div>
+          <div class="plat-feat"><div class="plat-feat-ic">🌐</div><span class="en-only">Open in any browser — no install needed</span><span class="ar-only plat-feat-ar">يفتح في أي متصفح — بدون تثبيت</span></div>
+          <div class="plat-feat"><div class="plat-feat-ic">🔄</div><span class="en-only">Real-time sync with your Windows app</span><span class="ar-only plat-feat-ar">متزامن مع تطبيق ويندوز في الوقت الفعلي</span></div>
+          <div class="plat-feat"><div class="plat-feat-ic">🏠</div><span class="en-only">Add to home screen as a native app</span><span class="ar-only plat-feat-ar">أضفه للشاشة الرئيسية كتطبيق أصلي</span></div>
+          <div class="plat-feat"><div class="plat-feat-ic">🔐</div><span class="en-only">Same secure login — same account</span><span class="ar-only plat-feat-ar">نفس الحساب ونفس تسجيل الدخول الآمن</span></div>
+        </div>
+        <a href="https://app.cliniqx.pro" target="_blank" class="plat-btn webapp-btn">
+          <span class="en-only">🌐 Open Web App — app.cliniqx.pro</span>
+          <span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">🌐 افتح تطبيق الويب</span>
+        </a>
+        <div class="plat-devices">
+          <div class="plat-device">📱 iPhone</div>
+          <div class="plat-device">🍎 iPad</div>
+          <div class="plat-device">🤖 Android</div>
+          <div class="plat-device">🌐 Any Browser</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SYNC CALLOUT -->
+    <div style="margin-top:2.5rem;background:rgba(255,255,255,0.04);border:1px solid rgba(10,191,138,0.2);border-radius:16px;padding:1.5rem 2rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap">
+      <div style="font-size:2rem;flex-shrink:0">🔄</div>
+      <div style="flex:1;min-width:200px">
+        <div class="en-only" style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:4px">One account. All your devices. Always in sync.</div>
+        <div class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:4px;direction:rtl">حساب واحد. كل أجهزتك. دائماً متزامنة.</div>
+        <div class="en-only" style="font-size:0.88rem;color:rgba(255,255,255,0.45)">Book an appointment on your iPhone, see it on your Windows app instantly. No manual syncing required.</div>
+        <div class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.88rem;color:rgba(255,255,255,0.45);direction:rtl">احجز موعداً من آيفونك، يظهر فوراً على تطبيق ويندوز. بدون أي مزامنة يدوية.</div>
+      </div>
+      <a href="https://app.cliniqx.pro" target="_blank" style="background:rgba(10,191,138,0.15);border:1px solid rgba(10,191,138,0.35);color:var(--teal);padding:11px 22px;border-radius:10px;font-size:0.88rem;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:all 0.2s">
+        <span class="en-only">Try Web App →</span>
+        <span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">جرّب تطبيق الويب ←</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
 <!-- FEATURES -->
 <section class="sec" id="features" style="background:#fff">
   <div class="sec-wrap">
@@ -849,12 +1000,12 @@ window.addEventListener('DOMContentLoaded', function(){
         <div class="feat-tags"><span class="ftag">32 Teeth</span><span class="ftag">7 Conditions</span><span class="ftag">Per-Tooth Notes</span></div>
       </div>
       <div class="feat-card">
-        <div class="feat-ic fi-xr">📁</div>
-        <div class="feat-title en-only">X-Ray File Management</div>
-        <div class="feat-title ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">إدارة ملفات الأشعة</div>
-        <p class="feat-desc en-only">Upload and store X-ray files directly in each patient's profile. Supports PNG, JPG, and DICOM. All files are encrypted and saved to the cloud automatically.</p>
-        <p class="feat-desc ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">ارفع صور الأشعة مباشرة في ملف المريض — PNG وJPG وDICOM مدعومة. كل الملفات مشفّرة ومحفوظة سحابياً تلقائياً.</p>
-        <div class="feat-tags"><span class="ftag">PNG · JPG · DICOM</span><span class="ftag">Cloud Storage</span><span class="ftag">Per-Patient</span></div>
+        <div class="feat-ic fi-xr">💸</div>
+        <div class="feat-title en-only">Clinic Expense Tracking</div>
+        <div class="feat-title ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">مصاريف العيادة</div>
+        <p class="feat-desc en-only">Track all clinic expenses in one place — rent, supplies, equipment, salaries, and any other cost in IQD. See monthly totals and net profit at a glance.</p>
+        <p class="feat-desc ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">سجّل جميع مصاريف وتكاليف العيادة في مكان واحد — الإيجار، المستلزمات، المعدات، الرواتب، وأي مصروف آخر بالدينار العراقي. شاهد الإجمالي الشهري وصافي الأرباح بنظرة واحدة.</p>
+        <div class="feat-tags"><span class="ftag">IQD</span><span class="ftag">مصاريف شهرية</span><span class="ftag">صافي الربح</span></div>
       </div>
       <div class="feat-card">
         <div class="feat-ic" style="background:linear-gradient(135deg,#faeeda,#fad49a);font-size:1.6rem">⏰</div>
@@ -1263,13 +1414,16 @@ window.addEventListener('DOMContentLoaded', function(){
     <p class="en-only">Download CliniQX Pro and get 7 days free — no payment, no credit card, no risk.</p>
     <p class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">حمّل CliniQX Pro واحصل على 7 أيام مجانية — بدون دفع أو بطاقة ائتمان.</p>
     <div class="cta-btns">
-      <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/v1.0.8/CliniQX-Pro-Setup-1.0.8.exe" target="_blank" class="btn-p en-only" style="font-size:1.1rem;padding:16px 36px">⬇️ Download Free Trial</a>
-      <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/v1.0.8/CliniQX-Pro-Setup-1.0.8.exe" target="_blank" class="btn-p ar-only" style="font-size:1.1rem;padding:16px 36px;font-family:'IBM Plex Sans Arabic',sans-serif">⬇️ حمّل النسخة التجريبية</a>
+      <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/v1.0.8/CliniQX-Pro-Setup-1.0.8.exe" target="_blank" class="btn-p windows-download-btn en-only" style="font-size:1.1rem;padding:16px 36px">⬇️ Download for Windows</a>
+      <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/v1.0.8/CliniQX-Pro-Setup-1.0.8.exe" target="_blank" class="btn-p windows-download-btn ar-only" style="font-size:1.1rem;padding:16px 36px;font-family:'IBM Plex Sans Arabic',sans-serif">⬇️ حمّل لويندوز</a>
+      <a href="https://app.cliniqx.pro" target="_blank" class="btn-p webapp-open-btn en-only" style="font-size:1.1rem;padding:16px 36px;display:none;background:linear-gradient(135deg,#0abf8a,#078a64)">🌐 Open Web App</a>
+      <a href="https://app.cliniqx.pro" target="_blank" class="btn-p webapp-open-btn ar-only" style="font-size:1.1rem;padding:16px 36px;display:none;background:linear-gradient(135deg,#0abf8a,#078a64);font-family:'IBM Plex Sans Arabic',sans-serif">🌐 افتح التطبيق</a>
       <a href="https://t.me/cliniqx" target="_blank" class="btn-s en-only" style="font-size:1.05rem;padding:16px 36px">✈️ Ask on Telegram</a>
       <a href="https://t.me/cliniqx" target="_blank" class="btn-s ar-only" style="font-size:1.05rem;padding:16px 36px;font-family:'IBM Plex Sans Arabic',sans-serif">✈️ تواصل على تيليغرام</a>
     </div>
     <div class="cta-feats">
       <div class="cta-ft"><span>✓</span>Windows 10 / 11</div>
+      <div class="cta-ft"><span>✓</span>iPad &amp; Mobile Web App</div>
       <div class="cta-ft"><span>✓</span>7-Day Free Trial</div>
       <div class="cta-ft"><span>✓</span>No Credit Card</div>
       <div class="cta-ft"><span>✓</span>Arabic + English</div>
@@ -1327,6 +1481,11 @@ window.addEventListener('DOMContentLoaded', function(){
       <div class="cb-ic">🌐</div>
       <div class="cb-label">Website</div>
       <div class="cb-value"><a href="https://cliniqx.pro" target="_blank">cliniqx.pro</a></div>
+    </div>
+    <div class="cb-item">
+      <div class="cb-ic">📱</div>
+      <div class="cb-label">Web App</div>
+      <div class="cb-value"><a href="https://app.cliniqx.pro" target="_blank">app.cliniqx.pro</a></div>
     </div>
   </div>
 </div>
@@ -1432,4 +1591,47 @@ function toggleFaq(item){
 }
 
 // Restore language on load
-window.addEventListen
+window.addEventListener('DOMContentLoaded', function(){
+  var saved = localStorage.getItem('cliniqx-lang');
+  if(!saved) saved = 'ar';
+  setLang(saved);
+
+  // Smart platform detection — show web app banner on mobile/tablet
+  (function detectPlatform(){
+    var ua = navigator.userAgent;
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+    var isTablet = /iPad/i.test(ua) || (navigator.maxTouchPoints > 1 && !/Mobi/i.test(ua));
+    if(isMobile || isTablet){
+      var banner = document.getElementById('mobile-app-banner');
+      if(banner){ banner.style.display = 'block'; document.body.style.paddingBottom = '88px'; }
+      // On mobile/tablet: show web app buttons, hide Windows download buttons
+      document.querySelectorAll('.windows-download-btn').forEach(function(el){ el.style.display='none'; });
+      document.querySelectorAll('.webapp-open-btn').forEach(function(el){ el.style.removeProperty('display'); el.style.display='inline-flex'; });
+    }
+  })();
+});
+
+function closeMobileBanner(){
+  var b = document.getElementById('mobile-app-banner');
+  if(b){ b.style.display='none'; document.body.style.paddingBottom=''; }
+}
+</script>
+
+<!-- MOBILE APP BANNER (shown only on mobile/tablet via JS) -->
+<div class="mobile-banner" id="mobile-app-banner" style="display:none">
+  <div class="mobile-banner-inner">
+    <div class="mb-icon">📱</div>
+    <div class="mb-text">
+      <div class="mb-title">Use CliniQX Pro on your device!</div>
+      <div class="mb-title-ar">استخدم CliniQX Pro على جهازك!</div>
+      <div class="mb-sub">Web app available — no install needed</div>
+      <div class="mb-sub-ar">تطبيق الويب متاح — بدون تثبيت</div>
+    </div>
+    <a href="https://app.cliniqx.pro" target="_blank" class="mb-btn en-only">🌐 Open App</a>
+    <a href="https://app.cliniqx.pro" target="_blank" class="mb-btn mb-btn-ar ar-only">🌐 افتح التطبيق</a>
+    <button class="mb-close" onclick="closeMobileBanner()">✕</button>
+  </div>
+</div>
+
+</body>
+</html>
