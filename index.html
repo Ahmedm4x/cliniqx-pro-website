@@ -261,30 +261,87 @@ nav{position:sticky;top:0;z-index:200;height:76px;background:rgba(4,44,83,0.97);
 .step-d{font-size:0.95rem;color:var(--muted);line-height:1.65}
 
 /* PRICING */
-.pr-wrap{max-width:1000px;margin:0 auto}
-.pr-grid{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:1.5rem;margin-top:3.5rem;align-items:start}
-.pr-card{background:#fff;border:1.5px solid #dce8f7;border-radius:22px;padding:2.25rem;transition:all 0.25s;position:relative}
-.pr-card:hover{box-shadow:0 16px 50px rgba(26,111,191,0.12)}
-.pr-card.ft{border-color:var(--blue-mid);border-width:2px;box-shadow:0 20px 60px rgba(26,111,191,0.2)}
-.pr-best{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--blue),var(--blue-mid));color:#fff;font-size:0.72rem;font-weight:700;padding:5px 20px;border-radius:20px;white-space:nowrap;box-shadow:0 3px 12px rgba(26,111,191,0.4)}
-.pr-ico{font-size:2.75rem;text-align:center;display:block;margin-bottom:1rem}
-.pr-nm{font-size:1.3rem;font-weight:800;color:var(--text);text-align:center;margin-bottom:4px}
-.pr-nm-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.92rem;color:var(--muted);text-align:center;margin-bottom:1.375rem}
-.pr-div{height:1px;background:#dce8f7;margin-bottom:1.375rem}
-.pr-amt{font-size:3.75rem;font-weight:800;color:var(--blue-dark);letter-spacing:-1.5px;line-height:1;text-align:center}
-.pr-amt sup{font-size:1.4rem;vertical-align:super}
-.pr-per{font-size:0.95rem;color:var(--muted);text-align:center;margin-bottom:2rem}
-.pr-feats{display:flex;flex-direction:column;gap:12px;margin-bottom:2.25rem}
-.pf{display:flex;align-items:flex-start;gap:11px;font-size:0.96rem;color:var(--text);line-height:1.45}
-.pf-ck{color:var(--teal);font-weight:700;flex-shrink:0;font-size:1.05rem}
-.pr-btn{display:block;width:100%;padding:14px;border-radius:12px;font-size:1rem;font-weight:700;text-decoration:none;text-align:center;transition:all 0.2s;font-family:'Sora',sans-serif;border:none;cursor:pointer}
-.pb-tl{background:var(--teal);color:#fff;box-shadow:0 3px 14px rgba(10,191,138,0.35)}
-.pb-tl:hover{background:var(--teal-dark);transform:translateY(-1px)}
-.pb-bl{background:var(--blue);color:#fff;box-shadow:0 3px 14px rgba(26,111,191,0.35)}
-.pb-bl:hover{background:var(--blue-dark);transform:translateY(-1px)}
-.pb-ol{background:#fff;color:var(--blue-dark);border:1.5px solid #dce8f7}
-.pb-ol:hover{border-color:var(--blue-mid);background:var(--blue-light)}
-.pr-note{font-size:0.82rem;color:var(--muted);text-align:center;margin-top:0.875rem}
+.pr-wrap{max-width:1100px;margin:0 auto}
+.pr-sec-inner{background:linear-gradient(160deg,#021e3a 0%,#042c53 55%,#0a3060 100%);border-radius:28px;padding:4rem 2.5rem;position:relative;overflow:hidden}
+.pr-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.022) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;border-radius:28px}
+.pr-orb{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(10,191,138,0.07),transparent 68%);bottom:-150px;right:-100px;pointer-events:none}
+.pr-inner{position:relative;z-index:1}
+.pr-hd{text-align:center;margin-bottom:3rem}
+.pr-hd-en{font-size:2.5rem;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1.1;margin-bottom:0.4rem}
+.pr-hd-en span{color:#7fbcf5}
+.pr-hd-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:1.1rem;font-weight:600;color:rgba(255,255,255,0.28);direction:rtl;margin-bottom:0.75rem}
+.pr-hd-sub-en{font-size:0.85rem;color:rgba(255,255,255,0.28);letter-spacing:0.3px}
+.pr-hd-sub-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.82rem;color:rgba(255,255,255,0.18);direction:rtl;margin-top:0.2rem;font-weight:500}
+
+/* Free banner */
+.pr-free{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:1.25rem 1.75rem;margin-bottom:1rem}
+.pr-f-left{display:flex;align-items:center;gap:1rem}
+.pr-f-ic{font-size:1.4rem}
+.pr-f-name{font-size:1rem;font-weight:700;color:#fff}
+.pr-f-name-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.78rem;color:rgba(255,255,255,0.3);direction:rtl;margin-top:2px;font-weight:500}
+.pr-f-right{display:flex;align-items:center;gap:1.25rem}
+.pr-f-amt{font-size:1.6rem;font-weight:800;color:#fff;letter-spacing:-0.5px}
+.pr-f-per{font-size:0.65rem;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1px;margin-top:2px;text-align:right}
+.pr-f-per-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.68rem;color:rgba(255,255,255,0.2);direction:rtl;margin-top:1px}
+.pr-f-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);color:#fff;padding:9px 20px;border-radius:9px;font-size:0.78rem;font-weight:700;text-decoration:none;font-family:'Sora',sans-serif;white-space:nowrap;transition:all 0.2s}
+.pr-f-btn:hover{background:rgba(255,255,255,0.13);transform:translateY(-1px)}
+
+/* Cards */
+.pr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:0}
+.pr-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:18px;padding:1.75rem 1.5rem;display:flex;flex-direction:column;position:relative;transition:all 0.25s}
+.pr-card:hover{background:rgba(255,255,255,0.07);border-color:rgba(127,188,245,0.22);transform:translateY(-4px)}
+.pr-card.popular{background:linear-gradient(155deg,rgba(55,138,221,0.18),rgba(26,111,191,0.08));border:1.5px solid rgba(55,138,221,0.45);box-shadow:0 4px 40px rgba(55,138,221,0.12)}
+.pr-card.popular:hover{background:linear-gradient(155deg,rgba(55,138,221,0.24),rgba(26,111,191,0.12));border-color:rgba(55,138,221,0.65);box-shadow:0 20px 50px rgba(55,138,221,0.2);transform:translateY(-4px)}
+.pr-card.best{background:rgba(10,191,138,0.1);border:1.5px solid rgba(10,191,138,0.38)}
+.pr-card.best:hover{background:rgba(10,191,138,0.15);border-color:rgba(10,191,138,0.55);transform:translateY(-4px)}
+
+.pr-pop-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,#378add,#1a6fbf);color:#fff;font-size:0.6rem;font-weight:700;padding:4px 16px;border-radius:20px;white-space:nowrap;letter-spacing:1px;text-transform:uppercase;box-shadow:0 3px 14px rgba(55,138,221,0.45)}
+.pr-best-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,#0abf8a,#078a64);color:#fff;font-size:0.6rem;font-weight:700;padding:4px 16px;border-radius:20px;white-space:nowrap;letter-spacing:1px;text-transform:uppercase;box-shadow:0 3px 14px rgba(10,191,138,0.4)}
+
+.pr-nm{font-size:1rem;font-weight:700;color:#fff;margin-bottom:2px}
+.pr-nm.c-blue{color:#7fbcf5}
+.pr-nm.c-teal{color:#0abf8a}
+.pr-nm-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.82rem;color:rgba(255,255,255,0.3);direction:rtl;margin-bottom:1.25rem;font-weight:500}
+.pr-amt{font-size:2.4rem;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1}
+.pr-amt.c-blue{color:#7fbcf5}
+.pr-amt.c-teal{color:#0abf8a}
+.pr-amt-k{font-size:1.2rem;color:rgba(255,255,255,0.3)}
+.pr-amt-k.c-blue{color:rgba(127,188,245,0.4)}
+.pr-amt-k.c-teal{color:rgba(10,191,138,0.45)}
+.pr-per{font-size:0.68rem;color:rgba(255,255,255,0.28);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:0.5rem}
+.pr-per-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.72rem;color:rgba(255,255,255,0.2);direction:rtl;margin-bottom:0.75rem;font-weight:500}
+
+.pr-save{display:inline-block;background:rgba(245,166,35,0.12);border:1px solid rgba(245,166,35,0.25);color:#f5a623;font-size:0.62rem;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:0.5px;margin-bottom:1.1rem}
+.pr-save.s-blue{background:rgba(55,138,221,0.12);border-color:rgba(55,138,221,0.3);color:#7fbcf5}
+.pr-save.s-teal{background:rgba(10,191,138,0.12);border-color:rgba(10,191,138,0.3);color:#0abf8a}
+.pr-no-save{height:1.45rem;margin-bottom:1.1rem}
+
+.pr-div{height:1px;background:rgba(255,255,255,0.07);margin-bottom:1.1rem}
+.pr-div.d-blue{background:rgba(55,138,221,0.2)}
+.pr-div.d-teal{background:rgba(10,191,138,0.18)}
+
+.pr-feats{display:flex;flex-direction:column;gap:8px;margin-bottom:1.25rem;flex:1}
+.pf{display:flex;align-items:flex-start;gap:8px;font-size:0.77rem;color:rgba(255,255,255,0.4);line-height:1.4}
+.pf.bf{color:rgba(255,255,255,0.62)}
+.pf-ck{color:#0abf8a;font-weight:700;flex-shrink:0;font-size:0.82rem}
+
+.pr-mo{font-size:0.65rem;color:rgba(255,255,255,0.2);border-top:1px solid rgba(255,255,255,0.05);padding-top:0.75rem;margin-bottom:1.1rem}
+.pr-mo span{color:rgba(255,255,255,0.38);font-weight:600}
+.pr-mo.m-blue{border-top-color:rgba(55,138,221,0.15)}
+.pr-mo .sp-blue{color:#7fbcf5}
+.pr-mo.m-teal{border-top-color:rgba(10,191,138,0.12)}
+.pr-mo .sp-teal{color:rgba(10,191,138,0.75)}
+
+.pr-btn{display:block;width:100%;padding:11px 0;border-radius:10px;font-size:0.78rem;font-weight:700;text-align:center;text-decoration:none;font-family:'Sora',sans-serif;border:none;cursor:pointer;transition:all 0.2s;letter-spacing:0.3px}
+.pr-btn.b-ghost{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:#fff}
+.pr-btn.b-ghost:hover{background:rgba(255,255,255,0.11);border-color:rgba(127,188,245,0.3)}
+.pr-btn.b-blue{background:linear-gradient(90deg,#378add,#1a6fbf);color:#fff;box-shadow:0 4px 18px rgba(55,138,221,0.35)}
+.pr-btn.b-blue:hover{box-shadow:0 6px 26px rgba(55,138,221,0.5);transform:translateY(-1px)}
+.pr-btn.b-teal{background:#0abf8a;color:#fff;box-shadow:0 4px 18px rgba(10,191,138,0.35)}
+.pr-btn.b-teal:hover{background:#078a64;box-shadow:0 6px 26px rgba(10,191,138,0.5);transform:translateY(-1px)}
+
+.pr-footnote{text-align:center;margin-top:1.5rem;font-size:0.7rem;color:rgba(255,255,255,0.18)}
+.pr-footnote-ar{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:0.72rem;color:rgba(255,255,255,0.12);direction:rtl;margin-top:3px}
 
 /* TRUST */
 .trust-sec{padding:6rem 2.5rem;background:linear-gradient(160deg,#021e3a,var(--blue-deep));position:relative;overflow:hidden}
@@ -368,7 +425,7 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
   
   .trust-grid{grid-template-columns:repeat(2,1fr)}
   .pr-grid{grid-template-columns:1fr 1fr;gap:1rem}
-  .pr-card:nth-child(3){grid-column:1/-1;max-width:500px;margin:0 auto;width:100%}
+  .pr-card:nth-child(4){grid-column:1/-1;max-width:500px;margin:0 auto;width:100%}
 }
 
 /* Mobile — 768px */
@@ -427,7 +484,7 @@ footer{background:#021e3a;padding:4rem 2.5rem 2rem;border-top:1px solid rgba(255
   /* Pricing */
   .pr-grid{grid-template-columns:1fr;gap:1rem}
   .pr-card.ft{transform:none}
-  .pr-card:nth-child(3){grid-column:auto;max-width:100%}
+  .pr-card:nth-child(4){grid-column:auto;max-width:100%}
 
   /* Testimonials */
   .trust-grid{grid-template-columns:1fr;gap:1rem}
@@ -1208,68 +1265,242 @@ window.addEventListener('DOMContentLoaded', function(){
 </section>
 
 <!-- PRICING -->
-<section class="sec" id="pricing" style="background:var(--bg)">
-  <div class="pr-wrap">
-    <div style="text-align:center">
-      <div class="sec-tag" style="display:inline-flex">💰 Pricing · الأسعار</div>
-      <h2 class="sec-h en-only">Simple, honest <span>pricing</span></h2>
-      <h2 class="sec-h ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">أسعار واضحة <span>وبسيطة</span></h2>
-      <p class="sec-p en-only" style="margin:0 auto 0.5rem;text-align:center">7 days free. No hidden fees. Pay when ready.</p>
-      <p class="sec-p ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;text-align:center;margin-bottom:0.5rem">7 أيام مجاناً. لا رسوم خفية. ادفع عندما تكون مستعداً.</p>
+<section class="sec" id="pricing" style="background:#f0f6ff;padding:5rem 2rem;position:relative;overflow:hidden;">
+<style>
+.prc-orb2{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(10,191,138,0.06),transparent 68%);bottom:-200px;right:-150px;pointer-events:none}
+.prc-orb3{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(55,138,221,0.07),transparent 68%);top:-100px;left:-100px;pointer-events:none}
+.prc2-inn{max-width:1000px;margin:0 auto;position:relative;z-index:1}
+.prc2-hd{text-align:center;margin-bottom:3rem}
+.prc2-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(10,191,138,0.1);border:1px solid rgba(10,191,138,0.3);color:#078a64;font-size:0.72rem;font-weight:700;padding:6px 18px;border-radius:30px;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.25rem}
+.prc2-dot{width:6px;height:6px;border-radius:50%;background:#0abf8a;animation:prc2-pulse 2s infinite}
+@keyframes prc2-pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.prc2-h1{font-size:2.6rem;font-weight:800;color:#0f1f35;letter-spacing:-1px;line-height:1.1;margin-bottom:0.3rem}
+.prc2-h1 span{color:#1a6fbf}
+.prc2-h1-ar{font-family:"IBM Plex Sans Arabic",sans-serif;font-size:1.6rem;font-weight:700;color:#0f1f35;direction:rtl;margin-bottom:0.3rem;line-height:1.6}
+.prc2-h1-ar span{color:#1a6fbf}
+.prc2-sub{font-size:0.95rem;color:#5a7a9a}
+.prc2-sub-ar{font-family:"IBM Plex Sans Arabic",sans-serif;font-size:0.95rem;color:#5a7a9a;direction:rtl;font-weight:500;margin-top:2px}
+.prc2-free{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;background:#fff;border:1.5px solid #dce8f7;border-radius:16px;padding:1.4rem 2rem;margin-bottom:1.25rem;box-shadow:0 2px 16px rgba(26,111,191,0.06)}
+.prc2-fl{display:flex;align-items:center;gap:1rem}
+.prc2-fic{font-size:1.5rem;flex-shrink:0}
+.prc2-fn{font-size:1.05rem;font-weight:700;color:#0f1f35;margin-bottom:2px}
+.prc2-fn-ar{font-family:"IBM Plex Sans Arabic",sans-serif;font-size:1rem;font-weight:600;color:#0f1f35;direction:rtl;margin-bottom:2px}
+.prc2-fsub{font-size:0.8rem;color:#5a7a9a}
+.prc2-fsub-ar{font-family:"IBM Plex Sans Arabic",sans-serif;font-size:0.82rem;color:#5a7a9a;direction:rtl;font-weight:500}
+.prc2-fr{display:flex;align-items:center;gap:1.5rem;flex-shrink:0}
+.prc2-famt{font-size:2rem;font-weight:800;color:#0f1f35;letter-spacing:-0.5px;line-height:1}
+.prc2-fper{font-size:0.7rem;color:#8aaccc;text-transform:uppercase;letter-spacing:1px;margin-top:3px}
+.prc2-fper-ar{font-family:"IBM Plex Sans Arabic",sans-serif;font-size:0.75rem;color:#8aaccc;direction:rtl;font-weight:500;margin-top:3px}
+.prc2-fbtn{display:inline-flex;align-items:center;gap:7px;background:#0f1f35;color:#fff;padding:11px 24px;border-radius:10px;font-size:0.82rem;font-weight:700;text-decoration:none;font-family:"Sora",sans-serif;white-space:nowrap;transition:all 0.2s}
+.prc2-fbtn:hover{background:#1a6fbf;transform:translateY(-1px)}
+.prc2-plans{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+.prc2-plan{background:#fff;border:1.5px solid #dce8f7;border-radius:20px;padding:2rem 1.6rem 1.6rem;display:flex;flex-direction:column;position:relative;transition:all 0.25s;box-shadow:0 2px 16px rgba(26,111,191,0.05)}
+.prc2-plan:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(26,111,191,0.12);border-color:#b5d4f4}
+.prc2-plan.prc2-pop{background:#fff;border:2px solid #378add;box-shadow:0 4px 30px rgba(55,138,221,0.15)}
+.prc2-plan.prc2-pop:hover{box-shadow:0 16px 50px rgba(55,138,221,0.22);transform:translateY(-5px)}
+.prc2-plan.prc2-best{background:linear-gradient(145deg,#042c53,#0c447c);border:2px solid #0abf8a;box-shadow:0 4px 30px rgba(10,191,138,0.2)}
+.prc2-plan.prc2-best:hover{box-shadow:0 16px 50px rgba(10,191,138,0.3);transform:translateY(-5px)}
+.prc2-pop-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,#378add,#1a6fbf);color:#fff;font-size:0.62rem;font-weight:700;padding:5px 18px;border-radius:20px;white-space:nowrap;letter-spacing:1px;box-shadow:0 3px 12px rgba(55,138,221,0.4)}
+.prc2-best-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,#0abf8a,#078a64);color:#fff;font-size:0.62rem;font-weight:700;padding:5px 18px;border-radius:20px;white-space:nowrap;letter-spacing:1px;box-shadow:0 3px 12px rgba(10,191,138,0.4)}
+.prc2-name{font-size:1.05rem;font-weight:700;color:#0f1f35;margin-bottom:1px}
+.prc2-name.prc2-won{color:#fff}
+.prc2-name-ar{font-family:"IBM Plex Sans Arabic",sans-serif;font-size:1rem;font-weight:600;color:#5a7a9a;direction:rtl;margin-bottom:1.25rem;line-height:1.6}
+.prc2-name-ar.prc2-won{color:rgba(255,255,255,0.6)}
+.prc2-price-block{margin-bottom:0.3rem}
+.prc2-amt{font-size:3.4rem;font-weight:800;color:#0c447c;letter-spacing:-2px;line-height:1}
+.prc2-amt.prc2-light{color:#fff}
+.prc2-amt.prc2-blue{color:#1a6fbf}
+.prc2-k{font-size:1.7rem;font-weight:700;color:#8aaccc;letter-spacing:0}
+.prc2-k.prc2-kl{color:rgba(255,255,255,0.4)}
+.prc2-k.prc2-kb{color:rgba(55,138,221,0.5)}
+.prc2-iqd{font-size:0.85rem;font-weight:600;color:#5a7a9a;letter-spacing:1px;margin-bottom:2px}
+.prc2-iqd.prc2-won{color:rgba(255,255,255,0.5)}
+.prc2-period{font-size:0.78rem;color:#8aaccc;letter-spacing:0.3px;margin-bottom:4px}
+.prc2-period-ar{font-family:"IBM Plex Sans Arabic",sans-serif;font-size:0.82rem;color:#8aaccc;direction:rtl;font-weight:500;margin-bottom:1rem}
+.prc2-period.prc2-won{color:rgba(255,255,255,0.35)}
+.prc2-period-ar.prc2-won{color:rgba(255,255,255,0.35)}
+.prc2-save{display:inline-block;background:#faeeda;border:1px solid #f5a623;color:#854f0b;font-size:0.68rem;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:1.1rem}
+.prc2-save.prc2-sb{background:rgba(55,138,221,0.1);border-color:#378add;color:#185fa5}
+.prc2-save.prc2-st{background:rgba(10,191,138,0.15);border-color:#0abf8a;color:#0abf8a}
+.prc2-no-save{height:1.7rem;margin-bottom:1.1rem}
+.prc2-div{height:1px;background:#dce8f7;margin-bottom:1.1rem}
+.prc2-div.prc2-dw{background:rgba(255,255,255,0.1)}
+.prc2-feats{display:flex;flex-direction:column;gap:9px;margin-bottom:1.25rem;flex:1}
+.prc2-ft{display:flex;align-items:flex-start;gap:8px;line-height:1.45}
+.prc2-ck{color:#0abf8a;font-weight:700;flex-shrink:0;font-size:0.9rem;margin-top:1px}
+.prc2-ft-en{font-size:0.84rem;color:#5a7a9a}
+.prc2-ft-en.prc2-fw{color:rgba(255,255,255,0.78)}
+.prc2-ft-ar{font-family:"IBM Plex Sans Arabic",sans-serif;font-size:0.88rem;color:#5a7a9a;direction:rtl;font-weight:500;line-height:1.7}
+.prc2-ft-ar.prc2-fw{color:rgba(255,255,255,0.72)}
+.prc2-mo{font-size:0.75rem;color:#8aaccc;border-top:1px solid #dce8f7;padding-top:0.75rem;margin-bottom:1.1rem}
+.prc2-mo span{color:#0c447c;font-weight:700}
+.prc2-mo.prc2-mw{border-top-color:rgba(255,255,255,0.1);color:rgba(255,255,255,0.45)}
+.prc2-mo.prc2-mw span{color:#0abf8a}
+.prc2-mo.prc2-mb span{color:#378add}
+.prc2-btn{display:block;width:100%;padding:13px 0;border-radius:11px;font-size:0.9rem;font-weight:700;text-align:center;text-decoration:none;font-family:"Sora",sans-serif;cursor:pointer;transition:all 0.22s;letter-spacing:0.3px;border:none}
+.prc2-bghost{background:#f0f6ff;border:1.5px solid #dce8f7;color:#0c447c}
+.prc2-bghost:hover{background:#e6f1fb;border-color:#b5d4f4}
+.prc2-bblue{background:linear-gradient(90deg,#378add,#1a6fbf);color:#fff;box-shadow:0 4px 16px rgba(55,138,221,0.3)}
+.prc2-bblue:hover{box-shadow:0 6px 24px rgba(55,138,221,0.45);transform:translateY(-1px)}
+.prc2-bteal{background:#0abf8a;color:#fff;box-shadow:0 4px 16px rgba(10,191,138,0.35)}
+.prc2-bteal:hover{background:#078a64;box-shadow:0 6px 24px rgba(10,191,138,0.5);transform:translateY(-1px)}
+.prc2-fn{text-align:center;margin-top:1.75rem;font-size:0.78rem;color:#8aaccc}
+.prc2-fn-ar{font-family:"IBM Plex Sans Arabic",sans-serif;font-size:0.82rem;color:#8aaccc;direction:rtl;margin-top:3px;font-weight:500}
+@media(max-width:900px){.prc2-plans{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.prc2-free{flex-direction:column;text-align:center}.prc2-fr{flex-direction:column;align-items:center}.prc2-h1{font-size:2rem}.prc2-h1-ar{font-size:1.3rem}}
+@media(max-width:480px){.prc2-plans{grid-template-columns:1fr}.prc2-plan.prc2-pop,.prc2-plan.prc2-best{margin-top:14px}}
+</style>
+<div class="prc-orb2"></div>
+<div class="prc-orb3"></div>
+<div class="prc2-inn">
+
+  <div class="prc2-hd">
+    <div class="prc2-tag"><div class="prc2-dot"></div><span class="en-only">Pricing</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0">الأسعار</span></div>
+    <h2 class="prc2-h1 en-only">Simple, honest <span>pricing</span></h2>
+    <h2 class="prc2-h1-ar ar-only">أسعار واضحة <span>وبسيطة</span></h2>
+    <div class="prc2-sub en-only">No hidden fees · Pay when ready · Cancel anytime</div>
+    <div class="prc2-sub-ar ar-only">لا رسوم خفية · ادفع عندما تكون مستعداً · إلغاء في أي وقت</div>
+  </div>
+
+  <div class="prc2-free">
+    <div class="prc2-fl">
+      <div class="prc2-fic">🆓</div>
+      <div>
+        <div class="prc2-fn en-only">Free Trial — 7 Days Full Access</div>
+        <div class="prc2-fn-ar ar-only">تجربة مجانية — 7 أيام وصول كامل</div>
+        <div class="prc2-fsub en-only">No credit card · All features unlocked · Cloud backup</div>
+        <div class="prc2-fsub-ar ar-only">بدون بطاقة · جميع المميزات مفتوحة · نسخ احتياطي سحابي</div>
+      </div>
     </div>
-    <div class="pr-grid">
-      <div class="pr-card">
-        <span class="pr-ico">🆓</span>
-        <div class="pr-nm en-only">Free Trial</div>
-        <div class="pr-nm ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">تجربة مجانية</div>
-        <div class="pr-div"></div>
-        <div class="pr-amt"><sup>$</sup>0</div>
-        <div class="pr-per">for 7 days — لمدة 7 أيام</div>
-        <div class="pr-feats">
-          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Full access to every feature</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">وصول كامل لجميع المميزات</span></div>
-          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Cloud backup included</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">نسخ احتياطي سحابي مشمول</span></div>
-          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">No credit card needed</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">لا بطاقة ائتمان مطلوبة</span></div>
-          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Unlimited patients & appointments</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">مرضى ومواعيد غير محدودة</span></div>
-        </div>
-        <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/v1.0.10/CliniQX-Pro-Setup-1.0.10.exe" target="_blank" class="pr-btn pb-ol">⬇️ Download Free</a>
-        <div class="pr-note">No payment required</div>
+    <div class="prc2-fr">
+      <div>
+        <div class="prc2-famt">0 <span style="font-size:1rem;font-weight:600;color:#8aaccc">IQD</span></div>
+        <div class="prc2-fper en-only">Completely Free</div>
+        <div class="prc2-fper-ar ar-only">مجاناً بالكامل</div>
       </div>
-      <div class="pr-card ft">
-        <div class="pr-best">⭐ MOST POPULAR</div>
-        <span class="pr-ico">📅</span>
-        <div class="pr-nm en-only">Monthly</div>
-        <div class="pr-nm ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">اشتراك شهري</div>
-        <div class="pr-div"></div>
-        <div class="pr-amt"><sup></sup>10,000</div>
-        <div class="pr-per">IQD / per month · دينار في الشهر</div>
-        <div class="pr-feats">
-          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Unlimited patients & appointments</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">مرضى ومواعيد غير محدودة</span></div>
-          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Real-time cloud sync & backup</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">مزامنة ونسخ احتياطي سحابي فوري</span></div>
-          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">All future updates included</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">جميع التحديثات المستقبلية مشمولة</span></div>
-          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Telegram support</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">دعم فني عبر تيليغرام</span></div>
-          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Use on multiple PCs</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">استخدام على أكثر من جهاز</span></div>
-        </div>
-        <a href="https://t.me/cliniqx" target="_blank" class="pr-btn pb-bl">✈️ Buy Monthly — 10,000 IQD</a>
-        <div class="pr-note">Cash or bank transfer</div>
-      </div>
-      <div class="pr-card">
-        <span class="pr-ico">🏆</span>
-        <div class="pr-nm en-only">Annual</div>
-        <div class="pr-nm ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">اشتراك سنوي</div>
-        <div class="pr-div"></div>
-        <div class="pr-amt"><sup></sup>100,000</div>
-        <div class="pr-per">IQD / per year · دينار في السنة</div>
-        <div class="pr-feats">
-          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Everything in Monthly</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">كل مميزات الاشتراك الشهري</span></div>
-          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">2 months completely free</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">شهران مجانيان بالكامل</span></div>
-          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Priority Telegram support</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">دعم فني ذو أولوية عبر تيليغرام</span></div>
-          <div class="pf"><div class="pf-ck">✓</div><span class="en-only">Early access to new features</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif">وصول مبكر للمميزات الجديدة</span></div>
-        </div>
-        <a href="https://t.me/cliniqx" target="_blank" class="pr-btn pb-tl">✈️ Buy Annual — 100,000 IQD</a>
-        <div class="pr-note">Best value · أفضل قيمة</div>
-      </div>
+      <a href="https://github.com/Ahmedm4x/cliniqx-pro-releases/releases/download/v1.0.10/CliniQX-Pro-Setup-1.0.10.exe" class="prc2-fbtn" target="_blank">
+        <span class="en-only">⬇ Download Free</span>
+        <span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0">⬇ تحميل مجاني</span>
+      </a>
     </div>
   </div>
+
+  <div class="prc2-plans">
+
+    <div class="prc2-plan">
+      <div class="prc2-name en-only">1 Month</div>
+      <div class="prc2-name-ar ar-only">شهر واحد · 1 Month</div>
+      <div class="prc2-price-block">
+        <div class="prc2-amt">15<span class="prc2-k">,000</span></div>
+      </div>
+      <div class="prc2-iqd">IQD</div>
+      <div class="prc2-period en-only">per month · شهرياً</div>
+      <div class="prc2-period-ar ar-only">دينار عراقي · كل شهر</div>
+      <div class="prc2-no-save"></div>
+      <div class="prc2-div"></div>
+      <div class="prc2-feats">
+        <div class="prc2-ft"><div class="prc2-ck">✓</div><span class="prc2-ft-en en-only">Unlimited patients</span><span class="prc2-ft-ar ar-only">مرضى غير محدودين</span></div>
+        <div class="prc2-ft"><div class="prc2-ck">✓</div><span class="prc2-ft-en en-only">Cloud sync &amp; backup</span><span class="prc2-ft-ar ar-only">مزامنة ونسخ سحابي</span></div>
+        <div class="prc2-ft"><div class="prc2-ck">✓</div><span class="prc2-ft-en en-only">All updates included</span><span class="prc2-ft-ar ar-only">جميع التحديثات مشمولة</span></div>
+        <div class="prc2-ft"><div class="prc2-ck">✓</div><span class="prc2-ft-en en-only">Telegram support</span><span class="prc2-ft-ar ar-only">دعم عبر تيليغرام</span></div>
+      </div>
+      <div class="prc2-mo"><span>15,000</span> IQD / <span class="en-only">month</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0">شهر</span></div>
+      <a href="https://t.me/cliniqx" class="prc2-btn prc2-bghost" target="_blank">
+        <span class="en-only">✈ Subscribe</span>
+        <span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0">✈ اشترك الآن</span>
+      </a>
+    </div>
+
+    <div class="prc2-plan">
+      <div class="prc2-name en-only">3 Months</div>
+      <div class="prc2-name-ar ar-only">ثلاثة أشهر · 3 Months</div>
+      <div class="prc2-price-block">
+        <div class="prc2-amt">40<span class="prc2-k">,000</span></div>
+      </div>
+      <div class="prc2-iqd">IQD</div>
+      <div class="prc2-period en-only">per 3 months · كل 3 أشهر</div>
+      <div class="prc2-period-ar ar-only">دينار عراقي · كل 3 أشهر</div>
+      <div class="prc2-save"><span class="en-only">Save 11%</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0">وفّر 11%</span></div>
+      <div class="prc2-div"></div>
+      <div class="prc2-feats">
+        <div class="prc2-ft"><div class="prc2-ck">✓</div><span class="prc2-ft-en en-only">Unlimited patients</span><span class="prc2-ft-ar ar-only">مرضى غير محدودين</span></div>
+        <div class="prc2-ft"><div class="prc2-ck">✓</div><span class="prc2-ft-en en-only">Cloud sync &amp; backup</span><span class="prc2-ft-ar ar-only">مزامنة ونسخ سحابي</span></div>
+        <div class="prc2-ft"><div class="prc2-ck">✓</div><span class="prc2-ft-en en-only">All updates included</span><span class="prc2-ft-ar ar-only">جميع التحديثات مشمولة</span></div>
+        <div class="prc2-ft"><div class="prc2-ck">✓</div><span class="prc2-ft-en en-only">Telegram support</span><span class="prc2-ft-ar ar-only">دعم عبر تيليغرام</span></div>
+      </div>
+      <div class="prc2-mo prc2-mb">~<span>13,333</span> IQD / <span class="en-only">month</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0">شهر</span></div>
+      <a href="https://t.me/cliniqx" class="prc2-btn prc2-bghost" target="_blank">
+        <span class="en-only">✈ Subscribe</span>
+        <span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0">✈ اشترك الآن</span>
+      </a>
+    </div>
+
+    <div class="prc2-plan prc2-pop">
+      <div class="prc2-pop-badge">
+        <span class="en-only">🔥 Most Popular</span>
+        <span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0">🔥 الأكثر اختياراً</span>
+      </div>
+      <div class="prc2-name prc2-blue en-only" style="color:#1a6fbf">6 Months</div>
+      <div class="prc2-name-ar ar-only" style="color:#1a6fbf">ستة أشهر · 6 Months</div>
+      <div class="prc2-price-block">
+        <div class="prc2-amt prc2-blue">70<span class="prc2-k prc2-kb">,000</span></div>
+      </div>
+      <div class="prc2-iqd" style="color:#378add">IQD</div>
+      <div class="prc2-period en-only">per 6 months · كل 6 أشهر</div>
+      <div class="prc2-period-ar ar-only">دينار عراقي · كل 6 أشهر</div>
+      <div class="prc2-save prc2-sb"><span class="en-only">Save 22%</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0">وفّر 22%</span></div>
+      <div class="prc2-div"></div>
+      <div class="prc2-feats">
+        <div class="prc2-ft"><div class="prc2-ck">✓</div><span class="prc2-ft-en en-only">Unlimited patients</span><span class="prc2-ft-ar ar-only">مرضى غير محدودين</span></div>
+        <div class="prc2-ft"><div class="prc2-ck">✓</div><span class="prc2-ft-en en-only">Cloud sync &amp; backup</span><span class="prc2-ft-ar ar-only">مزامنة ونسخ سحابي</span></div>
+        <div class="prc2-ft"><div class="prc2-ck">✓</div><span class="prc2-ft-en en-only">All updates included</span><span class="prc2-ft-ar ar-only">جميع التحديثات مشمولة</span></div>
+        <div class="prc2-ft"><div class="prc2-ck">✓</div><span class="prc2-ft-en en-only">Priority support</span><span class="prc2-ft-ar ar-only">دعم فني ذو أولوية</span></div>
+      </div>
+      <div class="prc2-mo prc2-mb">~<span>11,667</span> IQD / <span class="en-only">month</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0">شهر</span></div>
+      <a href="https://t.me/cliniqx" class="prc2-btn prc2-bblue" target="_blank">
+        <span class="en-only">✈ Subscribe</span>
+        <span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0">✈ اشترك الآن</span>
+      </a>
+    </div>
+
+    <div class="prc2-plan prc2-best">
+      <div class="prc2-best-badge">
+        <span class="en-only">⭐ Best Value</span>
+        <span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0">⭐ أفضل قيمة</span>
+      </div>
+      <div class="prc2-name prc2-won en-only">Annual</div>
+      <div class="prc2-name-ar prc2-won ar-only">اشتراك سنوي · Annual</div>
+      <div class="prc2-price-block">
+        <div class="prc2-amt prc2-light">100<span class="prc2-k prc2-kl">,000</span></div>
+      </div>
+      <div class="prc2-iqd prc2-won">IQD</div>
+      <div class="prc2-period prc2-won en-only">per year · سنوياً</div>
+      <div class="prc2-period-ar prc2-won ar-only">دينار عراقي · كل سنة</div>
+      <div class="prc2-save prc2-st"><span class="en-only">Save 44%</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0">وفّر 44%</span></div>
+      <div class="prc2-div prc2-dw"></div>
+      <div class="prc2-feats">
+        <div class="prc2-ft"><div class="prc2-ck">✓</div><span class="prc2-ft-en prc2-fw en-only">Everything included</span><span class="prc2-ft-ar prc2-fw ar-only">كل المميزات مشمولة</span></div>
+        <div class="prc2-ft"><div class="prc2-ck">✓</div><span class="prc2-ft-en prc2-fw en-only">Lowest monthly cost</span><span class="prc2-ft-ar prc2-fw ar-only">أرخص تكلفة شهرية</span></div>
+        <div class="prc2-ft"><div class="prc2-ck">✓</div><span class="prc2-ft-en prc2-fw en-only">Priority support</span><span class="prc2-ft-ar prc2-fw ar-only">دعم فني ذو أولوية</span></div>
+        <div class="prc2-ft"><div class="prc2-ck">✓</div><span class="prc2-ft-en prc2-fw en-only">Early feature access</span><span class="prc2-ft-ar prc2-fw ar-only">وصول مبكر للمميزات</span></div>
+      </div>
+      <div class="prc2-mo prc2-mw">~<span>8,333</span> IQD / <span class="en-only">month</span><span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0">شهر</span></div>
+      <a href="https://t.me/cliniqx" class="prc2-btn prc2-bteal" target="_blank">
+        <span class="en-only">✈ Subscribe Now</span>
+        <span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0">✈ اشترك الآن</span>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="prc2-fn">
+    <span class="en-only">Cash or bank transfer · All prices in Iraqi Dinar (IQD)</span>
+    <span class="ar-only" style="font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0">دفع نقدي أو تحويل مصرفي · جميع الأسعار بالدينار العراقي</span>
+    <div class="prc2-fn-ar en-only">دفع نقدي أو تحويل مصرفي · جميع الأسعار بالدينار العراقي</div>
+    <div class="prc2-fn-ar ar-only">Cash or bank transfer · All prices in IQD</div>
+  </div>
+
+</div>
 </section>
 
 <!-- TESTIMONIALS -->
